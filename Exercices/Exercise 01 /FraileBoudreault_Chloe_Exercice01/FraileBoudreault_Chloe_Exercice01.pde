@@ -1,15 +1,26 @@
+//defines how rapidly the circle moves
 final int CIRCLE_SPEED = 7;
+//defines the colour of the moving circle
 final color NO_CLICK_FILL_COLOR = color(250, 100, 100);
+//defines the colour of the moving circle when the mouse hovers over it
 final color CLICK_FILL_COLOR = color(100, 100, 250);
+//defines the colour of the background
 final color BACKGROUND_COLOR = color(250, 150, 150);
+//defines the colour of the circle's line
 final color STROKE_COLOR = color(250, 150, 150);
+//defines the size of the circle
 final int CIRCLE_SIZE = 50;
 
+// defines the place of the moving circle on the X axis
 int circleX;
+// defines the place of the moving circle on the Y axis
 int circleY;
+// defines the velocity of the moving circle on the X axis
 int circleVX;
+// defines the velocity of the moving circle on the Y axis
 int circleVY;
 
+//// this sets up the display window
 void setup() {
   size(640, 480);
   circleX = width/2;
