@@ -72,9 +72,14 @@ void draw() {
     circleVY = -circleVY;
   }
 
+  //CHANGED!!!!!!!! 
+  //added new conditional
+  // if the positon of the mouse on X axis AND position of the mouse on Y axis 
+  //are both on a certain part of the screen, the circle will be a certain size
   if (mouseX < width/2 && mouseY < width/2) {
     ellipse (circleX, circleY, CIRCLE_SIZE*3, CIRCLE_SIZE*3);
   } 
+  //otherwise the circle remains the same size
   else {
     ellipse (circleX, circleY, CIRCLE_SIZE, CIRCLE_SIZE);
   }
