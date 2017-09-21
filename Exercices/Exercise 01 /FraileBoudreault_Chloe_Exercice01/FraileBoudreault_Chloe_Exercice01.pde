@@ -4,9 +4,9 @@ final int CIRCLE_SPEED = 7;
 //CHANGED!!!!!!!!
 //added vairables to the colour of the moving circle
 //this will give a random colours each time to code is ran
-final float NO_CLICK_FILL_RED = random (100,255);
-final float NO_CLICK_FILL_GREEN = random (240,100);
-final float NO_CLICK_FILL_BLUE = random (55,160);
+final float NO_CLICK_FILL_RED = random (100, 255);
+final float NO_CLICK_FILL_GREEN = random (240, 100);
+final float NO_CLICK_FILL_BLUE = random (55, 160);
 //defines the colour of the moving circle when the mouse hovers over it
 final color CLICK_FILL_COLOR = color(100, 100, 250);
 //defines the colour of the background
@@ -38,14 +38,14 @@ void setup() {
   stroke(STROKE_COLOR);
   //CHANGED!!!!!!!!
   //have to change it here too otherwise it won't be applied
-  fill(NO_CLICK_FILL_RED, NO_CLICK_FILL_GREEN,NO_CLICK_FILL_BLUE);
+  fill(NO_CLICK_FILL_RED, NO_CLICK_FILL_GREEN, NO_CLICK_FILL_BLUE);
   background(BACKGROUND_COLOR);
 }
 
 void draw() {
   //this code runs the program
-    // if the position of the mouse and the position of the circle encounter 
-    if (dist(mouseX, mouseY, circleX, circleY) < CIRCLE_SIZE/2) {
+  // if the position of the mouse and the position of the circle encounter 
+  if (dist(mouseX, mouseY, circleX, circleY) < CIRCLE_SIZE/2) {
     // then the circle's colour changes 
     fill(CLICK_FILL_COLOR);
   }
@@ -53,7 +53,7 @@ void draw() {
   else {
     //CHANGED!!!!!!!!
     //have to change it here too otherwise it won't be applied
-    fill(NO_CLICK_FILL_RED, NO_CLICK_FILL_GREEN,NO_CLICK_FILL_BLUE);
+    fill(NO_CLICK_FILL_RED, NO_CLICK_FILL_GREEN, NO_CLICK_FILL_BLUE);
   }
   //this creates the circle itself
   ellipse(circleX, circleY, CIRCLE_SIZE, CIRCLE_SIZE);
@@ -65,11 +65,18 @@ void draw() {
     // then the circle "goes opposite way" (counters position) and bounces off
     circleVX = -circleVX;
   }
-   //makes sure the circle bounces off the screen in a natural way instead of half disappearing on the sides (Y axis)
+  //makes sure the circle bounces off the screen in a natural way instead of half disappearing on the sides (Y axis)
   // if the circle goes off the screen at the bottom on Y axis, or the circle goes off the screen at the top of Y axis
   if (circleY + CIRCLE_SIZE/2 > height || circleY - CIRCLE_SIZE/2 < 0) {
-  // then the circle "goes opposite way" (counters position) and bounces off
+    // then the circle "goes opposite way" (counters position) and bounces off
     circleVY = -circleVY;
+  }
+
+  if (mouseX < width/2 && mouseY < width/2) {
+    ellipse (circleX, circleY, CIRCLE_SIZE*3, CIRCLE_SIZE*3);
+  } 
+  else {
+    ellipse (circleX, circleY, CIRCLE_SIZE, CIRCLE_SIZE);
   }
 }
 
