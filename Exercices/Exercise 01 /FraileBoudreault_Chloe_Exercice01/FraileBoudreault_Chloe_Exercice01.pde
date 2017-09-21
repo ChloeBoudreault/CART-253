@@ -37,9 +37,12 @@ void setup() {
 
 void draw() {
   //this code runs the program
+    // if the position of the mouse and the position of the circle encounter 
     if (dist(mouseX, mouseY, circleX, circleY) < CIRCLE_SIZE/2) {
+    // then the circle's colour changes 
     fill(CLICK_FILL_COLOR);
   }
+  // otherwise colour of the circle stays the same
   else {
     fill(NO_CLICK_FILL_COLOR);
   }
