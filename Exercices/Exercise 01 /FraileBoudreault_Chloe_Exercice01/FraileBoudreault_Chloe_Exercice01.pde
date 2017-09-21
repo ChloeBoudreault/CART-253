@@ -48,11 +48,15 @@ void draw() {
   circleX += circleVX;
   circleY += circleVY;
   //makes sure the circle bounces off the screen in a natural way instead of half disappearing on the sides (X axis)
+  // if the circle goes off the screen on the right on X axis, or the circle goes off the screen on the left of X axis
   if (circleX + CIRCLE_SIZE/2 > width || circleX - CIRCLE_SIZE/2 < 0) {
+    // then the circle "goes opposite way" (counters position) and bounces off
     circleVX = -circleVX;
   }
    //makes sure the circle bounces off the screen in a natural way instead of half disappearing on the sides (Y axis)
+  // if the circle goes off the screen at the bottom on Y axis, or the circle goes off the screen at the top of Y axis
   if (circleY + CIRCLE_SIZE/2 > height || circleY - CIRCLE_SIZE/2 < 0) {
+  // then the circle "goes opposite way" (counters position) and bounces off
     circleVY = -circleVY;
   }
 }
