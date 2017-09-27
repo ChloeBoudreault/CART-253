@@ -1,10 +1,13 @@
+//defines colour of the background
 color backgroundColor = color(0);
 
+//defines the number of, size of, colour of the white moving specks in the background
 int numStatic = 1000;
 int staticSizeMin = 1;
 int staticSizeMax = 3;
 color staticColor = color(200);
 
+//defines the looks of, speed of, colour of the moving paddle
 int paddleX;
 int paddleY;
 int paddleVX;
@@ -13,6 +16,7 @@ int paddleWidth = 128;
 int paddleHeight = 16;
 color paddleColor = color(255);
 
+//defines  the looks of, speed of, colour of the moving ball
 int ballX;
 int ballY;
 int ballVX;
@@ -21,20 +25,30 @@ int ballSpeed = 5;
 int ballSize = 16;
 color ballColor = color(255);
 
+//this sets up the display window
 void setup() {
+  //this code initializes the program
   size(640, 480);
   
+  //the program jumps to those functions below
   setupPaddle();
   setupBall();
 }
 
+//we create the function setupPaddle
+//the program will run the code inside then jump back to where it is in draw()
 void setupPaddle() {
+  //defines the position of the paddle (center and bottom of the screen)
   paddleX = width/2;
   paddleY = height - paddleHeight;
+  //paddle velocity at 0 so it stays still when the program opens
   paddleVX = 0;
 }
 
+//we create the function setupBall
+//the program will run the code inside then jump back to where it is in draw()
 void setupBall() {
+  //defines the positon and velocity of the ball upon opening the program
   ballX = width/2;
   ballY = height/2;
   ballVX = ballSpeed;
@@ -42,6 +56,8 @@ void setupBall() {
 }
 
 void draw() {
+  //this codes runs the program
+  //everything listed here are what will appear and act when the program is run
   background(backgroundColor);
 
   drawStatic();
