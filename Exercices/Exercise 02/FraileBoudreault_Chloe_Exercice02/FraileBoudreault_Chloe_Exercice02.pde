@@ -128,6 +128,7 @@ void drawBall() {
 //we create the function handleBallHitPaddle
 //the program will run the code inside then jump back to where it is in draw()
 void handleBallHitPaddle() {
+  //this allows the ball to "bounce back" when it hits the paddle
   if (ballOverlapsPaddle()) {
     ballY = paddleY - paddleHeight/2 - ballSize/2;
     ballVY = -ballVY;
@@ -146,6 +147,8 @@ boolean ballOverlapsPaddle() {
 //we create the function handleBallOffBottom
 //the program will run the code inside then jump back to where it is in draw()
 void handleBallOffBottom() {
+  //if the ball hits the bottom of the screen and disappears
+  //it will reappear in the middle of the screen
   if (ballOffBottom()) {
     ballX = width/2;
     ballY = height/2;
@@ -159,6 +162,7 @@ boolean ballOffBottom() {
 //we create the function handleBallHitWall
 //the program will run the code inside then jump back to where it is in draw()
 void handleBallHitWall() {
+  //this allows the ball to "bounce back" when it hits the wall
   if (ballX - ballSize/2 < 0) {
     ballX = 0 + ballSize/2;
     ballVX = -ballVX;
