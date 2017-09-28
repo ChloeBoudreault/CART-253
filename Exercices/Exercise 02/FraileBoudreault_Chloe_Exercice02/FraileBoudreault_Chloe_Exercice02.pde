@@ -60,6 +60,7 @@ void draw() {
   //everything listed here are what will appear and act when the program is run
   background(backgroundColor);
 
+  //the program jumps to those functions below
   drawStatic();
 
   updatePaddle();
@@ -69,7 +70,10 @@ void draw() {
   drawBall();
 }
 
+//we create the function drawStatic
+//the program will run the code inside then jump back to where it is in draw()
 void drawStatic() {
+  //sets up the parameters which define and create the specks of static in the background
   for (int i = 0; i < numStatic; i++) {
    float x = random(0,width);
    float y = random(0,height);
@@ -79,34 +83,50 @@ void drawStatic() {
   }
 }
 
+//we create the function updatePaddle
+//the program will run the code inside then jump back to where it is in draw()
 void updatePaddle() {
+  //moves paddle and keeps it from going off screen
   paddleX += paddleVX;  
   paddleX = constrain(paddleX,0+paddleWidth/2,width-paddleWidth/2);
 }
 
+//we create the function updateBall
+//the program will run the code inside then jump back to where it is in draw()
 void updateBall() {
+  //moves ball
   ballX += ballVX;
   ballY += ballVY;
   
+  //create other functions which will allow the ball to move around on the screen
+  //without disappearing 
   handleBallHitPaddle();
   handleBallHitWall();
   handleBallOffBottom();
 }
 
+//we create the function drawPaddle
+//the program will run the code inside then jump back to where it is in draw()
 void drawPaddle() {
+  //this creates the paddle itself
   rectMode(CENTER);
   noStroke();
   fill(paddleColor);
   rect(paddleX, paddleY, paddleWidth, paddleHeight);
 }
 
+//we create the function drawBall
+//the program will run the code inside then jump back to where it is in draw()
 void drawBall() {
+  //this creates the ball itself
   rectMode(CENTER);
   noStroke();
   fill(ballColor);
   rect(ballX, ballY, ballSize, ballSize);
 }
 
+//we create the function handleBallHitPaddle
+//the program will run the code inside then jump back to where it is in draw()
 void handleBallHitPaddle() {
   if (ballOverlapsPaddle()) {
     ballY = paddleY - paddleHeight/2 - ballSize/2;
@@ -123,6 +143,8 @@ boolean ballOverlapsPaddle() {
   return false;
 }
 
+//we create the function handleBallOffBottom
+//the program will run the code inside then jump back to where it is in draw()
 void handleBallOffBottom() {
   if (ballOffBottom()) {
     ballX = width/2;
@@ -134,6 +156,8 @@ boolean ballOffBottom() {
   return (ballY - ballSize/2 > height);
 }
 
+//we create the function handleBallHitWall
+//the program will run the code inside then jump back to where it is in draw()
 void handleBallHitWall() {
   if (ballX - ballSize/2 < 0) {
     ballX = 0 + ballSize/2;
@@ -149,17 +173,23 @@ void handleBallHitWall() {
   }
 }
 
+//this allows the user to interact with the game, the paddle will move if a key is pressed
 void keyPressed() {
+  //if the left key on the keyboard is pressed, the paddle will move to the left
   if (keyCode == LEFT) {
     paddleVX = -paddleSpeed;
+  //otherwise, if the right key on the keyboard is pressed, the paddle will move to the right
   } else if (keyCode == RIGHT) {
     paddleVX = paddleSpeed;
   }
 }
 
+//this will stop the paddle from moving when they keys are released
 void keyReleased() {
+  //if the left key on the keyboard is released, the paddle will stop moving in general
   if (keyCode == LEFT && paddleVX < 0) {
     paddleVX = 0;
+  //if the right key on the keyboard is released, the paddle will stop moving in general
   } else if (keyCode == RIGHT && paddleVX > 0) {
     paddleVX = 0;
   }
