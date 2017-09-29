@@ -23,7 +23,11 @@ int ballVX;
 int ballVY;
 int ballSpeed = 5;
 int ballSize = 16;
-color ballColor = color(255);
+//CHANGED!!!!!!!!
+//added colours for the ball
+float ballColorRED;
+float ballColorGREEN;
+float ballColorBLUE;
 
 //this sets up the display window
 void setup() {
@@ -121,7 +125,9 @@ void drawBall() {
   //this creates the ball itself
   rectMode(CENTER);
   noStroke();
-  fill(ballColor);
+  //CHANGED!!!!!!!!
+  //replaced the colours here otherwise it wouldn't apply
+  fill(ballColorRED, ballColorGREEN, ballColorBLUE);
   rect(ballX, ballY, ballSize, ballSize);
 }
 
@@ -131,10 +137,13 @@ void handleBallHitPaddle() {
   //this allows the ball to "bounce back" when it hits the paddle
   if (ballOverlapsPaddle()) {
     ballY = paddleY - paddleHeight/2 - ballSize/2;
+    ballVY = -ballVY;
     //CHANGED!!!!!!!!
-    //easiest change to make is to change the speed of the ball when it hits the paddle
-    //now, everytime the ball hits the paddle it gets faster
-    ballVY = -ballVY-1;
+    //changed the way the ball reacts when hitting the paddle
+    //the ball will now turn into a random colour
+    ballColorRED = random (140,70);
+    ballColorGREEN = random (10,255);
+    ballColorBLUE = random (20,30);
   }
 }
   
