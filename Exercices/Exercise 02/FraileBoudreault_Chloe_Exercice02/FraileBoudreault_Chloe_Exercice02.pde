@@ -33,7 +33,7 @@ float ballColorBLUE;
 void setup() {
   //this code initializes the program
   size(640, 480);
-  
+
   //the program jumps to those functions below
   setupPaddle();
   setupBall();
@@ -72,18 +72,34 @@ void draw() {
 
   drawPaddle();
   drawBall();
+  //CHANGED!!!!!!!!
+  //added drawRect function which will allow the program to run and draw the other "balls"
+  drawRect();
 }
 
 //we create the function drawStatic
 //the program will run the code inside then jump back to where it is in draw()
 void drawStatic() {
-  //sets up the parameters which define and create the specks of static in the background
+  //for loop sets up the parameters which define and create the specks of static
   for (int i = 0; i < numStatic; i++) {
-   float x = random(0,width);
-   float y = random(0,height);
-   float staticSize = random(staticSizeMin,staticSizeMax);
-   fill(staticColor);
-   rect(x,y,staticSize,staticSize);
+    float x = random(0, width);
+    float y = random(0, height);
+    float staticSize = random(staticSizeMin, staticSizeMax);
+    fill(staticColor);
+    rect(x, y, staticSize, staticSize);
+  }
+}
+
+//CHANGED!!!!!!!!
+//we create the function drawRect
+//the program will run the code inside then jump back to where it is in draw()
+void drawRect() {
+  //for loop sets up the parameters which define and create the new "balls"
+  for (int i = 0; i< 50; i++) {
+    float x = random(0, width);
+    float y = random(0, height);
+    fill (ballColorRED, ballColorGREEN, ballColorBLUE);
+    rect (x, y, ballSize, ballSize);
   }
 }
 
@@ -92,7 +108,7 @@ void drawStatic() {
 void updatePaddle() {
   //moves paddle and keeps it from going off screen
   paddleX += paddleVX;  
-  paddleX = constrain(paddleX,0+paddleWidth/2,width-paddleWidth/2);
+  paddleX = constrain(paddleX, 0+paddleWidth/2, width-paddleWidth/2);
 }
 
 //we create the function updateBall
@@ -101,7 +117,7 @@ void updateBall() {
   //moves ball
   ballX += ballVX;
   ballY += ballVY;
-  
+
   //create other functions which will allow the ball to move around on the screen
   //without disappearing 
   handleBallHitPaddle();
@@ -141,12 +157,13 @@ void handleBallHitPaddle() {
     //CHANGED!!!!!!!!
     //changed the way the ball reacts when hitting the paddle
     //the ball will now turn into a random colour
-    ballColorRED = random (140,70);
-    ballColorGREEN = random (10,255);
-    ballColorBLUE = random (20,30);
+    ballColorRED = random (140, 70);
+    ballColorGREEN = random (10, 255);
+    ballColorBLUE = random (20, 30);
   }
 }
-  
+
+
 boolean ballOverlapsPaddle() {
   if (ballX - ballSize/2 > paddleX - paddleWidth/2 && ballX + ballSize/2 < paddleX + paddleWidth/2) {
     if (ballY > paddleY - paddleHeight/2) {
@@ -182,7 +199,7 @@ void handleBallHitWall() {
     ballX = width - ballSize/2;
     ballVX = -ballVX;
   }
-  
+
   if (ballY - ballSize/2 < 0) {
     ballY = 0 + ballSize/2;
     ballVY = -ballVY;
@@ -194,7 +211,7 @@ void keyPressed() {
   //if the left key on the keyboard is pressed, the paddle will move to the left
   if (keyCode == LEFT) {
     paddleVX = -paddleSpeed;
-  //otherwise, if the right key on the keyboard is pressed, the paddle will move to the right
+    //otherwise, if the right key on the keyboard is pressed, the paddle will move to the right
   } else if (keyCode == RIGHT) {
     paddleVX = paddleSpeed;
   }
@@ -205,7 +222,7 @@ void keyReleased() {
   //if the left key on the keyboard is released, the paddle will stop moving in general
   if (keyCode == LEFT && paddleVX < 0) {
     paddleVX = 0;
-  //if the right key on the keyboard is released, the paddle will stop moving in general
+    //if the right key on the keyboard is released, the paddle will stop moving in general
   } else if (keyCode == RIGHT && paddleVX > 0) {
     paddleVX = 0;
   }
