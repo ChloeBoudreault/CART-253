@@ -131,10 +131,13 @@ void handleBallHitPaddle() {
   //this allows the ball to "bounce back" when it hits the paddle
   if (ballOverlapsPaddle()) {
     ballY = paddleY - paddleHeight/2 - ballSize/2;
-    ballVY = -ballVY;
+    //CHANGED!!!!!!!!
+    //easiest change to make is to change the speed of the ball when it hits the paddle
+    //now, everytime the ball hits the paddle it gets faster
+    ballVY = -ballVY-1;
   }
 }
-
+  
 boolean ballOverlapsPaddle() {
   if (ballX - ballSize/2 > paddleX - paddleWidth/2 && ballX + ballSize/2 < paddleX + paddleWidth/2) {
     if (ballY > paddleY - paddleHeight/2) {
