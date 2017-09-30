@@ -73,8 +73,8 @@ void draw() {
   drawPaddle();
   drawBall();
   //CHANGED!!!!!!!!
-  //added drawRect function which will allow the program to run and draw the other "balls"
-  drawRect();
+  //added drawBalls function which will allow the program to run and draw the other "balls"
+  drawBalls();
 }
 
 //we create the function drawStatic
@@ -91,15 +91,15 @@ void drawStatic() {
 }
 
 //CHANGED!!!!!!!!
-//we create the function drawRect
+//we create the function drawBalls
 //the program will run the code inside then jump back to where it is in draw()
-void drawRect() {
+void drawBalls() {
   //for loop sets up the parameters which define and create the new "balls"
   for (int i = 0; i< 50; i++) {
     float x = random(0, width);
     float y = random(0, height);
     fill (ballColorRED, ballColorGREEN, ballColorBLUE);
-    rect (x, y, ballSize, ballSize);
+    ellipse (x, y, ballSize, ballSize);
   }
 }
 
@@ -144,7 +144,7 @@ void drawBall() {
   //CHANGED!!!!!!!!
   //replaced the colours here otherwise it wouldn't apply
   fill(ballColorRED, ballColorGREEN, ballColorBLUE);
-  rect(ballX, ballY, ballSize, ballSize);
+  ellipse (ballX, ballY, ballSize, ballSize);
 }
 
 //we create the function handleBallHitPaddle
@@ -199,7 +199,6 @@ void handleBallHitWall() {
     ballX = width - ballSize/2;
     ballVX = -ballVX;
   }
-
   if (ballY - ballSize/2 < 0) {
     ballY = 0 + ballSize/2;
     ballVY = -ballVY;
