@@ -123,6 +123,9 @@ void updateBall() {
   handleBallHitPaddle();
   handleBallHitWall();
   handleBallOffBottom();
+  //CHANGED!!!!!!!!
+  //we add the function which checks up on the ball and reacts to it
+  ballPositionPaddleWidth();
 }
 
 //we create the function drawPaddle
@@ -147,6 +150,21 @@ void drawBall() {
   ellipse (ballX, ballY, ballSize, ballSize);
 }
 
+//CHANGED!!!!!!!!
+//we create the function ballPositionPaddleWith
+//the program will run the code inside then jump back to where it is in draw()
+void ballPositionPaddleWidth() {
+  //when the ball is on the left side of the screen
+  //the width of the paddle will get significantly smaller
+  if (ballX < width/2) { 
+    paddleWidth = 64;
+  //when the ball is on the right side of the screen
+  //the width of the paddle will only be a tad smaller
+  } else if (ballX > width/2 ) {
+    paddleWidth = 100;
+  }
+}
+
 //we create the function handleBallHitPaddle
 //the program will run the code inside then jump back to where it is in draw()
 void handleBallHitPaddle() {
@@ -162,7 +180,6 @@ void handleBallHitPaddle() {
     ballColorBLUE = random (20, 30);
   }
 }
-
 
 boolean ballOverlapsPaddle() {
   if (ballX - ballSize/2 > paddleX - paddleWidth/2 && ballX + ballSize/2 < paddleX + paddleWidth/2) {
@@ -210,7 +227,7 @@ void keyPressed() {
   //if the left key on the keyboard is pressed, the paddle will move to the left
   if (keyCode == LEFT) {
     paddleVX = -paddleSpeed;
-    //otherwise, if the right key on the keyboard is pressed, the paddle will move to the right
+  //otherwise, if the right key on the keyboard is pressed, the paddle will move to the right
   } else if (keyCode == RIGHT) {
     paddleVX = paddleSpeed;
   }
@@ -221,7 +238,7 @@ void keyReleased() {
   //if the left key on the keyboard is released, the paddle will stop moving in general
   if (keyCode == LEFT && paddleVX < 0) {
     paddleVX = 0;
-    //if the right key on the keyboard is released, the paddle will stop moving in general
+  //if the right key on the keyboard is released, the paddle will stop moving in general
   } else if (keyCode == RIGHT && paddleVX > 0) {
     paddleVX = 0;
   }
