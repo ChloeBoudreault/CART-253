@@ -159,7 +159,7 @@ void ballPositionPaddleWidth() {
   if (ballX < width/2) { 
     paddleWidth = 64;
   //when the ball is on the right side of the screen
-  //the width of the paddle will only be a tad smaller
+  //the width of the paddle will get bigger
   } else if (ballX > width/2 ) {
     paddleWidth = 100;
   }
