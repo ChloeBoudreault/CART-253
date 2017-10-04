@@ -41,12 +41,18 @@ class Bouncer {
    handleMouse();
  }
  
+ //we create the function handleBounce
  void handleBounce() {
+   //this allows the balls to "bounce back" when hitting the walls
+   //if the ball hits the left or right sides of the screen
    if (x - size/2 < 0 || x + size/2 > width) {
+   //the velocity is reversed, thus "bounces back"  
     vx = -vx; 
    }
    
+   //if the ball hits the top or bottom of the screen
    if (y - size/2 < 0 || y + size/2 > height) {
+   //the velocity is reversed, thus "bounces back"  
      vy = -vy;
    }
    
@@ -54,15 +60,22 @@ class Bouncer {
    y = constrain(y,size/2,height-size/2);
  }
  
+ //we create the function handleMouse
  void handleMouse() {
+   //this allows the balls to change colour when the mouse hovers over 
+   //if the location of the mouse is near the ball (less than half the size of the ball)
    if (dist(mouseX,mouseY,x,y) < size/2) {
+    //the colour changes
     fillColor = hoverColor; 
    }
+   //otherwise the colour remains the same
    else {
      fillColor = defaultColor;
    }
  }
  
+ //this creates the balls themselves
+ //defines the colour and size
  void draw() {
    noStroke();
    fill(fillColor);
