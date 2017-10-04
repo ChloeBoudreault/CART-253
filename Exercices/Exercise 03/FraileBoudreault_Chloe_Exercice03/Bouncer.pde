@@ -1,15 +1,23 @@
 class Bouncer {
-  
+ 
+ //defines the location of the balls on the X and Y axis
  int x;
  int y;
+ //defines the speed of the balls
  int vx;
  int vy;
+ //defines the size of the balls
  int size;
+ //defines the colours of the balls (when hovered over and default)
  color fillColor;
  color defaultColor;
  color hoverColor;
  
+ //this is the constructor
+ //determines the setup for the balls
  Bouncer(int tempX, int tempY, int tempVX, int tempVY, int tempSize, color tempDefaultColor, color tempHoverColor) {
+   //defines the properties of the constructor
+   //location, speed, size, colours
    x = tempX;
    y = tempY;
    vx = tempVX;
@@ -20,10 +28,15 @@ class Bouncer {
    fillColor = defaultColor;
  }
  
+ //this is one of the methods
+ //moves the balls here
  void update() {
+   //moves the balls each frame by making sure the speed is added each time
    x += vx;
    y += vy;
    
+   //create other functions which will allow the ball to bounce of the walls and 
+   //change colour when the mouse hovers over 
    handleBounce();
    handleMouse();
  }
