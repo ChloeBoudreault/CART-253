@@ -47,13 +47,19 @@ class Bouncer {
    //if the ball hits the left or right sides of the screen
    if (x - size/2 < 0 || x + size/2 > width) {
    //the velocity is reversed, thus "bounces back"  
-    vx = -vx; 
+    vx = -vx;
+    
    }
    
    //if the ball hits the top or bottom of the screen
    if (y - size/2 < 0 || y + size/2 > height) {
    //the velocity is reversed, thus "bounces back"  
      vy = -vy;
+     //CHANGED!!!!!!!!
+     //when the balls hits the top or bottom of the screen, the velocity changes
+     //this creates a new pattern
+     vy = vy-3;
+     
    }
    
    x = constrain(x,size/2,width-size/2);
