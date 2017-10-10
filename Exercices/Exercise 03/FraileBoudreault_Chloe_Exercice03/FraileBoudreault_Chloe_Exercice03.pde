@@ -25,3 +25,14 @@ void draw() {
   bouncer.draw();
   bouncer2.draw();
 }
+
+//CHANGED!!!!!!!!
+//this allows the user to interact with the program
+//checks whether or not the mouse has been clicked
+//if boolean is true, then the program runs accordingly
+void mouseClicked () {
+  bouncer.mouseClick =true;
+  bouncer.sizeChange();
+  bouncer2.mouseClick =true;
+  bouncer2.sizeChange();
+}
