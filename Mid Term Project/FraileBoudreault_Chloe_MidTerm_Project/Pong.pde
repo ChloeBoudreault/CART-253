@@ -20,6 +20,13 @@ int PADDLE_INSET = 8;
 // The background colour during play (black)
 color backgroundColor = color(0);
 
+//CHANGED!!!!!!!!
+//added score for left and right players
+int score1 = 0;
+int score2 = 0;
+//added final winning score
+int winningScore = 7;
+
 
 // setup()
 //
@@ -34,7 +41,9 @@ void setup() {
   // Also pass through the two keys used to control 'up' and 'down' respectively
   // NOTE: On a mac you can run into trouble if you use keys that create that popup of
   // different accented characters in text editors (so avoid those if you're changing this)
-  leftPaddle = new Paddle(PADDLE_INSET, height/2, '1', 'q');
+  //CHANGED!!!!!
+  //changed the leftPaddle keys to 2 and q instead of 1 and q
+  leftPaddle = new Paddle(PADDLE_INSET, height/2, '2', 'q');
   rightPaddle = new Paddle(width - PADDLE_INSET, height/2, '0', 'p');
 
   // Create the ball at the centre of the screen
@@ -69,7 +78,22 @@ void draw() {
   leftPaddle.display();
   rightPaddle.display();
   ball.display();
+  //CHANGED!!!!!!!!
+  //display the score based on how many times the ball hits the paddle
+  displayScore ();
 }
+
+//CHANGED!!!!!!!!
+//create displayScore function to actually display the score
+void displayScore () {
+  textSize (50);
+  textAlign (CENTER);
+  fill(255);
+  //works with the paddle and ball
+  text (leftPaddle.score, width/4, 78);
+  text (rightPaddle.score, width - (width/4), 78);
+}
+
 
 // keyPressed()
 //

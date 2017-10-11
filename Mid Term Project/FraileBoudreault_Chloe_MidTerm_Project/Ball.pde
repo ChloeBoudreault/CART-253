@@ -109,6 +109,9 @@ class Ball {
       }
       // And make it bounce
       vx = -vx;
+      //CHANGED!!!!!!!
+      //the score will go up each time the ball hits the paddle
+      paddle.score++;
     }
   }
 
