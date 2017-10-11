@@ -81,6 +81,9 @@ void draw() {
   //CHANGED!!!!!!!!
   //display the score based on how many times the ball hits the paddle
   displayScore ();
+  //CHANGED!!!!!!!
+  //display the game over screen and who wins the game
+  gameOver ();
 }
 
 //CHANGED!!!!!!!!
@@ -94,6 +97,53 @@ void displayScore () {
   text (rightPaddle.score, width - (width/4), 78);
 }
 
+//CHANGED!!!!!!
+//create the gameOver function to actually display the game over screen
+//and who wins
+void gameOver() {  
+  if (leftPaddle.score == winningScore) {
+    //if the leftPaddle (left player)'s score is equal to the winning score of 7
+    //if this is true, left player wins and displays the gameOver text
+    displayGameOver ("Left Player Wins!");
+    //ball stops moving
+    ball.vx = 0;
+    ball. vy = 0;
+
+    //paddles stop moving
+    leftPaddle.vx = 0;
+    leftPaddle.vy = 0;
+    rightPaddle.vx = 0;
+    rightPaddle.vy = 0;
+  }
+
+  if (rightPaddle.score == winningScore) {
+    //if the rightPaddle (right player)'s score is equal to the winning score of 7
+    //if this is true, right player wins and displays the gameOver text
+    displayGameOver ("Right Player Wins!");
+    //ball stops moving
+    ball.vx = 0;
+    ball. vy = 0;
+
+    //paddles stop moving
+    leftPaddle.vx = 0;
+    leftPaddle.vy = 0;
+    rightPaddle.vx = 0;
+    rightPaddle.vy = 0;
+  }
+}
+
+//CHANGED!!!!!!
+//create the displayGameOver function
+//this displays the game over text
+void displayGameOver (String gameOverText) {
+  //sets the text and its positon 
+  text ("Game Over!", width/2, height/2);
+  text(gameOverText, width/2, (height/2 +50));
+  //sets the font of the text
+  PFont myFont;
+  myFont = loadFont ("LetterGothicStd-48.vlw");
+  textFont (myFont);
+}
 
 // keyPressed()
 //
