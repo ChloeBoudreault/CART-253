@@ -15,7 +15,10 @@ Paddle rightPaddle;
 //CHANGED!!!!!!
 //added another paddle in the middle for a third player or someone who has 3 hands
 Paddle middlePaddle;
+//CHANGED!!!!!!
+//adding another ball
 Ball ball;
+Ball ball2;
 
 // The distance from the edge of the window a paddle should be
 int PADDLE_INSET = 8;
@@ -67,6 +70,9 @@ void setup() {
 
   // Create the ball at the centre of the screen
   ball = new Ball(width/2, height/2);
+  //CHANGED!!!!!
+  //added the new ball at another position on the screen
+  ball2 = new Ball(width - (width/4), height - (height/4));
 }
 
 // draw()
@@ -78,6 +84,9 @@ void draw() {
   //CHANGED!!!!!
   //add the ball background colour so it changes every time
   ball.backgroundColor ();
+  //CHANGED!!!!
+  //added the ball 2 background colour so it changes as well
+  ball2.backgroundColor ();
 
   // Update the paddles and ball by calling their update methods
   leftPaddle.update();
@@ -86,6 +95,9 @@ void draw() {
   //added middle paddle update
   middlePaddle.update();
   ball.update();
+  //CHANGED!!!!
+  //adding ball 2 update
+  ball2.update();
   //CHANGED!!!!
   //added drawStatic
   drawStatic();
@@ -96,11 +108,23 @@ void draw() {
   //CHANGED!!!!!!
   //added ball collide with middle paddle as well
   ball.collide(middlePaddle);
+  //CHANGED!!!!!
+  //adding ball 2 collide will all paddles
+  ball2.collide(leftPaddle);
+  ball2.collide(rightPaddle);
+  ball2.collide(middlePaddle);
 
   // Check if the ball has gone off the screen
   if (ball.isOffScreen()) {
     // If it has, reset the ball
     ball.reset();
+  }
+  
+  //CHANGED!!!!
+  //adding the same for ball 2
+  if (ball2.isOffScreen()) {
+    // If it has, reset the ball
+    ball2.reset();
   }
 
   // Display the paddles and the ball
@@ -110,6 +134,9 @@ void draw() {
   //added middle paddle display
   middlePaddle.display();
   ball.display();
+  //CHANGED!!!!!!
+  //added ball 2 display
+  ball2.display();
   //CHANGED!!!!!!!!
   //display the score based on how many times the ball hits the paddle
   displayScore ();
@@ -143,6 +170,10 @@ void gameOver () {
     //the ball stops moving
     ball.vx = 0;
     ball. vy = 0;
+    //CHANGED!!!!
+    //added ball 2 vx and vy
+    ball2. vx = 0;
+    ball2. vy = 0;
 
     //the paddles stop moving too
     leftPaddle.vx = 0;
@@ -163,6 +194,10 @@ void gameOver () {
     //the ball stops moving
     ball.vx = 0;
     ball. vy = 0;
+    //CHANGED!!!!
+    //added ball 2 vx and vy
+    ball2. vx = 0;
+    ball2. vy = 0;
   
     //the paddles stop moving too
     leftPaddle.vx = 0;
@@ -185,6 +220,10 @@ void gameOver () {
     //the ball stops moving
     ball.vx = 0;
     ball. vy = 0;
+    //CHANGED!!!!
+    //added ball 2 vx and vy
+    ball2. vx = 0;
+    ball2. vy = 0;
   
     //the paddles stop moving too
     leftPaddle.vx = 0;

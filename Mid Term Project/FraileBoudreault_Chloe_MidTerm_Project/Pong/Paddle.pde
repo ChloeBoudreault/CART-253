@@ -68,12 +68,16 @@ class Paddle {
   
   void display() {
     // Set display properties
-    noStroke();
+    //CHANGED!!!!
+    //changed the way the paddles look
+    //more rounded and with an outline
+    stroke(255,105,180);
+    strokeWeight (3);
     fill(paddleColor);
     rectMode(CENTER);
     
     // Draw the paddle as a rectangle
-    rect(x, y, WIDTH, HEIGHT);
+    rect(x, y, WIDTH, HEIGHT,7);
   }
 
   // keyPressed()
