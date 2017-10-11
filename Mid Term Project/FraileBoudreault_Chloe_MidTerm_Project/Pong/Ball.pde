@@ -20,7 +20,11 @@ class Ball {
   int vy;
 
   // The colour of the ball
-  color ballColor = color(255);
+  //CHANGED!!!!!
+  //added random RGB floats for the ball colour
+  float ballColorRED;
+  float ballColorGREEN;
+  float ballColorBLUE;
 
 
   /////////////// Constructor ///////////////
@@ -114,6 +118,25 @@ class Ball {
       paddle.score++;
     }
   }
+  
+//CHANGED!!!!!
+//created a background colour function in which the colour and size changes
+//depending on where the ball is on the screen
+void backgroundColor() {
+    if (x < (width/2) && y < (height/2)) {
+    background(backgroundColor1);
+    SIZE = 35;
+  } else if (x > (width/2) && y < (height/2)) { 
+    background(backgroundColor2);
+    SIZE = 16;
+  } else if (x < (width/2) && y > (height/2)) { 
+    background(backgroundColor3);
+    SIZE = 20;
+  } else if (x > (width/2) && y > (height/2)) { 
+    background(backgroundColor4);
+    SIZE = 45;
+  }
+}
 
   // display()
   //
@@ -122,10 +145,17 @@ class Ball {
   void display() {
     // Set up the appearance of the ball (no stroke, a fill, and rectMode as CENTER)
     noStroke();
-    fill(ballColor);
+    //CHANGED!!!!!
+    //change the fill colour to the random RGB floats
+    fill(ballColorRED, ballColorGREEN, ballColorBLUE);
+    ballColorRED = random (255);
+    ballColorGREEN = random (255);
+    ballColorBLUE = random (255);
     rectMode(CENTER);
 
     // Draw the ball
-    rect(x, y, SIZE, SIZE);
+    //CHANGED!!!!!
+    //change ball to an ellipse
+    ellipse(x, y, SIZE, SIZE);
   }
 }

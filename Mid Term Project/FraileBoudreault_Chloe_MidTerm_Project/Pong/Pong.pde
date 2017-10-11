@@ -20,13 +20,25 @@ Ball ball;
 // The distance from the edge of the window a paddle should be
 int PADDLE_INSET = 8;
 
-// The background colour during play (black)
-color backgroundColor = color(0);
+//CHANGED!!!!!
+//added random background colour depending on where the ball is on the screen
+color backgroundColor1 = color(58, 143, 153); 
+color backgroundColor2 = color(172, 195, 14); 
+color backgroundColor3 = color(253, 171, 64); 
+color backgroundColor4 = color(181, 5, 85); 
+
+//CHANGED!!!!!
+//added static as well
+int numStatic = 1000;
+int staticSizeMin = 2;
+int staticSizeMax = 3;
+color staticColor = color(200);
 
 //CHANGED!!!!!!!!
 //added score for left and right players
 int score1 = 0;
 int score2 = 0;
+int score3 = 0;
 //added final winning score
 int winningScore = 7;
 
@@ -63,8 +75,9 @@ void setup() {
 // if the ball has hit a paddle, and displaying everything.
 
 void draw() {
-  // Fill the background each frame so we have animation
-  background(backgroundColor);
+  //CHANGED!!!!!
+  //add the ball background colour so it changes every time
+  ball.backgroundColor ();
 
   // Update the paddles and ball by calling their update methods
   leftPaddle.update();
@@ -73,6 +86,9 @@ void draw() {
   //added middle paddle update
   middlePaddle.update();
   ball.update();
+  //CHANGED!!!!
+  //added drawStatic
+  drawStatic();
 
   // Check if the ball has collided with either paddle
   ball.collide(leftPaddle);
@@ -191,6 +207,19 @@ void displayGameOver (String gameOverText) {
   PFont myFont;
   myFont = loadFont ("LetterGothicStd-48.vlw");
   textFont (myFont);
+}
+
+//CHANGED!!!!!!
+//this function displays the static in the background
+void drawStatic() {
+  //for loop sets up the parameters which define and create the specks of static
+  for (int i = 0; i < numStatic; i++) {
+    float x = random(0, width);
+    float y = random(0, height);
+    float staticSize = random(staticSizeMin, staticSizeMax);
+    fill(staticColor);
+    rect(x, y, staticSize, staticSize);
+  }
 }
 
   // keyPressed()
