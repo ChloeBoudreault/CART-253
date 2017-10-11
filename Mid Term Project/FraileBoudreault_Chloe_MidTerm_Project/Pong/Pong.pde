@@ -45,6 +45,10 @@ int score3 = 0;
 //added final winning score
 int winningScore = 7;
 
+//CHANGED!!!!
+//added a little theme song, from the tv show Schitt's Creek
+import processing.sound.*;
+SoundFile file;
 
 // setup()
 //
@@ -53,6 +57,11 @@ int winningScore = 7;
 void setup() {
   // Set the size
   size(640, 480);
+  
+  //CHANGED!!!!!
+  //added the audio so it plays while playing the game
+  file = new SoundFile (this, "Pong_Theme.mp3");
+  file.play();
 
   // Create the paddles on either side of the screen. 
   // Use PADDLE_INSET to to position them on x, position them both at centre on y
