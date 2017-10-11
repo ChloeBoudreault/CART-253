@@ -12,6 +12,9 @@
 // Global variables for the paddles and the ball
 Paddle leftPaddle;
 Paddle rightPaddle;
+//CHANGED!!!!!!
+//added another paddle in the middle for a third player or someone who has 3 hands
+Paddle middlePaddle;
 Ball ball;
 
 // The distance from the edge of the window a paddle should be
@@ -45,6 +48,10 @@ void setup() {
   //changed the leftPaddle keys to 2 and q instead of 1 and q
   leftPaddle = new Paddle(PADDLE_INSET, height/2, '2', 'q');
   rightPaddle = new Paddle(width - PADDLE_INSET, height/2, '0', 'p');
+  //CHANGED!!!!!!
+  //added the middle paddle, its position as well as controls
+  middlePaddle = new Paddle (width/2, height - 70, '6', 'y');
+  
 
   // Create the ball at the centre of the screen
   ball = new Ball(width/2, height/2);
@@ -62,11 +69,17 @@ void draw() {
   // Update the paddles and ball by calling their update methods
   leftPaddle.update();
   rightPaddle.update();
+  //CHANGED!!!!!!
+  //added middle paddle update
+  middlePaddle.update();
   ball.update();
 
   // Check if the ball has collided with either paddle
   ball.collide(leftPaddle);
   ball.collide(rightPaddle);
+  //CHANGED!!!!!!
+  //added ball collide with middle paddle as well
+  ball.collide(middlePaddle);
 
   // Check if the ball has gone off the screen
   if (ball.isOffScreen()) {
@@ -77,13 +90,16 @@ void draw() {
   // Display the paddles and the ball
   leftPaddle.display();
   rightPaddle.display();
+  //CHANGED!!!!!!
+  //added middle paddle display
+  middlePaddle.display();
   ball.display();
   //CHANGED!!!!!!!!
   //display the score based on how many times the ball hits the paddle
   displayScore ();
-  //CHANGED!!!!!!!
-  //display the game over screen and who wins the game
-  gameOver ();
+  //CHANGED!!!!!!
+  //will display the game over screen when a player wins
+  gameOver();
 }
 
 //CHANGED!!!!!!!!
@@ -95,74 +111,112 @@ void displayScore () {
   //works with the paddle and ball
   text (leftPaddle.score, width/4, 78);
   text (rightPaddle.score, width - (width/4), 78);
+  //CHANGED!!!!
+  //added middle paddle score
+  text (middlePaddle.score, width/2, 78);
 }
 
 //CHANGED!!!!!!
-//create the gameOver function to actually display the game over screen
-//and who wins
-void gameOver() {  
+//create gameOver function to actually display the game over screen
+void gameOver () {
+  //if the left paddle (left player)'s score equals the winning score of 7,
+  //they win
   if (leftPaddle.score == winningScore) {
-    //if the leftPaddle (left player)'s score is equal to the winning score of 7
-    //if this is true, left player wins and displays the gameOver text
+    //they win, this displays the "Left Player Wins!" string
     displayGameOver ("Left Player Wins!");
-    //ball stops moving
+    //the ball stops moving
     ball.vx = 0;
     ball. vy = 0;
 
-    //paddles stop moving
+    //the paddles stop moving too
     leftPaddle.vx = 0;
     leftPaddle.vy = 0;
     rightPaddle.vx = 0;
     rightPaddle.vy = 0;
+    //CHANGED!!!!!
+    //added middle paddle
+    middlePaddle.vx = 0;
+    middlePaddle.vy = 0;
   }
-
+  
+  //if the right paddle (right player)'s score equals the winning score of 7,
+  //they win
   if (rightPaddle.score == winningScore) {
-    //if the rightPaddle (right player)'s score is equal to the winning score of 7
-    //if this is true, right player wins and displays the gameOver text
+    //they win, this displays the "Right Player Wins!" string
     displayGameOver ("Right Player Wins!");
-    //ball stops moving
+    //the ball stops moving
     ball.vx = 0;
     ball. vy = 0;
-
-    //paddles stop moving
+  
+    //the paddles stop moving too
     leftPaddle.vx = 0;
     leftPaddle.vy = 0;
     rightPaddle.vx = 0;
     rightPaddle.vy = 0;
+    //CHANGED!!!!!
+    //added middle paddle
+    middlePaddle.vx = 0;
+    middlePaddle.vy = 0;
   }
+  
+  //CHANGED!!!!!!
+  //added the middle paddle scoring as well
+  //if the middle paddle (middle player)'s score equals the winning score of 7,
+  //they win
+  if (middlePaddle.score == winningScore) {
+    //they win, this displays the "Middle Player Wins!" string
+    displayGameOver ("Middle Player Wins!");
+    //the ball stops moving
+    ball.vx = 0;
+    ball. vy = 0;
+  
+    //the paddles stop moving too
+    leftPaddle.vx = 0;
+    leftPaddle.vy = 0;
+    rightPaddle.vx = 0;
+    rightPaddle.vy = 0;
+    middlePaddle.vx = 0;
+    middlePaddle.vy = 0;
+  }
+  
 }
-
+  
 //CHANGED!!!!!!
-//create the displayGameOver function
-//this displays the game over text
+//this function displays the end game text
 void displayGameOver (String gameOverText) {
-  //sets the text and its positon 
+  //this sets the text and its location on the screen
   text ("Game Over!", width/2, height/2);
   text(gameOverText, width/2, (height/2 +50));
-  //sets the font of the text
+  //this sets the font of the text
   PFont myFont;
   myFont = loadFont ("LetterGothicStd-48.vlw");
   textFont (myFont);
 }
 
-// keyPressed()
-//
-// The paddles need to know if they should move based on a keypress
-// so when the keypress is detected in the main program we need to
-// tell the paddles
+  // keyPressed()
+  //
+  // The paddles need to know if they should move based on a keypress
+  // so when the keypress is detected in the main program we need to
+  // tell the paddles
 
-void keyPressed() {
-  // Just call both paddles' own keyPressed methods
-  leftPaddle.keyPressed();
-  rightPaddle.keyPressed();
-}
+  void keyPressed() {
+    // Just call both paddles' own keyPressed methods
+    leftPaddle.keyPressed();
+    rightPaddle.keyPressed();
+    //CHANGED!!!!
+    //added middle paddle keypressed
+    middlePaddle.keyPressed();
+  }
 
-// keyReleased()
-//
-// As for keyPressed, except for released!
+  // keyReleased()
+  //
+  // As for keyPressed, except for released!
 
-void keyReleased() {
-  // Call both paddles' keyReleased methods
-  leftPaddle.keyReleased();
-  rightPaddle.keyReleased();
-}
+  void keyReleased() {
+    // Call both paddles' keyReleased methods
+    leftPaddle.keyReleased();
+    rightPaddle.keyReleased();
+     //CHANGED!!!!
+    //added middle paddle keyreleased
+    middlePaddle.keyReleased();
+  }
