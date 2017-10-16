@@ -25,10 +25,10 @@ int PADDLE_INSET = 8;
 
 //CHANGED!!!!!
 //added random background colour depending on where the ball is on the screen
-color backgroundColor1 = color(58, 143, 153); 
-color backgroundColor2 = color(172, 195, 14); 
-color backgroundColor3 = color(253, 171, 64); 
-color backgroundColor4 = color(181, 5, 85); 
+color colour1BG = color(58, 143, 153); 
+color colour2BG = color(172, 195, 14); 
+color colour3BG = color(253, 171, 64); 
+color colour4BG = color(181, 5, 85); 
 
 //CHANGED!!!!!
 //added static as well
@@ -50,6 +50,12 @@ int winningScore = 7;
 import processing.sound.*;
 SoundFile file;
 
+//CHANGED!!!!!
+//added images for when each player wins
+PImage leftPlayerCat;
+PImage rightPlayerCat;
+PImage middlePlayerCat;
+
 // setup()
 //
 // Sets the size and creates the paddles and ball
@@ -57,6 +63,12 @@ SoundFile file;
 void setup() {
   // Set the size
   size(640, 480);
+  
+  //CHANGED!!!!!
+  //loaded the image so they actually appear into the program
+  leftPlayerCat = loadImage ("leftPlayerWins.png");
+  rightPlayerCat = loadImage ("rightPlayerWins.png");
+  middlePlayerCat = loadImage ("middlePlayerWins.png");
   
   //CHANGED!!!!!
   //added the audio so it plays while playing the game
@@ -92,10 +104,10 @@ void setup() {
 void draw() {
   //CHANGED!!!!!
   //add the ball background colour so it changes every time
-  ball.backgroundColor ();
+  ball.colourBG ();
   //CHANGED!!!!
   //added the ball 2 background colour so it changes as well
-  ball2.backgroundColor ();
+  ball2.colourBG ();
 
   // Update the paddles and ball by calling their update methods
   leftPaddle.update();
@@ -175,7 +187,11 @@ void gameOver () {
   //they win
   if (leftPaddle.score == winningScore) {
     //they win, this displays the "Left Player Wins!" string
-    displayGameOver ("Left Player Wins!");
+    displayGameOver ("");
+    //CHANGED!!!!
+    //added the image for when the left player wins and resized it
+    image(leftPlayerCat, width/4, height/4);
+    leftPlayerCat.resize (0, 220);
     //the ball stops moving
     ball.vx = 0;
     ball. vy = 0;
@@ -199,7 +215,11 @@ void gameOver () {
   //they win
   if (rightPaddle.score == winningScore) {
     //they win, this displays the "Right Player Wins!" string
-    displayGameOver ("Right Player Wins!");
+    displayGameOver ("!");
+    //CHANGED!!!!
+    //added the image for when the right player wins and resized it
+    image(rightPlayerCat, width/4, height/4);
+    rightPlayerCat.resize (0, 220);
     //the ball stops moving
     ball.vx = 0;
     ball. vy = 0;
@@ -225,7 +245,11 @@ void gameOver () {
   //they win
   if (middlePaddle.score == winningScore) {
     //they win, this displays the "Middle Player Wins!" string
-    displayGameOver ("Middle Player Wins!");
+    displayGameOver ("");
+    //CHANGED!!!!
+    //added the image for when the middle player wins and resized it
+    image(middlePlayerCat, width/4, height/4);
+    middlePlayerCat.resize (0, 220);
     //the ball stops moving
     ball.vx = 0;
     ball. vy = 0;
@@ -249,7 +273,9 @@ void gameOver () {
 //this function displays the end game text
 void displayGameOver (String gameOverText) {
   //this sets the text and its location on the screen
-  text ("Game Over!", width/2, height/2);
+  //CHANGED!!!!
+  //changed the height of the game over text so it appears bellow the image
+  text ("Game Over!", width/2, height-90);
   text(gameOverText, width/2, (height/2 +50));
   //this sets the font of the text
   PFont myFont;

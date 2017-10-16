@@ -122,18 +122,18 @@ class Ball {
 //CHANGED!!!!!
 //created a background colour function in which the colour and size changes
 //depending on where the ball is on the screen
-void backgroundColor() {
+void colourBG() {
     if (x < (width/2) && y < (height/2)) {
-    background(backgroundColor1);
+    background(colour1BG);
     SIZE = 35;
   } else if (x > (width/2) && y < (height/2)) { 
-    background(backgroundColor2);
+    background(colour2BG);
     SIZE = 16;
   } else if (x < (width/2) && y > (height/2)) { 
-    background(backgroundColor3);
+    background(colour3BG);
     SIZE = 20;
   } else if (x > (width/2) && y > (height/2)) { 
-    background(backgroundColor4);
+    background(colour4BG);
     SIZE = 45;
   }
 }
