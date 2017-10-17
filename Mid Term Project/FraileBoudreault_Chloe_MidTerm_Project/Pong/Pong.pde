@@ -63,13 +63,13 @@ PImage middlePlayerCat;
 void setup() {
   // Set the size
   size(640, 480);
-  
+
   //CHANGED!!!!!
   //loaded the image so they actually appear into the program
   leftPlayerCat = loadImage ("leftPlayerWins.png");
   rightPlayerCat = loadImage ("rightPlayerWins.png");
   middlePlayerCat = loadImage ("middlePlayerWins.png");
-  
+
   //CHANGED!!!!!
   //added the audio so it plays while playing the game
   file = new SoundFile (this, "Pong_Theme.mp3");
@@ -81,13 +81,17 @@ void setup() {
   // NOTE: On a mac you can run into trouble if you use keys that create that popup of
   // different accented characters in text editors (so avoid those if you're changing this)
   //CHANGED!!!!!
+  //changed the controls once more, adding the boolean
+  //the paddles with false do not use the mouse control
+  //the middle paddle will now be control with the mouse
+  //CHANGED!!!!!
   //changed the leftPaddle keys to 2 and q instead of 1 and q
-  leftPaddle = new Paddle(PADDLE_INSET, height/2, '2', 'q');
-  rightPaddle = new Paddle(width - PADDLE_INSET, height/2, '0', 'p');
+  leftPaddle = new Paddle(PADDLE_INSET, height/2, '2', 'q', false);
+  rightPaddle = new Paddle(width - PADDLE_INSET, height/2, '0', 'p', false);
   //CHANGED!!!!!!
   //added the middle paddle, its position as well as controls
-  middlePaddle = new Paddle (width/2, height - 70, '6', 'y');
-  
+  middlePaddle = new Paddle (width/2, height - 70, '6', 'y', true);
+
 
   // Create the ball at the centre of the screen
   ball = new Ball(width/2, height/2);
@@ -140,7 +144,7 @@ void draw() {
     // If it has, reset the ball
     ball.reset();
   }
-  
+
   //CHANGED!!!!
   //adding the same for ball 2
   if (ball2.isOffScreen()) {
@@ -207,10 +211,13 @@ void gameOver () {
     rightPaddle.vy = 0;
     //CHANGED!!!!!
     //added middle paddle
-    middlePaddle.vx = 0;
-    middlePaddle.vy = 0;
+    //middlePaddle.vx = 0;
+    //middlePaddle.vy = 0;
+    //CHANGED1!!!!
+    //added the middlePaddle mouse control so it stops when a player wins
+    middlePaddle.mouseControl = false;
   }
-  
+
   //if the right paddle (right player)'s score equals the winning score of 7,
   //they win
   if (rightPaddle.score == winningScore) {
@@ -227,7 +234,7 @@ void gameOver () {
     //added ball 2 vx and vy
     ball2. vx = 0;
     ball2. vy = 0;
-  
+
     //the paddles stop moving too
     leftPaddle.vx = 0;
     leftPaddle.vy = 0;
@@ -235,10 +242,13 @@ void gameOver () {
     rightPaddle.vy = 0;
     //CHANGED!!!!!
     //added middle paddle
-    middlePaddle.vx = 0;
-    middlePaddle.vy = 0;
+    //middlePaddle.vx = 0;
+    //middlePaddle.vy = 0;
+    //CHANGED1!!!!
+    //added the middlePaddle mouse control so it stops when a player wins
+    middlePaddle.mouseControl = false;
   }
-  
+
   //CHANGED!!!!!!
   //added the middle paddle scoring as well
   //if the middle paddle (middle player)'s score equals the winning score of 7,
@@ -257,18 +267,20 @@ void gameOver () {
     //added ball 2 vx and vy
     ball2. vx = 0;
     ball2. vy = 0;
-  
+
     //the paddles stop moving too
     leftPaddle.vx = 0;
     leftPaddle.vy = 0;
     rightPaddle.vx = 0;
     rightPaddle.vy = 0;
-    middlePaddle.vx = 0;
-    middlePaddle.vy = 0;
+    //middlePaddle.vx = 0;
+    //middlePaddle.vy = 0;
+    //CHANGED1!!!!
+    //added the middlePaddle mouse control so it stops when a player wins
+    middlePaddle.mouseControl = false;
   }
-  
 }
-  
+
 //CHANGED!!!!!!
 //this function displays the end game text
 void displayGameOver (String gameOverText) {
@@ -296,30 +308,30 @@ void drawStatic() {
   }
 }
 
-  // keyPressed()
-  //
-  // The paddles need to know if they should move based on a keypress
-  // so when the keypress is detected in the main program we need to
-  // tell the paddles
+// keyPressed()
+//
+// The paddles need to know if they should move based on a keypress
+// so when the keypress is detected in the main program we need to
+// tell the paddles
 
-  void keyPressed() {
-    // Just call both paddles' own keyPressed methods
-    leftPaddle.keyPressed();
-    rightPaddle.keyPressed();
-    //CHANGED!!!!
-    //added middle paddle keypressed
-    middlePaddle.keyPressed();
-  }
+void keyPressed() {
+  // Just call both paddles' own keyPressed methods
+  leftPaddle.keyPressed();
+  rightPaddle.keyPressed();
+  //CHANGED!!!!
+  //added middle paddle keypressed
+  middlePaddle.keyPressed();
+}
 
-  // keyReleased()
-  //
-  // As for keyPressed, except for released!
+// keyReleased()
+//
+// As for keyPressed, except for released!
 
-  void keyReleased() {
-    // Call both paddles' keyReleased methods
-    leftPaddle.keyReleased();
-    rightPaddle.keyReleased();
-     //CHANGED!!!!
-    //added middle paddle keyreleased
-    middlePaddle.keyReleased();
-  }
+void keyReleased() {
+  // Call both paddles' keyReleased methods
+  leftPaddle.keyReleased();
+  rightPaddle.keyReleased();
+  //CHANGED!!!!
+  //added middle paddle keyreleased
+  middlePaddle.keyReleased();
+}

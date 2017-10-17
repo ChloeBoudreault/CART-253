@@ -27,6 +27,11 @@ class Paddle {
   // The characters used to make the paddle move up and down, defined in constructor
   char upKey;
   char downKey;
+  
+  //CHANGED!!!!!
+  //added a mouse control to change the way the player controls the game
+  //the player will be able to control the paddle(s) using their mouse
+  boolean mouseControl;
 
 
   /////////////// Constructor ///////////////
@@ -36,7 +41,9 @@ class Paddle {
   // Sets the position and controls based on arguments,
   // starts the velocity at 0
 
-  Paddle(int _x, int _y, char _upKey, char _downKey) {
+  //CHANGED!!!!!
+  //added the boolean argument into the Paddle
+  Paddle(int _x, int _y, char _upKey, char _downKey, boolean assumeControl) {
     x = _x;
     y = _y;
     vx = 0;
@@ -44,6 +51,8 @@ class Paddle {
 
     upKey = _upKey;
     downKey = _downKey;
+    
+    mouseControl = assumeControl;
   }
 
 
@@ -60,6 +69,17 @@ class Paddle {
 
     // Constrain the paddle's y position to be in the window
     y = constrain(y,0 + HEIGHT/2,height - HEIGHT/2);
+    
+    //CHANGED!!!!!
+    //added the details regarding the boolean into the update function
+    //if the mouseControl is used, then the player will be able to use the mouse
+    //instead of the keys in order to move the paddle(s)
+    if (mouseControl) {
+      y = height - mouseY;
+    } else {
+      y += vy;
+    }
+    
   }
 
   // display()
