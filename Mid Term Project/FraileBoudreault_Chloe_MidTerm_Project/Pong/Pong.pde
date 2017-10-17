@@ -320,7 +320,7 @@ void keyPressed() {
   rightPaddle.keyPressed();
   //CHANGED!!!!
   //added middle paddle keypressed
-  middlePaddle.keyPressed();
+  //middlePaddle.keyPressed();
 }
 
 // keyReleased()
@@ -333,5 +333,5 @@ void keyReleased() {
   rightPaddle.keyReleased();
   //CHANGED!!!!
   //added middle paddle keyreleased
-  middlePaddle.keyReleased();
+  //middlePaddle.keyReleased();
 }
