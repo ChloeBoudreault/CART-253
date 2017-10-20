@@ -9,7 +9,7 @@ class Gruntie {
   int y;
   int size;
   int energy;
-  color fill = color(0,0,255);
+  color fill = color(255);
   
    // Gruntie(tempX, tempY, tempSize)
   //
