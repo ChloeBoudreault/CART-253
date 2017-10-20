@@ -10,6 +10,10 @@
 int gridSize = 20;
 // An array storing all the griddies
 Griddie[] griddies = new Griddie[100];
+//CHANGED!!!
+//adding the size of a gruntie and the array to store them all
+int gruntSize = 20;
+Gruntie[] grunties = new Gruntie[100];
 
 // setup()
 //
@@ -28,6 +32,16 @@ void setup() {
     int x = floor(random(0, width/gridSize));
     int y = floor(random(0, height/gridSize));
     griddies[i] = new Griddie(x * gridSize, y * gridSize, gridSize);
+  }
+
+  //CHANGED!!!!
+  //added the loop which creates the amount of grunties in their array
+  //the grunties will sprout at random locations inside the screen
+  //it also sets their size
+  for (int i = 0; i < grunties.length; i++) {
+    int x = floor(random(0, width/gridSize));
+    int y = floor(random(0, height/gridSize));
+    grunties[i] = new Gruntie(x * gruntSize, y * gruntSize, gruntSize);
   }
 }
 
@@ -56,8 +70,19 @@ void draw() {
         griddies[i].collide(griddies[j]);
       }
     }
-    
+
     // Display the griddies
     griddies[i].display();
+  }
+
+  //CHANGED!!!!
+  //we need to loop through all the grunties one by one
+  for (int i = 0; i < grunties.length; i++) {
+
+    //Update the grunties
+    grunties[i].update();
+
+    //Display the grunties
+    grunties[i].display();
   }
 }
