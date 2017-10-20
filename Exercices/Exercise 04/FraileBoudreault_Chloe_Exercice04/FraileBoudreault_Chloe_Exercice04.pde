@@ -13,7 +13,7 @@ Griddie[] griddies = new Griddie[100];
 //CHANGED!!!
 //adding the size of a gruntie and the array to store them all
 int gruntSize = 20;
-Gruntie[] grunties = new Gruntie[100];
+Gruntie[] grunties = new Gruntie[50];
 
 // setup()
 //
