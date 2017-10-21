@@ -95,6 +95,12 @@ class Griddie {
       energy = constrain(energy,0,maxEnergy);
     }
   }
+  
+  void collideGrunties (Griddie grunties) {
+    if ( x == grunties.x && y == grunties.y) {
+      fill = color (255,192,203);
+    }
+  }
 
   // display()
   //
