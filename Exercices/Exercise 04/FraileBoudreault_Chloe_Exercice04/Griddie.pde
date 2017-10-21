@@ -96,6 +96,11 @@ class Griddie {
     }
   }
   
+  //CHANGED!!!!
+  //added a collideGrunties function
+  //if checks whether or not the x and y location of the griddie
+  //is the same as the x and y location of one of the grunties
+  //if it is, the griddie becomes infected and changes to a pink colour
   void collideGrunties (Griddie grunties) {
     if ( x == grunties.x && y == grunties.y) {
       fill = color (255,192,203);

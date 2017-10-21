@@ -68,6 +68,9 @@ void draw() {
         // QUESTION: What does this line check?
         //this checks whether or not the i and j griddies have collided
         griddies[i].collide(griddies[j]);
+        //CHANGED!!!!
+        //added this line to check whether or not the griddie and gruntie 
+        //have collided
         griddies[i].collideGrunties(griddies[j]);
       }
     }
