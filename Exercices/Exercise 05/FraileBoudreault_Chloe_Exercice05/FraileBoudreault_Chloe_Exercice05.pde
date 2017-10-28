@@ -10,7 +10,6 @@
 int gridSize = 20;
 // An array storing all the griddies
 Griddie[] griddies = new Griddie[100];
-//CHANGED!!!
 //adding the size of a gruntie and the array to store them all
 int gruntSize = 20;
 Gruntie[] grunties = new Gruntie[50];
@@ -24,7 +23,6 @@ void setup() {
   size(640, 480);
   frameRate(10);
 
-  // QUESTION: What does this for loop do?
   //this loop creates the amount of griddies in the respective griddies array
   //the griddies will sprout at random locations inside the screen
   //it also sets their size
@@ -34,7 +32,6 @@ void setup() {
     griddies[i] = new Griddie(x * gridSize, y * gridSize, gridSize);
   }
 
-  //CHANGED!!!!
   //added the loop which creates the amount of grunties in their array
   //the grunties will sprout at random locations inside the screen
   //it also sets their size
@@ -60,15 +57,12 @@ void draw() {
 
     // Now go through all the griddies a second time...
     for (int j = 0; j < griddies.length; j++) {
-      // QUESTION: What is this if-statement for?
       //this statement check whether or not the j and i griddies are different
       //and if they are different, then it assigns those j and i griddies 
       //to their respective array
       if (j != i) {
-        // QUESTION: What does this line check?
         //this checks whether or not the i and j griddies have collided
         griddies[i].collide(griddies[j]);
-        //CHANGED!!!!
         //added this line to check whether or not the griddie and gruntie 
         //have collided
         griddies[i].collideGrunties(griddies[j]);
@@ -79,7 +73,6 @@ void draw() {
     griddies[i].display();
   }
 
-  //CHANGED!!!!
   //we need to loop through all the grunties one by one
   for (int i = 0; i < grunties.length; i++) {
 
