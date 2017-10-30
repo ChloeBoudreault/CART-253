@@ -67,8 +67,8 @@ class Griddie {
   // Checks for collision with the other Griddie
 
   void collide(Griddie other) {
- if (x == other.x && y == other.y) {
-   fill = color (255, 192, 203);
+    if (x == other.x && y == other.y) {
+      fill = color (255, 192, 203);
     }
   }
 

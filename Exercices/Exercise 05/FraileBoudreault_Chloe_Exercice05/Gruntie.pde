@@ -75,7 +75,7 @@ class Gruntie {
     stroke(0);
     //CHANGED!!!!!
     //added noise() so the grunties move around
-    float x =  width * noise(tx);
+    float x = width * noise(tx);
     float y = height * noise(ty);   
     tx += 0.05;
     ty += 0.05;
