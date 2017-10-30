@@ -69,7 +69,7 @@ class Gruntie {
     //CHANGED!!!!!
     //edited the rect with the sizes array
     //used Modulo for animation
-    //the grunties will now changes sizes
+    //the grunties will now change sizes
     //rect(x, y, size, size);
     rect (x, y, sizes[i], sizes[i]);
     i = (i + 1) % sizes.length;
