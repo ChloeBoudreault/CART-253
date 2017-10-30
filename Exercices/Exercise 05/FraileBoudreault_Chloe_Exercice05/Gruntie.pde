@@ -18,6 +18,11 @@ class Gruntie {
   //color fill = color(255);
   int redness = 0;
 
+  //CHANGED!!!!
+  //added random x and y float for noise()
+  float tx = random (0, 480);
+  float ty = random (0, 480);
+
   // Gruntie(tempX, tempY, tempSize)
   //
   // Set up the Gruntie with the specified location and size
@@ -68,6 +73,12 @@ class Gruntie {
     //CHANGED!!!!
     //added black stroke
     stroke(0);
+    //CHANGED!!!!!
+    //added noise() so the grunties move around
+    float x =  width * noise(tx);
+    float y = height * noise(ty);   
+    tx += 0.05;
+    ty += 0.05;
     //CHANGED!!!!!
     //edited the rect with the sizes array
     //used Modulo for animation
