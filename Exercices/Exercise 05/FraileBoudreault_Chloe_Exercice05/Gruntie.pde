@@ -65,13 +65,16 @@ class Gruntie {
     //fill(fill);
     fill(redness, 0, 0);
     redness = (redness + 11) % 255;
-    noStroke();
+    //CHANGED!!!!
+    //added black stroke
+    stroke(0);
     //CHANGED!!!!!
     //edited the rect with the sizes array
     //used Modulo for animation
     //the grunties will now change sizes
     //rect(x, y, size, size);
-    rect (x, y, sizes[i], sizes[i]);
+    //changed rect for ellipse
+    ellipse (x, y, sizes[i], sizes[i]);
     i = (i + 1) % sizes.length;
   }
 } 
