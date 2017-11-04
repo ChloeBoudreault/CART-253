@@ -12,8 +12,9 @@ enum State {
     TITLE, 
     MENU, 
     BASIC_PONG, 
-    BLUE_PONG,
-    INVISIBLE_PONG
+    BLUE_PONG, 
+    INVISIBLE_PONG, 
+    MICHAEL_JACKSON_PONG
 }
 // This is the variable that actually tracks the state in the game
 State state;
@@ -25,6 +26,7 @@ Menu menu;
 BasicPong basicPong;
 BluePong bluePong;
 InvisiblePong invisiblePong;
+MichaelJacksonPong michaelJacksonPong;
 
 // setup()
 //
@@ -40,6 +42,7 @@ void setup() {
   basicPong = new BasicPong();
   bluePong = new BluePong();
   invisiblePong = new InvisiblePong();
+  michaelJacksonPong = new MichaelJacksonPong();
 
   // We start our state in the title screen
   state = State.TITLE;
@@ -60,9 +63,9 @@ void draw() {
   case NONE:
     break;
 
-  // If our state is TITLE we update the title object
-  // which displays it, and then we check whether the title
-  // screen is finished and if so we go to the menu state
+    // If our state is TITLE we update the title object
+    // which displays it, and then we check whether the title
+    // screen is finished and if so we go to the menu state
   case TITLE:
     title.update();
     if (title.finished) {
@@ -70,10 +73,10 @@ void draw() {
     }
     break;
 
-  // If our state is MENU we update the menu
-  // We then check whether anything has been selected
-  // in the menu and if so we switch to that state
-  // (And reset the menu selection for next time.)
+    // If our state is MENU we update the menu
+    // We then check whether anything has been selected
+    // in the menu and if so we switch to that state
+    // (And reset the menu selection for next time.)
   case MENU:
     menu.update();
     if (menu.selection != State.NONE) {
@@ -82,10 +85,10 @@ void draw() {
     }
     break;
 
-  // If our state is BASIC_PONG we update the
-  // basicPong object which runs the game and then check whether 
-  // the player has chosen to return to the menu. If so we set
-  // the state appropriate, and reset the game.
+    // If our state is BASIC_PONG we update the
+    // basicPong object which runs the game and then check whether 
+    // the player has chosen to return to the menu. If so we set
+    // the state appropriate, and reset the game.
   case BASIC_PONG:
     basicPong.update();
     if (basicPong.returnToMenu) {
@@ -94,8 +97,8 @@ void draw() {
     }
     break;
 
-  // If our state is BLUE_PONG we do all the same things,
-  // but for the bluePong object instead
+    // If our state is BLUE_PONG we do all the same things,
+    // but for the bluePong object instead
   case BLUE_PONG:
     bluePong.update();
     if (bluePong.returnToMenu) {
@@ -104,16 +107,26 @@ void draw() {
       bluePong.reset();
     }
     break;
-    
-    case INVISIBLE_PONG:
+
+  case INVISIBLE_PONG:
     invisiblePong.update();
     if ( invisiblePong.returnToMenu) {
-    state = State.MENU;
-    invisiblePong.returnToMenu = false;
-     invisiblePong.reset();
+      state = State.MENU;
+      invisiblePong.returnToMenu = false;
+      invisiblePong.reset();
+    }
+    break;
+
+  case MICHAEL_JACKSON_PONG:
+    michaelJacksonPong.update();
+    michaelJacksonPong.ballColorChange();
+    if (michaelJacksonPong.returnToMenu) {
+      state = State.MENU;
+      michaelJacksonPong.returnToMenu = false;
+      michaelJacksonPong.reset();
+    }
+    break;
   }
-  break;
-}
 }
 
 // keyPressed()
@@ -141,9 +154,14 @@ void keyPressed() {
   case BLUE_PONG:
     bluePong.keyPressed();
     break;
-    
+
   case INVISIBLE_PONG:
-   invisiblePong.keyPressed();
+    invisiblePong.keyPressed();
+
+
+  case MICHAEL_JACKSON_PONG:
+    michaelJacksonPong.keyPressed();
+    break;
   }
 }
 
@@ -173,9 +191,13 @@ void keyReleased() {
   case BLUE_PONG:
     bluePong.keyReleased();
     break;
-    
+
   case INVISIBLE_PONG:
-   invisiblePong.keyReleased();
-  break;
+    invisiblePong.keyReleased();
+    break;
+
+  case MICHAEL_JACKSON_PONG:
+    michaelJacksonPong.keyReleased();
+    break;
   }
 }

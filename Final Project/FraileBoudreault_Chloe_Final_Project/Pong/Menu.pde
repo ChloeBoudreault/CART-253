@@ -33,6 +33,7 @@ class Menu {
     text("(P)ONG", width/2, 50);
     text("(B)LUE PONG", width/2, 100);
     text("(I)NVISIBLE PONG", width/2, 150);
+    text("(M)ICHAEL JACKSON PONG", width/2, 200);
   }
 
   // keyPressed()
@@ -48,6 +49,8 @@ class Menu {
       selection = State.BLUE_PONG;
     } else if (key == 'i' || key == 'I') {
       selection = State.INVISIBLE_PONG;
+    } else if (key == 'm' || key == 'M') {
+      selection = State.MICHAEL_JACKSON_PONG;
     }
   }
 
