@@ -43,7 +43,7 @@ class InvisiblePong {
   void update() {
     // Fill the background each frame so we have animation
     background(backgroundColor);
-    ball.ballColor = 0;
+    ball.ballColor = 14;
 
     // Update the paddles and ball by calling their update methods
     leftPaddle.update();
