@@ -1,33 +1,20 @@
-// BasicPong
-//
-// This is basically exactly the same implementation of Pong we've already
-// seen for the midterm, except that it is defined as a CLASS which can
-// be instantiated into an object to run the game.
-//
-// We now use the constructor BasicPong() to set up the game, instead of
-// setup(), and we use update() to update the game, instead of draw().
-//
-// A new addition is tracking whether the player presses a key ('m') to
-// return to the menu. If so, the game remembers they did and the main
-// program handles actually changing back to the menu itself.
-
-class BasicPong {
-
-  // Variables to store the main objects in the game (the paddles and ball)
+class InvisiblePong {
+  
   Paddle leftPaddle;
   Paddle rightPaddle;
   Ball ball;
 
   // The distance from the edge of the window a paddle should be
   int PADDLE_INSET = 8;
+  int PADDLE_HEIGHT = 170;
 
   // The background colour during play (black)
   color backgroundColor = color(0);
 
   // A boolean to track whether we should return to the menu
   boolean returnToMenu = false;
-
-  //CHANGED!!!!!!!!
+  
+    //CHANGED!!!!!!!!
   //added score for left and right players
   int score1 = 0;
   int score2 = 0;
@@ -39,8 +26,8 @@ class BasicPong {
   //
   // Creates the paddles and ball
 
-  BasicPong() {
-    // Create a paddle on either side of the screen
+    InvisiblePong() {
+     // Create a paddle on either side of the screen
     leftPaddle = new Paddle(PADDLE_INSET, height/2, '2', 'q');
     rightPaddle = new Paddle(width - PADDLE_INSET, height/2, '0', 'p');
 
@@ -56,6 +43,7 @@ class BasicPong {
   void update() {
     // Fill the background each frame so we have animation
     background(backgroundColor);
+    ball.ballColor = 0;
 
     // Update the paddles and ball by calling their update methods
     leftPaddle.update();
@@ -79,7 +67,7 @@ class BasicPong {
     displayScore();
     gameOver();
   }
-
+  
   void displayScore() {
   textSize (50);
   textAlign (CENTER);
@@ -87,8 +75,8 @@ class BasicPong {
   //works with the paddle and ball
   text (leftPaddle.score, width/4, 78);
   text (rightPaddle.score, width - (width/4), 78);
-}
-
+  }
+  
 void gameOver() {
   if (leftPaddle.score == winningScore) {
     //they win, this displays the "Left Player Wins!" string
@@ -119,6 +107,7 @@ void gameOver() {
     rightPaddle.vy = 0;
   }
 }
+
   //CHANGED!!!!!!
 //this function displays the end game text
 void displayGameOver (String gameOverText) {
@@ -129,42 +118,43 @@ void displayGameOver (String gameOverText) {
   text(gameOverText, width/2, (height/2 +70));
 }
 
-// reset()
-//
-// Resets the game by resetting the ball and paddles and setting
-// returnToMenu to false
 
-void reset() {
-  ball.reset();
-  leftPaddle.reset();
-  rightPaddle.reset();
-  returnToMenu = false;
-}
-
-// keyPressed()
-//
-// The paddles need to know if they should move based on a keypress
-// so when the keypress is detected in the main program we need to
-// tell the paddles
-
-void keyPressed() {
-  // Just call both paddles' own keyPressed methods
-  leftPaddle.keyPressed();
-  rightPaddle.keyPressed();
-
-  // Check if we should return to the menu
-  if (key == 'm' || key == 'M') {
-    returnToMenu = true;
+  // reset()
+  //
+  // Resets the game by resetting the ball and paddles and setting
+  // returnToMenu to false
+  
+  void reset() {
+    ball.reset();
+    leftPaddle.reset();
+    rightPaddle.reset();
+    returnToMenu = false;
   }
-}
 
-// keyReleased()
-//
-// As for keyPressed, except for released!
+  // keyPressed()
+  //
+  // The paddles need to know if they should move based on a keypress
+  // so when the keypress is detected in the main program we need to
+  // tell the paddles
 
-void keyReleased() {
-  // Call both paddles' keyReleased methods
-  leftPaddle.keyReleased();
-  rightPaddle.keyReleased();
-}
+  void keyPressed() {
+    // Just call both paddles' own keyPressed methods
+    leftPaddle.keyPressed();
+    rightPaddle.keyPressed();
+    
+    // Check if we should return to the menu
+    if (key == 'm' || key == 'M') {
+     returnToMenu = true; 
+    }
+  }
+
+  // keyReleased()
+  //
+  // As for keyPressed, except for released!
+
+  void keyReleased() {
+    // Call both paddles' keyReleased methods
+    leftPaddle.keyReleased();
+    rightPaddle.keyReleased();
+  }
 }

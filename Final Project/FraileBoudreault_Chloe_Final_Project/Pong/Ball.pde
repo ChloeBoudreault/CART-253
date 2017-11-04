@@ -70,6 +70,7 @@ class Ball {
   void reset() {
     x = width/2;
     y = height/2;
+    
   }
   
   // isOffScreen()
@@ -109,6 +110,7 @@ class Ball {
       }
       // And make it bounce
       vx = -vx;
+      paddle.score++;
     }
   }
 

@@ -12,7 +12,8 @@ enum State {
     TITLE, 
     MENU, 
     BASIC_PONG, 
-    BLUE_PONG
+    BLUE_PONG,
+    INVISIBLE_PONG
 }
 // This is the variable that actually tracks the state in the game
 State state;
@@ -23,7 +24,7 @@ Title title;
 Menu menu;
 BasicPong basicPong;
 BluePong bluePong;
-
+InvisiblePong invisiblePong;
 
 // setup()
 //
@@ -38,6 +39,7 @@ void setup() {
   menu = new Menu();
   basicPong = new BasicPong();
   bluePong = new BluePong();
+  invisiblePong = new InvisiblePong();
 
   // We start our state in the title screen
   state = State.TITLE;
@@ -102,7 +104,16 @@ void draw() {
       bluePong.reset();
     }
     break;
+    
+    case INVISIBLE_PONG:
+    invisiblePong.update();
+    if ( invisiblePong.returnToMenu) {
+    state = State.MENU;
+    invisiblePong.returnToMenu = false;
+     invisiblePong.reset();
   }
+  break;
+}
 }
 
 // keyPressed()
@@ -130,6 +141,9 @@ void keyPressed() {
   case BLUE_PONG:
     bluePong.keyPressed();
     break;
+    
+  case INVISIBLE_PONG:
+   invisiblePong.keyPressed();
   }
 }
 
@@ -159,5 +173,9 @@ void keyReleased() {
   case BLUE_PONG:
     bluePong.keyReleased();
     break;
+    
+  case INVISIBLE_PONG:
+   invisiblePong.keyReleased();
+  break;
   }
 }
