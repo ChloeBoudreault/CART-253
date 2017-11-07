@@ -1,8 +1,9 @@
 class MichaelJacksonPong {
-  
+
   Paddle leftPaddle;
   Paddle rightPaddle;
   Ball ball;
+  Ball ball2;
 
   // The distance from the edge of the window a paddle should be
   int PADDLE_INSET = 8;
@@ -12,8 +13,8 @@ class MichaelJacksonPong {
 
   // A boolean to track whether we should return to the menu
   boolean returnToMenu = false;
-  
-    //CHANGED!!!!!!!!
+
+  //CHANGED!!!!!!!!
   //added score for left and right players
   int score1 = 0;
   int score2 = 0;
@@ -22,13 +23,14 @@ class MichaelJacksonPong {
   //
   // Creates the paddles and ball
 
-    MichaelJacksonPong () {
-     // Create a paddle on either side of the screen
+  MichaelJacksonPong () {
+    // Create a paddle on either side of the screen
     leftPaddle = new Paddle(PADDLE_INSET, height/2, '2', 'q');
     rightPaddle = new Paddle(width - PADDLE_INSET, height/2, '0', 'p');
 
     // Create the ball at the centre of the screen
     ball = new Ball(width/2, height/2);
+    ball2 = new Ball(width - (width/4), height - (height/4));
   }
 
   // update()
@@ -45,10 +47,13 @@ class MichaelJacksonPong {
     leftPaddle.update();
     rightPaddle.update();
     ball.update();
+    ball2.update();
 
     // Check if the ball has collided with either paddle
     ball.collide(leftPaddle);
     ball.collide(rightPaddle);
+    ball2.collide(leftPaddle);
+    ball2.collide(rightPaddle);
 
     // Check if the ball has gone off the screen
     if (ball.isOffScreen()) {
@@ -56,41 +61,52 @@ class MichaelJacksonPong {
       ball.reset();
     }
 
+    if (ball2.isOffScreen()) {
+      // If it has, reset the ball
+      ball2.reset();
+    }
+
     // Display the paddles and the ball
     leftPaddle.display();
     rightPaddle.display();
     ball.display();
+    ball2.display();
     displayScore();
   }
-  
+
   void displayScore() {
-  textSize (50);
-  textAlign (CENTER);
-  fill(255);
-  //works with the paddle and ball
-  text (leftPaddle.score, width/4, 78);
-  text (rightPaddle.score, width - (width/4), 78);
+    textSize (50);
+    textAlign (CENTER);
+    fill(255);
+    //works with the paddle and ball
+    text (leftPaddle.score, width/4, 78);
+    text (rightPaddle.score, width - (width/4), 78);
   }
 
-void ballColorChange () {
+  void ballColorChange () {
     if (ball.x < (width/2+70) && ball.y < (height/2-150)) {
-    ball.ballColor = 255;
-  } else if (ball.x > (width/2-10) && ball.y < (height/2+30)) { 
-    ball.ballColor = 255;
-  } else if (ball.x < (width/2-200) && ball.y > (height/2-120)) { 
-    ball.ballColor = 0;
-  } else if (ball.x > (width/2+64) && ball.y > (height/2+55)) { 
-    ball.ballColor = 0;
+      ball.ballColor = 14;
+      ball2.ballColor = 255;
+    } else if (ball.x > (width/2-10) && ball.y < (height/2+30)) { 
+      ball.ballColor = 14;
+      ball2.ballColor = 255;
+    } else if (ball.x < (width/2-200) && ball.y > (height/2-120)) { 
+      ball.ballColor = 255;
+      ball2.ballColor = 14;
+    } else if (ball.x > (width/2+64) && ball.y > (height/2+55)) { 
+      ball.ballColor = 255;
+      ball2.ballColor = 14;
+    }
   }
-}
 
   // reset()
   //
   // Resets the game by resetting the ball and paddles and setting
   // returnToMenu to false
-  
+
   void reset() {
     ball.reset();
+    ball2.reset();
     leftPaddle.reset();
     rightPaddle.reset();
     returnToMenu = false;
@@ -106,10 +122,10 @@ void ballColorChange () {
     // Just call both paddles' own keyPressed methods
     leftPaddle.keyPressed();
     rightPaddle.keyPressed();
-    
+
     // Check if we should return to the menu
     if (key == 'm' || key == 'M') {
-     returnToMenu = true; 
+      returnToMenu = true;
     }
   }
 

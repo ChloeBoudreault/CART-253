@@ -11,18 +11,19 @@ class BluePong {
   Paddle leftPaddle;
   Paddle rightPaddle;
   Ball ball;
+  Ball ball2;
 
   // The distance from the edge of the window a paddle should be
   // Exaggerated to make the game look different
   int PADDLE_INSET = 250;
 
   // The background colour during play (blue!)
-  color backgroundColor = color(0,0,255);
+  color backgroundColor = color(0, 0, 255);
 
   // A boolean to track whether we should return to the menu
   boolean returnToMenu = false;
-  
-   //CHANGED!!!!!!!!
+
+  //CHANGED!!!!!!!!
   //added score for left and right players
   int score1 = 0;
   int score2 = 0;
@@ -31,13 +32,14 @@ class BluePong {
   //
   // Creates the paddles and ball
 
-   BluePong() {
-     // Create a paddle on either side of the screen
+  BluePong() {
+    // Create a paddle on either side of the screen
     leftPaddle = new Paddle(PADDLE_INSET, height/2, '2', 'q');
     rightPaddle = new Paddle(width - PADDLE_INSET, height/2, '0', 'p');
 
     // Create the ball at the centre of the screen
     ball = new Ball(width/2, height/2);
+    ball2 = new Ball(width - (width/4), height - (height/4));
   }
 
   // update()
@@ -53,10 +55,13 @@ class BluePong {
     leftPaddle.update();
     rightPaddle.update();
     ball.update();
+    ball2.update();
 
     // Check if the ball has collided with either paddle
     ball.collide(leftPaddle);
     ball.collide(rightPaddle);
+    ball2.collide(leftPaddle);
+    ball2.collide(rightPaddle);
 
     // Check if the ball has gone off the screen
     if (ball.isOffScreen()) {
@@ -64,29 +69,36 @@ class BluePong {
       ball.reset();
     }
 
+    if (ball2.isOffScreen()) {
+      // If it has, reset the ball
+      ball2.reset();
+    }
+
     // Display the paddles and the ball
     leftPaddle.display();
     rightPaddle.display();
     ball.display();
+    ball2.display();
     displayScore();
   }
-  
+
   void displayScore() {
-  textSize (50);
-  textAlign (CENTER);
-  fill(255);
-  //works with the paddle and ball
-  text (leftPaddle.score, width/4, 78);
-  text (rightPaddle.score, width - (width/4), 78);
+    textSize (50);
+    textAlign (CENTER);
+    fill(255);
+    //works with the paddle and ball
+    text (leftPaddle.score, width/4, 78);
+    text (rightPaddle.score, width - (width/4), 78);
   }
-  
+
   // reset()
   //
   // Resets the game by resetting the ball and paddles and setting
   // returnToMenu to false
-  
+
   void reset() {
     ball.reset();
+    ball2.reset();
     leftPaddle.reset();
     rightPaddle.reset();
     returnToMenu = false;
@@ -102,10 +114,10 @@ class BluePong {
     // Just call both paddles' own keyPressed methods
     leftPaddle.keyPressed();
     rightPaddle.keyPressed();
-    
+
     // Check if we should return to the menu
     if (key == 'm' || key == 'M') {
-     returnToMenu = true; 
+      returnToMenu = true;
     }
   }
 

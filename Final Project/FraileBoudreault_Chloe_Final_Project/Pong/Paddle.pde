@@ -66,12 +66,11 @@ class Paddle {
   
   void display() {
     // Set display properties
-    noStroke();
     fill(paddleColor);
     rectMode(CENTER);
     
     // Draw the paddle as a rectangle
-    rect(x, y, WIDTH, HEIGHT);
+    rect(x, y, WIDTH, HEIGHT,7);
   }
   
   void reset() {

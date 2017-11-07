@@ -116,7 +116,7 @@ void draw() {
 
   case INVISIBLE_PONG:
     invisiblePong.update();
-    if ( invisiblePong.returnToMenu) {
+    if (invisiblePong.returnToMenu) {
       state = State.MENU;
       invisiblePong.returnToMenu = false;
       invisiblePong.reset();
@@ -142,7 +142,7 @@ void draw() {
     }
     break;
     
-        case ITSY_BITSY_PONG:
+    case ITSY_BITSY_PONG:
     itsyBitsyPong.update();
     if (itsyBitsyPong.returnToMenu) {
       state = State.MENU;
