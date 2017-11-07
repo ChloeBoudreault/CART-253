@@ -37,6 +37,7 @@ class Menu {
     text("5. UNFAIR OR USELESS PONG", width/2, 250);
     text("6. ITSY BITSY PONG", width/2, 300);
     text("7. SIZE DOESN'T MATTER IN PONG", width/2, 350);
+    text("8. MONKEY PONG", width/2, 400);
   }
 
   // keyPressed()
@@ -60,6 +61,8 @@ class Menu {
       selection = State.ITSY_BITSY_PONG;
     } else if (key == '7') {
       selection = State.SIZE_DOESNT_MATTER_IN_PONG;
+    } else if (key == '8') {
+      selection = State.MONKEY_PONG;
     }
   }
 

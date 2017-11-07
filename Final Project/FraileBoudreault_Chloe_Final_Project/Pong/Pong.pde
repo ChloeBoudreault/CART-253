@@ -17,7 +17,8 @@ enum State {
     MICHAEL_JACKSON_PONG, 
     UNFAIR_OR_USELESS_PONG, 
     ITSY_BITSY_PONG, 
-    SIZE_DOESNT_MATTER_IN_PONG
+    SIZE_DOESNT_MATTER_IN_PONG, 
+    MONKEY_PONG
 }
 // This is the variable that actually tracks the state in the game
 State state;
@@ -33,6 +34,7 @@ MichaelJacksonPong michaelJacksonPong;
 UnfairOrUselessPong unfairOrUselessPong;
 ItsyBitsyPong itsyBitsyPong;
 SizeDoesntMatterInPong sizeDoesntMatterInPong;
+MonkeyPong monkeyPong;
 
 // setup()
 //
@@ -52,6 +54,7 @@ void setup() {
   unfairOrUselessPong = new UnfairOrUselessPong();
   itsyBitsyPong = new ItsyBitsyPong();
   sizeDoesntMatterInPong = new SizeDoesntMatterInPong();
+  monkeyPong = new MonkeyPong();
 
   // We start our state in the title screen
   state = State.TITLE;
@@ -163,6 +166,15 @@ void draw() {
       sizeDoesntMatterInPong.reset();
     }
     break;
+
+  case MONKEY_PONG:
+    monkeyPong.update();
+    if (monkeyPong.returnToMenu) {
+      state = State.MENU;
+      monkeyPong.returnToMenu = false;
+      monkeyPong.reset();
+    }
+    break;
   }
 }
 
@@ -207,9 +219,13 @@ void keyPressed() {
   case ITSY_BITSY_PONG:
     itsyBitsyPong.keyPressed();
     break;
-    
+
   case SIZE_DOESNT_MATTER_IN_PONG:
-  sizeDoesntMatterInPong.keyPressed();
+    sizeDoesntMatterInPong.keyPressed();
+    break;
+    
+  case MONKEY_PONG:
+  monkeyPong.keyPressed();
   break;
   }
 }
@@ -254,9 +270,12 @@ void keyReleased() {
   case ITSY_BITSY_PONG:
     itsyBitsyPong.keyReleased();
     break;
+
+  case SIZE_DOESNT_MATTER_IN_PONG:
+    sizeDoesntMatterInPong.keyReleased();
+    break;
     
-   case SIZE_DOESNT_MATTER_IN_PONG:
-   sizeDoesntMatterInPong.keyReleased();
-   break;
+  case MONKEY_PONG:
+  monkeyPong.keyReleased();
   }
 }
