@@ -25,7 +25,7 @@ class Bouncer {
   color defaultColor;
   
   //CHANGED!!!!!
-  //added float
+  //added float so the bouncers slowly follow the brightest pixel ellipse around
   float followPixel = 0.05;
 
   // Bouncer(tempX,tempY,tempVX,tempVY,tempSize,tempDefaultColor)
