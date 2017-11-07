@@ -3,6 +3,8 @@
 // A class that defines a circle that can bounce around on the screen
 // at a specific velocity.
 
+//Reference: https://forum.processing.org/one/topic/how-do-i-get-objects-to-follow-a-separate-moving-object.html
+
 class Bouncer {
 
   // Variables for position
