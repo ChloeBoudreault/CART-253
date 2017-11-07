@@ -23,7 +23,7 @@ class Bouncer {
 
   // The default fill colour of the Bouncer
   color defaultColor;
-  
+
   //CHANGED!!!!!
   //added float so the bouncers slowly follows the brightest pixel ellipse around
   float followPixel = 0.05;
@@ -88,9 +88,8 @@ class Bouncer {
     //adding the moving code for the bouncers to follow the brightest pixel around
     float newX = brightestPixelX - x;
     x+= followPixel * newX;
-    
+
     float newY = brightestPixelY - y;
     y+= followPixel * newY;
-     
   }
 }
