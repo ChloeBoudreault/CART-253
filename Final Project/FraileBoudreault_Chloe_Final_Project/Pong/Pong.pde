@@ -14,9 +14,10 @@ enum State {
     BASIC_PONG, 
     BLUE_PONG, 
     INVISIBLE_PONG, 
-    MICHAEL_JACKSON_PONG,
-    UNFAIR_OR_USELESS_PONG,
-    ITSY_BITSY_PONG
+    MICHAEL_JACKSON_PONG, 
+    UNFAIR_OR_USELESS_PONG, 
+    ITSY_BITSY_PONG, 
+    SIZE_DOESNT_MATTER_IN_PONG
 }
 // This is the variable that actually tracks the state in the game
 State state;
@@ -31,6 +32,7 @@ InvisiblePong invisiblePong;
 MichaelJacksonPong michaelJacksonPong;
 UnfairOrUselessPong unfairOrUselessPong;
 ItsyBitsyPong itsyBitsyPong;
+SizeDoesntMatterInPong sizeDoesntMatterInPong;
 
 // setup()
 //
@@ -49,6 +51,7 @@ void setup() {
   michaelJacksonPong = new MichaelJacksonPong();
   unfairOrUselessPong = new UnfairOrUselessPong();
   itsyBitsyPong = new ItsyBitsyPong();
+  sizeDoesntMatterInPong = new SizeDoesntMatterInPong();
 
   // We start our state in the title screen
   state = State.TITLE;
@@ -132,8 +135,8 @@ void draw() {
       michaelJacksonPong.reset();
     }
     break;
-    
-    case UNFAIR_OR_USELESS_PONG:
+
+  case UNFAIR_OR_USELESS_PONG:
     unfairOrUselessPong.update();
     if (unfairOrUselessPong.returnToMenu) {
       state = State.MENU;
@@ -141,13 +144,22 @@ void draw() {
       unfairOrUselessPong.reset();
     }
     break;
-    
-    case ITSY_BITSY_PONG:
+
+  case ITSY_BITSY_PONG:
     itsyBitsyPong.update();
     if (itsyBitsyPong.returnToMenu) {
       state = State.MENU;
       itsyBitsyPong.returnToMenu = false;
       itsyBitsyPong.reset();
+    }
+    break;
+
+  case SIZE_DOESNT_MATTER_IN_PONG:
+    sizeDoesntMatterInPong.update();
+    if (sizeDoesntMatterInPong.returnToMenu) {
+      state = State.MENU;
+      sizeDoesntMatterInPong.returnToMenu = false;
+      sizeDoesntMatterInPong.reset();
     }
     break;
   }
@@ -181,18 +193,22 @@ void keyPressed() {
 
   case INVISIBLE_PONG:
     invisiblePong.keyPressed();
-   break;
+    break;
 
   case MICHAEL_JACKSON_PONG:
     michaelJacksonPong.keyPressed();
     break;
-    
+
   case UNFAIR_OR_USELESS_PONG:
-  unfairOrUselessPong.keyPressed();
-  break;
-  
+    unfairOrUselessPong.keyPressed();
+    break;
+
   case ITSY_BITSY_PONG:
-  itsyBitsyPong.keyPressed();
+    itsyBitsyPong.keyPressed();
+    break;
+    
+  case SIZE_DOESNT_MATTER_IN_PONG:
+  sizeDoesntMatterInPong.keyPressed();
   break;
   }
 }
@@ -229,13 +245,17 @@ void keyReleased() {
   case MICHAEL_JACKSON_PONG:
     michaelJacksonPong.keyReleased();
     break;
-    
+
   case UNFAIR_OR_USELESS_PONG:
-  unfairOrUselessPong.keyReleased();
-  break;
-  
+    unfairOrUselessPong.keyReleased();
+    break;
+
   case ITSY_BITSY_PONG:
-  itsyBitsyPong.keyReleased();
-  break;
+    itsyBitsyPong.keyReleased();
+    break;
+    
+   case SIZE_DOESNT_MATTER_IN_PONG:
+   sizeDoesntMatterInPong.keyReleased();
+   break;
   }
 }

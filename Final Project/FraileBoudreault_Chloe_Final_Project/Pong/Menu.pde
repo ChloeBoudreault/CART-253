@@ -36,6 +36,7 @@ class Menu {
     text("4. MICHAEL JACKSON PONG", width/2, 200);
     text("5. UNFAIR OR USELESS PONG", width/2, 250);
     text("6. ITSY BITSY PONG", width/2, 300);
+    text("7. SIZE DOESN'T MATTER IN PONG", width/2, 350);
   }
 
   // keyPressed()
@@ -57,6 +58,8 @@ class Menu {
       selection = State.UNFAIR_OR_USELESS_PONG;
     } else if (key == '6') {
       selection = State.ITSY_BITSY_PONG;
+    } else if (key == '7') {
+      selection = State.SIZE_DOESNT_MATTER_IN_PONG;
     }
   }
 
