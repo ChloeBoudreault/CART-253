@@ -156,6 +156,7 @@ void draw() {
 
   case SIZE_DOESNT_MATTER_IN_PONG:
     sizeDoesntMatterInPong.update();
+    sizeDoesntMatterInPong.paddleSizeChange();
     if (sizeDoesntMatterInPong.returnToMenu) {
       state = State.MENU;
       sizeDoesntMatterInPong.returnToMenu = false;
