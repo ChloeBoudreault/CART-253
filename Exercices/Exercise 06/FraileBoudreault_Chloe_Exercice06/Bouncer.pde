@@ -84,14 +84,13 @@ class Bouncer {
     noStroke();
     fill(fillColor);
     ellipse(x, y, size, size);
-    float newX = brightestPixelX;
-    float 
-    x+= followPixel
+    //CHANGED!!!!
+    //adding the moving code for the bouncers to follow the brightest pixel around
+    float newX = brightestPixelX - x;
+    x+= followPixel * newX;
     
-    float newY = brightestPixelY;
-    float 
-    y+= followPixel
-    
-    
+    float newY = brightestPixelY - y;
+    y+= followPixel * newY;
+     
   }
 }
