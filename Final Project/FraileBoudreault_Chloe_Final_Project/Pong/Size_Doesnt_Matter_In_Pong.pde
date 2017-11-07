@@ -83,6 +83,22 @@ class SizeDoesntMatterInPong {
     text (rightPaddle.score, width - (width/4), 78);
   }
 
+  void paddleSizeChange() {
+    if (ball.x < (width/2+70) && ball.y < (height/2-150)) {
+     leftPaddle.HEIGHT = 12;
+     rightPaddle.HEIGHT = 255;
+    } else if (ball.x > (width/2-10) && ball.y < (height/2+30)) { 
+     leftPaddle.HEIGHT = 170;
+     rightPaddle.HEIGHT = 48;
+    } else if (ball.x < (width/2-200) && ball.y > (height/2-120)) { 
+     leftPaddle.HEIGHT = 288;
+     rightPaddle.HEIGHT = 341;
+    } else if (ball.x > (width/2+64) && ball.y > (height/2+55)) { 
+     leftPaddle.HEIGHT = 94;
+     rightPaddle.HEIGHT = 22;
+    }
+  }
+
   // reset()
   //
   // Resets the game by resetting the ball and paddles and setting
