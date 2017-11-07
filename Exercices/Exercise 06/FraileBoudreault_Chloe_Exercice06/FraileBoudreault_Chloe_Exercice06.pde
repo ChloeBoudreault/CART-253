@@ -62,8 +62,10 @@ void draw() {
   }
   
   // For now we just draw a crappy ellipse at the brightest pixel
-  fill(#ff0000);
-  stroke(#ffff00);
+  //CHANGED!!!
+  //changed ellipse colour
+  fill(0);
+  stroke(255,0,0);
   strokeWeight(10);
   //CHANGED!!!!
   ellipse(brightestPixelX,brightestPixelY,20,20);
