@@ -6,7 +6,6 @@ class MichaelJacksonPong {
 
   // The distance from the edge of the window a paddle should be
   int PADDLE_INSET = 8;
-  int PADDLE_HEIGHT = 170;
 
   // The background colour during play (black)
   color backgroundColor = color(0);
@@ -18,9 +17,6 @@ class MichaelJacksonPong {
   //added score for left and right players
   int score1 = 0;
   int score2 = 0;
-  int score3 = 0;
-  //added final winning score
-  int winningScore = 7;
 
   // BasicPong()
   //
@@ -65,7 +61,6 @@ class MichaelJacksonPong {
     rightPaddle.display();
     ball.display();
     displayScore();
-    gameOver();
   }
   
   void displayScore() {
@@ -76,48 +71,6 @@ class MichaelJacksonPong {
   text (leftPaddle.score, width/4, 78);
   text (rightPaddle.score, width - (width/4), 78);
   }
-  
-void gameOver() {
-  if (leftPaddle.score == winningScore) {
-    //they win, this displays the "Left Player Wins!" string
-    displayGameOver ("Left Player Wins!");
-    //the ball stops moving
-    ball.vx = 0;
-    ball. vy = 0;
-
-
-    //the paddles stop moving too
-    leftPaddle.vx = 0;
-    leftPaddle.vy = 0;
-    rightPaddle.vx = 0;
-    rightPaddle.vy = 0;
-  }
-  
-  if (rightPaddle.score == winningScore) {
-    //they win, this displays the "Right Player Wins!" string
-    displayGameOver ("Right Players Wins!");
-    //the ball stops moving
-    ball.vx = 0;
-    ball. vy = 0;
-
-    //the paddles stop moving too
-    leftPaddle.vx = 0;
-    leftPaddle.vy = 0;
-    rightPaddle.vx = 0;
-    rightPaddle.vy = 0;
-  }
-}
-
-  //CHANGED!!!!!!
-//this function displays the end game text
-void displayGameOver (String gameOverText) {
-  //this sets the text and its location on the screen
-  //CHANGED!!!!
-  //changed the height of the game over text so it appears bellow the image
-  text ("Game Over!", width/2, height/2);
-  text(gameOverText, width/2, (height/2 +70));
-}
-
 
 void ballColorChange () {
     if (ball.x < (width/2+70) && ball.y < (height/2-150)) {

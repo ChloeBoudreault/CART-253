@@ -34,6 +34,7 @@ class Menu {
     text("(B)LUE PONG", width/2, 100);
     text("(I)NVISIBLE PONG", width/2, 150);
     text("(M)ICHAEL JACKSON PONG", width/2, 200);
+    text("(U)NFAIR OR USELESS PONG", width/2, 250);
   }
 
   // keyPressed()
@@ -51,9 +52,11 @@ class Menu {
       selection = State.INVISIBLE_PONG;
     } else if (key == 'm' || key == 'M') {
       selection = State.MICHAEL_JACKSON_PONG;
-    }
+    } else if (key == 'u' || key == 'U') {
+      selection = State.UNFAIR_OR_USELESS_PONG;
   }
-
+  }
+  
   // keyReleased()
   //
   // Does nothing.

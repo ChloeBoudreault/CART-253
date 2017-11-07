@@ -14,7 +14,8 @@ enum State {
     BASIC_PONG, 
     BLUE_PONG, 
     INVISIBLE_PONG, 
-    MICHAEL_JACKSON_PONG
+    MICHAEL_JACKSON_PONG,
+    UNFAIR_OR_USELESS_PONG
 }
 // This is the variable that actually tracks the state in the game
 State state;
@@ -27,6 +28,7 @@ BasicPong basicPong;
 BluePong bluePong;
 InvisiblePong invisiblePong;
 MichaelJacksonPong michaelJacksonPong;
+UnfairOrUselessPong unfairOrUselessPong;
 
 // setup()
 //
@@ -43,6 +45,7 @@ void setup() {
   bluePong = new BluePong();
   invisiblePong = new InvisiblePong();
   michaelJacksonPong = new MichaelJacksonPong();
+  unfairOrUselessPong = new UnfairOrUselessPong();
 
   // We start our state in the title screen
   state = State.TITLE;
@@ -126,6 +129,15 @@ void draw() {
       michaelJacksonPong.reset();
     }
     break;
+    
+    case UNFAIR_OR_USELESS_PONG:
+    unfairOrUselessPong.update();
+    if (unfairOrUselessPong.returnToMenu) {
+      state = State.MENU;
+      unfairOrUselessPong.returnToMenu = false;
+      unfairOrUselessPong.reset();
+    }
+    break;
   }
 }
 
@@ -157,11 +169,15 @@ void keyPressed() {
 
   case INVISIBLE_PONG:
     invisiblePong.keyPressed();
-
+   break;
 
   case MICHAEL_JACKSON_PONG:
     michaelJacksonPong.keyPressed();
     break;
+    
+  case UNFAIR_OR_USELESS_PONG:
+  unfairOrUselessPong.keyPressed();
+  break;
   }
 }
 
@@ -199,5 +215,9 @@ void keyReleased() {
   case MICHAEL_JACKSON_PONG:
     michaelJacksonPong.keyReleased();
     break;
+    
+  case UNFAIR_OR_USELESS_PONG:
+  unfairOrUselessPong.keyReleased();
+  break;
   }
 }

@@ -1,5 +1,6 @@
-class InvisiblePong {
-  
+class UnfairOrUselessPong {
+
+  // Variables to store the main objects in the game (the paddles and ball)
   Paddle leftPaddle;
   Paddle rightPaddle;
   Ball ball;
@@ -12,8 +13,8 @@ class InvisiblePong {
 
   // A boolean to track whether we should return to the menu
   boolean returnToMenu = false;
-  
-    //CHANGED!!!!!!!!
+
+  //CHANGED!!!!!!!!
   //added score for left and right players
   int score1 = 0;
   int score2 = 0;
@@ -22,8 +23,8 @@ class InvisiblePong {
   //
   // Creates the paddles and ball
 
-    InvisiblePong() {
-     // Create a paddle on either side of the screen
+  UnfairOrUselessPong() {
+    // Create a paddle on either side of the screen
     leftPaddle = new Paddle(PADDLE_INSET, height/2, '2', 'q');
     rightPaddle = new Paddle(width - PADDLE_INSET, height/2, '0', 'p');
 
@@ -39,7 +40,8 @@ class InvisiblePong {
   void update() {
     // Fill the background each frame so we have animation
     background(backgroundColor);
-    ball.ballColor = 14;
+    leftPaddle.HEIGHT = 470;
+    rightPaddle.HEIGHT = 470;
 
     // Update the paddles and ball by calling their update methods
     leftPaddle.update();
@@ -62,7 +64,7 @@ class InvisiblePong {
     ball.display();
     displayScore();
   }
-  
+
   void displayScore() {
   textSize (50);
   textAlign (CENTER);
@@ -70,44 +72,44 @@ class InvisiblePong {
   //works with the paddle and ball
   text (leftPaddle.score, width/4, 78);
   text (rightPaddle.score, width - (width/4), 78);
-  }
-  
-  // reset()
-  //
-  // Resets the game by resetting the ball and paddles and setting
-  // returnToMenu to false
-  
-  void reset() {
-    ball.reset();
-    leftPaddle.reset();
-    rightPaddle.reset();
-    returnToMenu = false;
-  }
+}
 
-  // keyPressed()
-  //
-  // The paddles need to know if they should move based on a keypress
-  // so when the keypress is detected in the main program we need to
-  // tell the paddles
+// reset()
+//
+// Resets the game by resetting the ball and paddles and setting
+// returnToMenu to false
 
-  void keyPressed() {
-    // Just call both paddles' own keyPressed methods
-    leftPaddle.keyPressed();
-    rightPaddle.keyPressed();
-    
-    // Check if we should return to the menu
-    if (key == 'm' || key == 'M') {
-     returnToMenu = true; 
-    }
+void reset() {
+  ball.reset();
+  leftPaddle.reset();
+  rightPaddle.reset();
+  returnToMenu = false;
+}
+
+// keyPressed()
+//
+// The paddles need to know if they should move based on a keypress
+// so when the keypress is detected in the main program we need to
+// tell the paddles
+
+void keyPressed() {
+  // Just call both paddles' own keyPressed methods
+  leftPaddle.keyPressed();
+  rightPaddle.keyPressed();
+
+  // Check if we should return to the menu
+  if (key == 'm' || key == 'M') {
+    returnToMenu = true;
   }
+}
 
-  // keyReleased()
-  //
-  // As for keyPressed, except for released!
+// keyReleased()
+//
+// As for keyPressed, except for released!
 
-  void keyReleased() {
-    // Call both paddles' keyReleased methods
-    leftPaddle.keyReleased();
-    rightPaddle.keyReleased();
-  }
+void keyReleased() {
+  // Call both paddles' keyReleased methods
+  leftPaddle.keyReleased();
+  rightPaddle.keyReleased();
+}
 }
