@@ -43,7 +43,8 @@ class UnfairOrUselessPong {
     // Fill the background each frame so we have animation
     background(backgroundColor);
     leftPaddle.HEIGHT = 470;
-    rightPaddle.HEIGHT = 470;
+    rightPaddle.HEIGHT = 12;
+    rightPaddle.WIDTH = 12;
 
     // Update the paddles and ball by calling their update methods
     leftPaddle.update();
