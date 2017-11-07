@@ -65,7 +65,8 @@ void draw() {
   fill(#ff0000);
   stroke(#ffff00);
   strokeWeight(10);
-  ellipse(brightestPixel.x,brightestPixel.y,20,20);
+  //CHANGED!!!!
+  ellipse(brightestPixelX,brightestPixelY,20,20);
 }
 
 // handleVideoInput
@@ -104,8 +105,9 @@ void handleVideoInput() {
         // Remember where this pixel is in the the grid of pixels
         // (and therefore on the screen) by setting the PVector
         // brightestPixel's x and y properties.
-        brightestPixel.x = x;
-        brightestPixel.y = y;
+        //CHANGED!!!!
+        brightestPixelX = x;
+        brightestPixelY = y;
       }
     }
   }
