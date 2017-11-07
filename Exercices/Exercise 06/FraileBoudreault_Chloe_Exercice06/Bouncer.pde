@@ -21,6 +21,10 @@ class Bouncer {
 
   // The default fill colour of the Bouncer
   color defaultColor;
+  
+  //CHANGED!!!!!
+  //added float
+  float followPixel = 0.05;
 
   // Bouncer(tempX,tempY,tempVX,tempVY,tempSize,tempDefaultColor)
   //
@@ -77,6 +81,8 @@ class Bouncer {
   void display() {
     noStroke();
     fill(fillColor);
+    float newX =
+    float newY =
     ellipse(x, y, size, size);
   }
 }

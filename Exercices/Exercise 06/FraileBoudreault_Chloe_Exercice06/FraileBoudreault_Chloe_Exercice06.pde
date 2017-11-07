@@ -11,7 +11,11 @@ Capture video;
 // A PVector allows us to store an x and y location in a single object
 // When we create it we give it the starting x and y (which I'm setting to -1, -1
 // as a default value)
-PVector brightestPixel = new PVector(-1,-1);
+//PVector brightestPixel = new PVector(-1,-1);
+//CHANGED!!!!!!!
+//created different floats for X and Y location
+float brightestPixelX;
+float brightestPixelY;
 
 // An array of bouncers to play with
 Bouncer[] bouncers = new Bouncer[10];
