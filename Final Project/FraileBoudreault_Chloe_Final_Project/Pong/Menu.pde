@@ -17,7 +17,7 @@ class Menu {
   // update()
   //
   // The update method just displays the menu
-  
+
   void update() {
     display();
   }
@@ -25,16 +25,17 @@ class Menu {
   // display()
   //
   // The display method displays the options available in the game
-  
+
   void display() {
     background(0);
     textAlign(CENTER, CENTER);
     textSize(32);
-    text("(P)ONG", width/2, 50);
-    text("(B)LUE PONG", width/2, 100);
-    text("(I)NVISIBLE PONG", width/2, 150);
-    text("(M)ICHAEL JACKSON PONG", width/2, 200);
-    text("(U)NFAIR OR USELESS PONG", width/2, 250);
+    text("1. PONG", width/2, 50);
+    text("2. BLUE PONG", width/2, 100);
+    text("3. INVISIBLE PONG", width/2, 150);
+    text("4. MICHAEL JACKSON PONG", width/2, 200);
+    text("5. UNFAIR OR USELESS PONG", width/2, 250);
+    text("6. ITSY BITSY PONG", width/2, 300);
   }
 
   // keyPressed()
@@ -42,25 +43,27 @@ class Menu {
   // Called by the main program when the menu is active. If the player
   // presses a key to select one of the game versions, this object
   // will remember the state chosen.
-  
+
   void keyPressed() {
-    if (key == 'p' || key == 'P') {
+    if (key == '1') {
       selection = State.BASIC_PONG;
-    } else if (key == 'b' || key == 'B') {
+    } else if (key == '2') {
       selection = State.BLUE_PONG;
-    } else if (key == 'i' || key == 'I') {
+    } else if (key == '3') {
       selection = State.INVISIBLE_PONG;
-    } else if (key == 'm' || key == 'M') {
+    } else if (key == '4') {
       selection = State.MICHAEL_JACKSON_PONG;
-    } else if (key == 'u' || key == 'U') {
+    } else if (key == '5') {
       selection = State.UNFAIR_OR_USELESS_PONG;
+    } else if (key == '6') {
+      selection = State.ITSY_BITSY_PONG;
+    }
   }
-  }
-  
+
   // keyReleased()
   //
   // Does nothing.
-  
+
   void keyReleased() {
   }
 }
