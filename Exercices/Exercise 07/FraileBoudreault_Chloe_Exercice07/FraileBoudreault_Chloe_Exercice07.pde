@@ -6,6 +6,11 @@ import processing.sound.*;
 
 // An array of bouncers to play with
 Bouncer[] bouncers = new Bouncer[10];
+//CHANGED!!!!
+//added soundFile array in order to store some sound files
+SoundFile[] tones = new SoundFile [1];
+// The number of frames per beat of music
+int framesPerBeat = 15;
 
 // setup()
 //
