@@ -35,15 +35,15 @@ void setup() {
   }
 }
 
-  void draw() {
-    background (255);
+void draw() {
+  background (255);
 
-    // Our old friend the for-loop running through the length of an array to
-    // update and display objects, in this case Bouncers.
-    // If the brightness (or other video property) is going to interact with all the
-    // Bouncers, it will need to happen in here.
-    for (int i = 0; i < bouncers.length; i++) {
-      bouncers[i].update();
-      bouncers[i].display();
-    }
+  // Our old friend the for-loop running through the length of an array to
+  // update and display objects, in this case Bouncers.
+  // If the brightness (or other video property) is going to interact with all the
+  // Bouncers, it will need to happen in here.
+  for (int i = 0; i < bouncers.length; i++) {
+    bouncers[i].update();
+    bouncers[i].display();
   }
+}
