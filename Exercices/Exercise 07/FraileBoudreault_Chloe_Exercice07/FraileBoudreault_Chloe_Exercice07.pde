@@ -1,3 +1,5 @@
+import processing.sound.*;
+
 //Took the code from the previous exercise, exercise 06
 //minus the webcam, video library
 
