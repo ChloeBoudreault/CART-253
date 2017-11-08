@@ -59,12 +59,22 @@ class Bouncer {
     if (x - size/2 < 0 || x + size/2 > width) {
       // Bounce on the x-axis
       vx = -vx;
+      //CHANGED!!!!!
+      // Pick a random index in the array
+      int randomIndex = floor (random(0, tones.length));
+      //Set the sound
+      tones[randomIndex].play();
     }
 
     // Check the top and bottom
     if (y - size/2 < 0 || y + size/2 > height) {
       // Bounce on the y-axis
       vy = -vy;
+      //CHANGED!!!!!
+      //Pick a random index in the array
+      int randomIndex = floor (random(0, tones.length));
+      //Set the sound
+      tones[randomIndex].play();
     }
 
     // Make sure the Bouncer isn't off the edge
