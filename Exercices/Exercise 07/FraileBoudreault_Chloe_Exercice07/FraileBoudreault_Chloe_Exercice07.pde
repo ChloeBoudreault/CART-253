@@ -25,17 +25,25 @@ void setup() {
     // Each Bouncer just starts with random values 
     bouncers[i] = new Bouncer(random(0, width), random(0, height), random(-10, 10), random(-10, 10), random(20, 50), color(random(255)));
   }
-}
-
-void draw() {
-  background (255);
-
-  // Our old friend the for-loop running through the length of an array to
-  // update and display objects, in this case Bouncers.
-  // If the brightness (or other video property) is going to interact with all the
-  // Bouncers, it will need to happen in here.
-  for (int i = 0; i < bouncers.length; i++) {
-    bouncers[i].update();
-    bouncers[i].display();
+  //CHANGED!!!!!
+  // Adding a for-loop to go through the array 
+  //loading sound files into it 
+  for (int i = 0; i < tones.length; i++) {
+    //Use the i variable to work out which filename to use
+    //So far there's only one sound file, adding more if need be
+    tones[i] = new SoundFile (this, "tone0" +  (i+1) + ".mp3");
   }
 }
+
+  void draw() {
+    background (255);
+
+    // Our old friend the for-loop running through the length of an array to
+    // update and display objects, in this case Bouncers.
+    // If the brightness (or other video property) is going to interact with all the
+    // Bouncers, it will need to happen in here.
+    for (int i = 0; i < bouncers.length; i++) {
+      bouncers[i].update();
+      bouncers[i].display();
+    }
+  }
