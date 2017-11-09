@@ -1,3 +1,6 @@
+import processing.sound.*;
+
+
 // Pong(s)
 // by Pippin Barr
 //
