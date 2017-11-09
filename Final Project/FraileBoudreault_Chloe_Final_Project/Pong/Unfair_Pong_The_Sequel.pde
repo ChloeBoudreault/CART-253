@@ -81,6 +81,18 @@ class UnfairPongTheSequel {
     //works with the paddle and ball
     text (leftPaddle.score, width/4, 78);
     text (rightPaddle.score, width - (width/4), 78);
+    
+    
+    //ballX + ball_width/2 < paddle1 + paddle_width/2 || ballX + ball_width/2 < paddle2 - paddle_width/2
+    //ballY + ball_width/2 < paddle1 + paddle_height/2 || ballY + ball_width/2 < paddle2 + paddle_height/2
+    
+   // if (ball.x + ball.SIZE/2 < rightPaddle + rightPaddle.WIDTH ) {
+     // leftPaddle.score++;
+    //}
+    
+   //if (ball.x + ball.SIZE/2 < leftPaddle  ) {
+     //rightPaddle.score++;
+   //}
   }
 
   // reset()
