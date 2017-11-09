@@ -38,6 +38,7 @@ class Menu {
     text("6. ITSY BITSY PONG", width/2, 300);
     text("7. SIZE DOESN'T MATTER IN PONG", width/2, 350);
     text("8. MONKEY PONG", width/2, 400);
+    text("9. PATRIOTIC PONG", width/2, 450);
   }
 
   // keyPressed()
@@ -63,7 +64,9 @@ class Menu {
       selection = State.SIZE_DOESNT_MATTER_IN_PONG;
     } else if (key == '8') {
       selection = State.MONKEY_PONG;
-    }
+    } else if (key == '9') {
+      selection = State.PATRIOTIC_PONG;
+  }
   }
 
   // keyReleased()

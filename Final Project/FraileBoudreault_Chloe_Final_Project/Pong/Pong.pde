@@ -18,7 +18,8 @@ enum State {
     UNFAIR_OR_USELESS_PONG, 
     ITSY_BITSY_PONG, 
     SIZE_DOESNT_MATTER_IN_PONG, 
-    MONKEY_PONG
+    MONKEY_PONG,
+    PATRIOTIC_PONG
 }
 // This is the variable that actually tracks the state in the game
 State state;
@@ -35,6 +36,7 @@ UnfairOrUselessPong unfairOrUselessPong;
 ItsyBitsyPong itsyBitsyPong;
 SizeDoesntMatterInPong sizeDoesntMatterInPong;
 MonkeyPong monkeyPong;
+PatrioticPong patrioticPong;
 
 // setup()
 //
@@ -55,6 +57,7 @@ void setup() {
   itsyBitsyPong = new ItsyBitsyPong();
   sizeDoesntMatterInPong = new SizeDoesntMatterInPong();
   monkeyPong = new MonkeyPong();
+  patrioticPong = new PatrioticPong();
 
   // We start our state in the title screen
   state = State.TITLE;
@@ -175,6 +178,15 @@ void draw() {
       monkeyPong.reset();
     }
     break;
+    
+    case PATRIOTIC_PONG:
+    patrioticPong.update();
+    if (patrioticPong.returnToMenu) {
+      state = State.MENU;
+      patrioticPong.returnToMenu = false;
+      patrioticPong.reset();
+    }
+    break;  
   }
 }
 
@@ -227,6 +239,10 @@ void keyPressed() {
   case MONKEY_PONG:
   monkeyPong.keyPressed();
   break;
+  
+  case PATRIOTIC_PONG:
+  patrioticPong.keyPressed();
+  break;
   }
 }
 
@@ -277,5 +293,10 @@ void keyReleased() {
     
   case MONKEY_PONG:
   monkeyPong.keyReleased();
+  break;
+  
+  case PATRIOTIC_PONG:
+  patrioticPong.keyReleased();
+  break;
   }
 }
