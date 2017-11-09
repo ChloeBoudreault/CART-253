@@ -29,16 +29,17 @@ class Menu {
   void display() {
     background(0);
     textAlign(CENTER, CENTER);
-    textSize(32);
-    text("1. PONG", width/2, 50);
-    text("2. BLUE PONG", width/2, 100);
-    text("3. INVISIBLE PONG", width/2, 150);
-    text("4. MICHAEL JACKSON PONG", width/2, 200);
-    text("5. UNFAIR OR USELESS PONG", width/2, 250);
-    text("6. ITSY BITSY PONG", width/2, 300);
-    text("7. SIZE DOESN'T MATTER IN PONG", width/2, 350);
-    text("8. MONKEY PONG", width/2, 400);
-    text("9. PATRIOTIC PONG", width/2, 450);
+    textSize(25);
+    text("1. PONG", width/2, 40);
+    text("2. BLUE PONG", width/2, 80);
+    text("3. INVISIBLE PONG", width/2, 120);
+    text("4. MICHAEL JACKSON PONG", width/2, 160);
+    text("5. UNFAIR OR USELESS PONG", width/2, 200);
+    text("6. ITSY BITSY PONG", width/2, 240);
+    text("7. SIZE DOESN'T MATTER IN PONG", width/2, 280);
+    text("8. MONKEY PONG", width/2, 320);
+    text("9. PATRIOTIC PONG", width/2, 360);
+    text("A. UNFAIR PONG THE SEQUEL", width/2, 400);
   }
 
   // keyPressed()
@@ -66,7 +67,9 @@ class Menu {
       selection = State.MONKEY_PONG;
     } else if (key == '9') {
       selection = State.PATRIOTIC_PONG;
-  }
+} else if (key == 'a' || key == 'A') {
+  selection = State.UNFAIR_PONG_THE_SEQUEL;
+}
   }
 
   // keyReleased()

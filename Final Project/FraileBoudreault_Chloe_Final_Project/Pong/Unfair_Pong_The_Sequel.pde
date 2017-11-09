@@ -1,4 +1,4 @@
-class PatrioticPong {
+class UnfairPongTheSequel {
 
   // Variables to store the main objects in the game (the paddles and ball)
   Paddle leftPaddle;
@@ -10,8 +10,7 @@ class PatrioticPong {
   int PADDLE_INSET = 8;
 
   // The background colour during play (black)
-  //color backgroundColor = color(0);
-  PImage bg;
+  color backgroundColor = color(0);
 
   // A boolean to track whether we should return to the menu
   boolean returnToMenu = false;
@@ -20,15 +19,12 @@ class PatrioticPong {
   //added score for left and right players
   int score1 = 0;
   int score2 = 0;
-  
-  //SoundFile[] tones = new SoundFile [1];
-  //int framesPerBeat = 15;
 
   // BasicPong()
   //
   // Creates the paddles and ball
 
-  PatrioticPong() {
+  UnfairPongTheSequel() {
     // Create a paddle on either side of the screen
     leftPaddle = new Paddle(PADDLE_INSET, height/2, '2', 'q');
     rightPaddle = new Paddle(width - PADDLE_INSET, height/2, '0', 'p');
@@ -36,18 +32,7 @@ class PatrioticPong {
     // Create the ball at the centre of the screen
     ball = new Ball(width/2, height/2);
     ball2 = new Ball(width - (width/4), height - (height/4));
-    
-    bg = loadImage("CanadaFlag.png");
-    bg.resize(640,480);
-    
-  // for (int i = 0; i < tones.length; i++) {
-    //Use the i variable to work out which filename to use
-    //So far there's only one sound file, adding more if need be
-   //tones[i] = new SoundFile (this, "tone0" + (i+1) + ".mp3");
-  //}
-    
   }
-
 
   // update()
   //
@@ -56,12 +41,7 @@ class PatrioticPong {
 
   void update() {
     // Fill the background each frame so we have animation
-    background(bg);
-    
-    //if (frameCount % framesPerBeat == 0) {
-      //int randomIndex = floor (random (0, tones.length));
-      //tones [randomIndex].play();
-    //}
+    background(backgroundColor);
 
     // Update the paddles and ball by calling their update methods
     leftPaddle.update();
@@ -97,7 +77,7 @@ class PatrioticPong {
   void displayScore() {
     textSize (50);
     textAlign (CENTER);
-    fill(0);
+    fill(255);
     //works with the paddle and ball
     text (leftPaddle.score, width/4, 78);
     text (rightPaddle.score, width - (width/4), 78);

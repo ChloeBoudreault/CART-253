@@ -1,6 +1,5 @@
 import processing.sound.*;
 
-
 // Pong(s)
 // by Pippin Barr
 //
@@ -22,7 +21,8 @@ enum State {
     ITSY_BITSY_PONG, 
     SIZE_DOESNT_MATTER_IN_PONG, 
     MONKEY_PONG,
-    PATRIOTIC_PONG
+    PATRIOTIC_PONG,
+    UNFAIR_PONG_THE_SEQUEL
 }
 // This is the variable that actually tracks the state in the game
 State state;
@@ -40,6 +40,7 @@ ItsyBitsyPong itsyBitsyPong;
 SizeDoesntMatterInPong sizeDoesntMatterInPong;
 MonkeyPong monkeyPong;
 PatrioticPong patrioticPong;
+UnfairPongTheSequel unfairPongTheSequel;
 
 // setup()
 //
@@ -61,6 +62,7 @@ void setup() {
   sizeDoesntMatterInPong = new SizeDoesntMatterInPong();
   monkeyPong = new MonkeyPong();
   patrioticPong = new PatrioticPong();
+  unfairPongTheSequel = new UnfairPongTheSequel();
 
   // We start our state in the title screen
   state = State.TITLE;
@@ -190,6 +192,15 @@ void draw() {
       patrioticPong.reset();
     }
     break;  
+    
+   case UNFAIR_PONG_THE_SEQUEL:
+   unfairPongTheSequel.update();
+    if (unfairPongTheSequel.returnToMenu) {
+      state = State.MENU;
+      unfairPongTheSequel.returnToMenu = false;
+      unfairPongTheSequel.reset();
+    }
+    break;  
   }
 }
 
@@ -246,6 +257,10 @@ void keyPressed() {
   case PATRIOTIC_PONG:
   patrioticPong.keyPressed();
   break;
+  
+  case UNFAIR_PONG_THE_SEQUEL:
+  unfairPongTheSequel.keyPressed();
+  break;
   }
 }
 
@@ -300,6 +315,10 @@ void keyReleased() {
   
   case PATRIOTIC_PONG:
   patrioticPong.keyReleased();
+  break;
+  
+  case UNFAIR_PONG_THE_SEQUEL:
+  unfairPongTheSequel.keyReleased();
   break;
   }
 }
