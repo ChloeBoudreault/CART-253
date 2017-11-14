@@ -87,13 +87,25 @@ class MichaelJacksonPong {
     if (ball.x < (width/2+70) && ball.y < (height/2-150)) {
       ball.ballColor = 14;
       ball2.ballColor = 255;
+    } else if (ball.x < (width/2+190) && ball.y < (height/2-143)) {
+      ball.ballColor = 255;
+      ball2.ballColor = 14;
     } else if (ball.x > (width/2-10) && ball.y < (height/2+30)) { 
       ball.ballColor = 14;
       ball2.ballColor = 255;
-    } else if (ball.x < (width/2-200) && ball.y > (height/2-120)) { 
+    } else if (ball.x > (width/2-55) && ball.y < (height/2+349)) {
+      ball.ballColor = 255;
+      ball2.ballColor = 14;
+    }else if (ball.x < (width/2-200) && ball.y > (height/2-120)) { 
+      ball.ballColor = 14;
+      ball2.ballColor = 255;
+    } else if (ball.x < (width/2-168) && ball.y > (height/2-87)) {
       ball.ballColor = 255;
       ball2.ballColor = 14;
     } else if (ball.x > (width/2+64) && ball.y > (height/2+55)) { 
+      ball.ballColor = 14;
+      ball2.ballColor = 255;
+    } else if (ball.x > (width/2+217) && ball.y > (height/2+184)) {
       ball.ballColor = 255;
       ball2.ballColor = 14;
     }
