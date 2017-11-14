@@ -22,7 +22,8 @@ enum State {
     SIZE_DOESNT_MATTER_IN_PONG, 
     MONKEY_PONG,
     PATRIOTIC_PONG,
-    UNFAIR_PONG_THE_SEQUEL
+    UNFAIR_PONG_THE_SEQUEL,
+    HOPE_YOU_LIKE_COLOURS_PONG
 }
 // This is the variable that actually tracks the state in the game
 State state;
@@ -41,6 +42,7 @@ SizeDoesntMatterInPong sizeDoesntMatterInPong;
 MonkeyPong monkeyPong;
 PatrioticPong patrioticPong;
 UnfairPongTheSequel unfairPongTheSequel;
+HopeYouLikeColoursPong hopeYouLikeColoursPong;
 
 // setup()
 //
@@ -63,6 +65,7 @@ void setup() {
   monkeyPong = new MonkeyPong();
   patrioticPong = new PatrioticPong(this);
   unfairPongTheSequel = new UnfairPongTheSequel();
+  hopeYouLikeColoursPong = new HopeYouLikeColoursPong();
 
   // We start our state in the title screen
   state = State.TITLE;
@@ -201,7 +204,17 @@ void draw() {
       unfairPongTheSequel.reset();
     }
     break;  
+     
+       case HOPE_YOU_LIKE_COLOURS_PONG:
+   hopeYouLikeColoursPong.update();
+    if (hopeYouLikeColoursPong.returnToMenu) {
+      state = State.MENU;
+      hopeYouLikeColoursPong.returnToMenu = false;
+      hopeYouLikeColoursPong.reset();
+     break;
+     
   }
+}
 }
 
 // keyPressed()
@@ -261,8 +274,13 @@ void keyPressed() {
   case UNFAIR_PONG_THE_SEQUEL:
   unfairPongTheSequel.keyPressed();
   break;
+
+case HOPE_YOU_LIKE_COLOURS_PONG:
+hopeYouLikeColoursPong.keyPressed();
+break;
   }
 }
+
 
 // keyReleased()
 //
@@ -320,5 +338,9 @@ void keyReleased() {
   case UNFAIR_PONG_THE_SEQUEL:
   unfairPongTheSequel.keyReleased();
   break;
+
+case HOPE_YOU_LIKE_COLOURS_PONG:
+hopeYouLikeColoursPong.keyReleased();
+break;
   }
 }

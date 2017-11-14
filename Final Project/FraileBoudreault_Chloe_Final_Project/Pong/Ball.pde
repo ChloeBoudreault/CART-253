@@ -137,9 +137,10 @@ class Ball {
 
   void display() {
     // Set up the appearance of the ball (no stroke, a fill, and rectMode as CENTER)
-    noStroke();
+    stroke(0);
+    strokeWeight (5);
     fill(ballColor);
-    rectMode(CENTER);
+    rectMode(ENTER);
 
     // Draw the ball
     ellipse(x, y, SIZE, SIZE);
