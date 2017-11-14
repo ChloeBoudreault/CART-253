@@ -68,12 +68,11 @@ class Menu {
       selection = State.MONKEY_PONG;
     } else if (key == '9') {
       selection = State.PATRIOTIC_PONG;
-} else if (key == 'a' || key == 'A') {
-  selection = State.UNFAIR_PONG_THE_SEQUEL;
-
-} else if (key == 'b' || key == 'B') {
-  selection = State.HOPE_YOU_LIKE_COLOURS_PONG;
-  }
+    } else if (key == 'a' || key == 'A') {
+      selection = State.UNFAIR_PONG_THE_SEQUEL;
+    } else if (key == 'b' || key == 'B') {
+      selection = State.HOPE_YOU_LIKE_COLOURS_PONG;
+    }
   }
 
   // keyReleased()

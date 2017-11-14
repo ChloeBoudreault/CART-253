@@ -41,7 +41,7 @@ class MichaelJacksonPong {
   void update() {
     // Fill the background each frame so we have animation
     background(backgroundColor);
-    //ball.ballColor = 14;
+    ballColorChange();
 
     // Update the paddles and ball by calling their update methods
     leftPaddle.update();

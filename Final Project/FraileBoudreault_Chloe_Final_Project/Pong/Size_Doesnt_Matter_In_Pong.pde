@@ -40,6 +40,7 @@ class SizeDoesntMatterInPong {
   void update() {
     // Fill the background each frame so we have animation
     background(backgroundColor);
+    paddleSizeChange();
 
     // Update the paddles and ball by calling their update methods
     leftPaddle.update();

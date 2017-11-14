@@ -20,9 +20,9 @@ enum State {
     UNFAIR_OR_USELESS_PONG, 
     ITSY_BITSY_PONG, 
     SIZE_DOESNT_MATTER_IN_PONG, 
-    MONKEY_PONG,
-    PATRIOTIC_PONG,
-    UNFAIR_PONG_THE_SEQUEL,
+    MONKEY_PONG, 
+    PATRIOTIC_PONG, 
+    UNFAIR_PONG_THE_SEQUEL, 
     HOPE_YOU_LIKE_COLOURS_PONG
 }
 // This is the variable that actually tracks the state in the game
@@ -142,7 +142,6 @@ void draw() {
 
   case MICHAEL_JACKSON_PONG:
     michaelJacksonPong.update();
-    michaelJacksonPong.ballColorChange();
     if (michaelJacksonPong.returnToMenu) {
       state = State.MENU;
       michaelJacksonPong.returnToMenu = false;
@@ -170,7 +169,6 @@ void draw() {
 
   case SIZE_DOESNT_MATTER_IN_PONG:
     sizeDoesntMatterInPong.update();
-    sizeDoesntMatterInPong.paddleSizeChange();
     if (sizeDoesntMatterInPong.returnToMenu) {
       state = State.MENU;
       sizeDoesntMatterInPong.returnToMenu = false;
@@ -186,8 +184,8 @@ void draw() {
       monkeyPong.reset();
     }
     break;
-    
-    case PATRIOTIC_PONG:
+
+  case PATRIOTIC_PONG:
     patrioticPong.update();
     if (patrioticPong.returnToMenu) {
       state = State.MENU;
@@ -195,27 +193,27 @@ void draw() {
       patrioticPong.reset();
     }
     break;  
-    
-   case UNFAIR_PONG_THE_SEQUEL:
-   unfairPongTheSequel.update();
+
+  case UNFAIR_PONG_THE_SEQUEL:
+    unfairPongTheSequel.update();
     if (unfairPongTheSequel.returnToMenu) {
       state = State.MENU;
       unfairPongTheSequel.returnToMenu = false;
       unfairPongTheSequel.reset();
     }
     break;  
-     
-       case HOPE_YOU_LIKE_COLOURS_PONG:
-   hopeYouLikeColoursPong.update();
+
+  case HOPE_YOU_LIKE_COLOURS_PONG:
+    hopeYouLikeColoursPong.update();
     if (hopeYouLikeColoursPong.returnToMenu) {
       state = State.MENU;
       hopeYouLikeColoursPong.returnToMenu = false;
       hopeYouLikeColoursPong.reset();
-     break;
-     
+    }
+    break;
   }
 }
-}
+
 
 // keyPressed()
 //
@@ -262,22 +260,22 @@ void keyPressed() {
   case SIZE_DOESNT_MATTER_IN_PONG:
     sizeDoesntMatterInPong.keyPressed();
     break;
-    
-  case MONKEY_PONG:
-  monkeyPong.keyPressed();
-  break;
-  
-  case PATRIOTIC_PONG:
-  patrioticPong.keyPressed();
-  break;
-  
-  case UNFAIR_PONG_THE_SEQUEL:
-  unfairPongTheSequel.keyPressed();
-  break;
 
-case HOPE_YOU_LIKE_COLOURS_PONG:
-hopeYouLikeColoursPong.keyPressed();
-break;
+  case MONKEY_PONG:
+    monkeyPong.keyPressed();
+    break;
+
+  case PATRIOTIC_PONG:
+    patrioticPong.keyPressed();
+    break;
+
+  case UNFAIR_PONG_THE_SEQUEL:
+    unfairPongTheSequel.keyPressed();
+    break;
+
+  case HOPE_YOU_LIKE_COLOURS_PONG:
+    hopeYouLikeColoursPong.keyPressed();
+    break;
   }
 }
 
@@ -326,21 +324,21 @@ void keyReleased() {
   case SIZE_DOESNT_MATTER_IN_PONG:
     sizeDoesntMatterInPong.keyReleased();
     break;
-    
-  case MONKEY_PONG:
-  monkeyPong.keyReleased();
-  break;
-  
-  case PATRIOTIC_PONG:
-  patrioticPong.keyReleased();
-  break;
-  
-  case UNFAIR_PONG_THE_SEQUEL:
-  unfairPongTheSequel.keyReleased();
-  break;
 
-case HOPE_YOU_LIKE_COLOURS_PONG:
-hopeYouLikeColoursPong.keyReleased();
-break;
+  case MONKEY_PONG:
+    monkeyPong.keyReleased();
+    break;
+
+  case PATRIOTIC_PONG:
+    patrioticPong.keyReleased();
+    break;
+
+  case UNFAIR_PONG_THE_SEQUEL:
+    unfairPongTheSequel.keyReleased();
+    break;
+
+  case HOPE_YOU_LIKE_COLOURS_PONG:
+    hopeYouLikeColoursPong.keyReleased();
+    break;
   }
 }

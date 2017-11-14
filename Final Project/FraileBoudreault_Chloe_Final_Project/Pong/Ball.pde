@@ -137,8 +137,7 @@ class Ball {
 
   void display() {
     // Set up the appearance of the ball (no stroke, a fill, and rectMode as CENTER)
-    stroke(0);
-    strokeWeight (5);
+    noStroke();
     fill(ballColor);
     rectMode(ENTER);
 

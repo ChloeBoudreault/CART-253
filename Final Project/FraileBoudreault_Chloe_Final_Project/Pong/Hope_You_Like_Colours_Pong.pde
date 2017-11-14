@@ -9,9 +9,6 @@ class HopeYouLikeColoursPong {
   // The distance from the edge of the window a paddle should be
   int PADDLE_INSET = 8;
 
-  // The background colour during play (black)
-  color backgroundColor = color(0);
-
   // A boolean to track whether we should return to the menu
   boolean returnToMenu = false;
 
@@ -41,7 +38,8 @@ class HopeYouLikeColoursPong {
 
   void update() {
     // Fill the background each frame so we have animation
-    background(backgroundColor);
+      backgroundColorChange();
+
 
     // Update the paddles and ball by calling their update methods
     leftPaddle.update();
@@ -81,6 +79,19 @@ class HopeYouLikeColoursPong {
     //works with the paddle and ball
     text (leftPaddle.score, width/4, 78);
     text (rightPaddle.score, width - (width/4), 78);
+  }
+
+
+  void backgroundColorChange () {
+    if (ball.x < (width/2+70) && ball.y < (height/2-150)) {
+      background(20,0,20);
+    } else if (ball.x < (width/2+190) && ball.y < (height/2-143)) {
+      background(0,255,21);
+    } else if (ball.x > (width/2-10) && ball.y < (height/2+30)) { 
+      background(50,61,94);
+    } else if (ball.x > (width/2-55) && ball.y < (height/2+349)) {
+      background(21,94,83);
+    }
   }
 
   // reset()
