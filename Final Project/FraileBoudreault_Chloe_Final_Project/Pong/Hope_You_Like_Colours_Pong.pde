@@ -38,7 +38,7 @@ class HopeYouLikeColoursPong {
 
   void update() {
     // Fill the background each frame so we have animation
-      backgroundColorChange();
+    backgroundColorChange();
 
 
     // Update the paddles and ball by calling their update methods
@@ -84,16 +84,24 @@ class HopeYouLikeColoursPong {
 
   void backgroundColorChange () {
     if (ball.x < (width/2+70) && ball.y < (height/2-150)) {
-      background(20,0,20);
+      background(255);
     } else if (ball.x < (width/2+190) && ball.y < (height/2-143)) {
-      background(0,255,21);
+      background(0);
     } else if (ball.x > (width/2-10) && ball.y < (height/2+30)) { 
-      background(50,61,94);
+      background(0);
     } else if (ball.x > (width/2-55) && ball.y < (height/2+349)) {
-      background(21,94,83);
+      background(255);
+    } else if (ball.x < (width/2-200) && ball.y > (height/2-120)) { 
+      background (0);
+    } else if (ball.x < (width/2-168) && ball.y > (height/2-87)) {
+      background(255 );
+    } else if (ball.x > (width/2+64) && ball.y > (height/2+55)) { 
+      background (255);
+    } else if (ball.x > (width/2+217) && ball.y > (height/2+184)) {
+      background(0);
     }
   }
-
+  
   // reset()
   //
   // Resets the game by resetting the ball and paddles and setting
