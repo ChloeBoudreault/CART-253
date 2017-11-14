@@ -30,8 +30,8 @@ class UnfairPongTheSequel {
     rightPaddle = new Paddle(width - PADDLE_INSET, height/2, '0', 'p');
 
     // Create the ball at the centre of the screen
-    ball = new Ball(width/2, height/2);
-    ball2 = new Ball(width - (width/4), height - (height/4));
+    ball = new Ball(width/2, height/2, false);
+    ball2 = new Ball(width - (width/4), height - (height/4), false);
   }
 
   // update()
@@ -50,10 +50,20 @@ class UnfairPongTheSequel {
     ball2.update();
 
     // Check if the ball has collided with either paddle
-    ball.collide(leftPaddle);
-    ball.collide(rightPaddle);
-    ball2.collide(leftPaddle);
-    ball2.collide(rightPaddle);
+   if ( ball.collide(leftPaddle)) {
+     rightPaddle.score++;
+   }
+   if (ball.collide(rightPaddle)) {
+     leftPaddle.score++;
+   }
+   
+    if (ball2.collide(leftPaddle)) {
+      rightPaddle.score++;
+    }
+    
+    if (ball2.collide(rightPaddle)) {
+      leftPaddle.score++;
+    }
 
     // Check if the ball has gone off the screen
     if (ball.isOffScreen()) {
@@ -81,18 +91,6 @@ class UnfairPongTheSequel {
     //works with the paddle and ball
     text (leftPaddle.score, width/4, 78);
     text (rightPaddle.score, width - (width/4), 78);
-    
-    
-    //ballX + ball_width/2 < paddle1 + paddle_width/2 || ballX + ball_width/2 < paddle2 - paddle_width/2
-    //ballY + ball_width/2 < paddle1 + paddle_height/2 || ballY + ball_width/2 < paddle2 + paddle_height/2
-    
-   // if (ball.x + ball.SIZE/2 < rightPaddle + rightPaddle.WIDTH ) {
-     // leftPaddle.score++;
-    //}
-    
-   //if (ball.x + ball.SIZE/2 < leftPaddle  ) {
-     //rightPaddle.score++;
-   //}
   }
 
   // reset()

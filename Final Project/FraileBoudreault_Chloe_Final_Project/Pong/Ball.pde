@@ -21,6 +21,8 @@ class Ball {
 
   // The colour of the ball
   color ballColor = color(255);
+  
+  boolean trackScore = true;
 
 
   /////////////// Constructor ///////////////
@@ -39,6 +41,15 @@ class Ball {
     y = _y;
     vx = SPEED;
     vy = SPEED;
+    trackScore = true;
+  }
+  
+   Ball(int _x, int _y, boolean _trackScore) {
+    x = _x;
+    y = _y;
+    vx = SPEED;
+    vy = SPEED;
+    trackScore = _trackScore;
   }
 
 
@@ -91,7 +102,8 @@ class Ball {
   // If it is, it makes the ball bounce away from the paddle by reversing its
   // x velocity
 
-  void collide(Paddle paddle) {
+  boolean collide(Paddle paddle) {
+    
     // Calculate possible overlaps with the paddle side by side
     boolean insideLeft = (x + SIZE/2 > paddle.x - paddle.WIDTH/2);
     boolean insideRight = (x - SIZE/2 < paddle.x + paddle.WIDTH/2);
@@ -109,9 +121,14 @@ class Ball {
         x = paddle.x - paddle.WIDTH/2 - SIZE/2;
       }
       // And make it bounce
-      vx = -vx;
+      
+     vx = -vx;
+     if (trackScore) {
       paddle.score++;
     }
+    return true;
+  }
+  return false;
   }
 
   // display()

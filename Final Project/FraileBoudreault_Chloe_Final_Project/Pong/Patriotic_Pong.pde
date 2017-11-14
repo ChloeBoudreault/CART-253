@@ -21,14 +21,14 @@ class PatrioticPong {
   int score1 = 0;
   int score2 = 0;
   
-  //SoundFile[] tones = new SoundFile [1];
-  //int framesPerBeat = 15;
+  SoundFile[] tones = new SoundFile [1];
+  int framesPerBeat = 15;
 
   // BasicPong()
   //
   // Creates the paddles and ball
 
-  PatrioticPong() {
+  PatrioticPong(PApplet processing) {
     // Create a paddle on either side of the screen
     leftPaddle = new Paddle(PADDLE_INSET, height/2, '2', 'q');
     rightPaddle = new Paddle(width - PADDLE_INSET, height/2, '0', 'p');
@@ -40,11 +40,11 @@ class PatrioticPong {
     bg = loadImage("CanadaFlag.png");
     bg.resize(640,480);
     
-  // for (int i = 0; i < tones.length; i++) {
+   for (int i = 0; i < tones.length; i++) {
     //Use the i variable to work out which filename to use
     //So far there's only one sound file, adding more if need be
-   //tones[i] = new SoundFile (this, "tone0" + (i+1) + ".mp3");
-  //}
+   tones[i] = new SoundFile (processing, "tone0" + (i+1) + ".mp3");
+  }
     
   }
 
@@ -58,10 +58,10 @@ class PatrioticPong {
     // Fill the background each frame so we have animation
     background(bg);
     
-    //if (frameCount % framesPerBeat == 0) {
-      //int randomIndex = floor (random (0, tones.length));
-      //tones [randomIndex].play();
-    //}
+    if (frameCount % framesPerBeat == 0) {
+      int randomIndex = floor (random (0, tones.length));
+      tones [randomIndex].play();
+    }
 
     // Update the paddles and ball by calling their update methods
     leftPaddle.update();

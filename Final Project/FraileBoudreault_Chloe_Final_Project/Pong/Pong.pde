@@ -61,7 +61,7 @@ void setup() {
   itsyBitsyPong = new ItsyBitsyPong();
   sizeDoesntMatterInPong = new SizeDoesntMatterInPong();
   monkeyPong = new MonkeyPong();
-  patrioticPong = new PatrioticPong();
+  patrioticPong = new PatrioticPong(this);
   unfairPongTheSequel = new UnfairPongTheSequel();
 
   // We start our state in the title screen
