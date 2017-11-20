@@ -13,6 +13,8 @@ enum State {
     MENU, 
     BASIC_PONG, 
     BLUE_PONG, 
+    //CHANGED!!!
+    //added pong options below
     UNFAIR_OR_USELESS_PONG, 
     MONKEY_PONG
 }
@@ -25,6 +27,8 @@ Title title;
 Menu menu;
 BasicPong basicPong;
 BluePong bluePong;
+//CHANGED!!!!!
+//added pong variables below
 UnfairOrUselessPong unfairOrUselessPong;
 MonkeyPong monkeyPong;
 
@@ -41,6 +45,8 @@ void setup() {
   menu = new Menu();
   basicPong = new BasicPong();
   bluePong = new BluePong();
+  //CHANGED!!!!!
+  //added pong states below
   unfairOrUselessPong = new UnfairOrUselessPong();
   monkeyPong = new MonkeyPong();
 
@@ -108,7 +114,9 @@ void draw() {
     }
     break;
 
-
+    //CHANGED!!!!!
+    // If our state is UNFAIR_OR_USELESS_PONG we do all the same things,
+    // but for the unfairOrUselessPong object instead
   case UNFAIR_OR_USELESS_PONG:
     unfairOrUselessPong.update();
     if (unfairOrUselessPong.returnToMenu) {
@@ -118,6 +126,8 @@ void draw() {
     }
     break;
 
+    // If our state is MONKEY_PONG we do all the same things,
+    // but for the monkeyPong object instead
   case MONKEY_PONG:
     monkeyPong.update();
     if (monkeyPong.returnToMenu) {
@@ -154,10 +164,12 @@ void keyPressed() {
   case BLUE_PONG:
     bluePong.keyPressed();
     break;
-    
+
+    //CHANGED!!!!
+    //added new pongs keypressed below
   case UNFAIR_OR_USELESS_PONG:
-  unfairOrUselessPong.keyPressed();
-  break;
+    unfairOrUselessPong.keyPressed();
+    break;
 
   case MONKEY_PONG:
     monkeyPong.keyPressed();
@@ -192,6 +204,8 @@ void keyReleased() {
     bluePong.keyReleased();
     break;
 
+    //CHANGED!!!!
+    //added new pongs keyreleased below
   case UNFAIR_OR_USELESS_PONG:
     unfairOrUselessPong.keyReleased();
     break;
