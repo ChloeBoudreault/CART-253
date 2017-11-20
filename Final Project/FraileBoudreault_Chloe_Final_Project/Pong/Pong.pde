@@ -15,6 +15,8 @@ enum State {
     MENU, 
     BASIC_PONG, 
     BLUE_PONG, 
+    //CHANGED!!!
+    //added pong options below
     INVISIBLE_PONG, 
     MICHAEL_JACKSON_PONG, 
     UNFAIR_OR_USELESS_PONG, 
@@ -34,6 +36,8 @@ Title title;
 Menu menu;
 BasicPong basicPong;
 BluePong bluePong;
+//CHANGED!!!!!
+//added pong variables below
 InvisiblePong invisiblePong;
 MichaelJacksonPong michaelJacksonPong;
 UnfairOrUselessPong unfairOrUselessPong;
@@ -57,6 +61,8 @@ void setup() {
   menu = new Menu();
   basicPong = new BasicPong();
   bluePong = new BluePong();
+  //CHANGED!!!!!
+  //added pong states below
   invisiblePong = new InvisiblePong();
   michaelJacksonPong = new MichaelJacksonPong();
   unfairOrUselessPong = new UnfairOrUselessPong();
@@ -131,6 +137,9 @@ void draw() {
     }
     break;
 
+    //CHANGED!!!!!
+    // If our state is INVISIBLE_PONG we do all the same things,
+    // but for the invisiblePong object instead
   case INVISIBLE_PONG:
     invisiblePong.update();
     if (invisiblePong.returnToMenu) {
@@ -140,6 +149,9 @@ void draw() {
     }
     break;
 
+    //CHANGED!!!!!
+    // If our state is MICHAEL_JACKSON_PONG we do all the same things,
+    // but for the michaelJacksonPong object instead
   case MICHAEL_JACKSON_PONG:
     michaelJacksonPong.update();
     if (michaelJacksonPong.returnToMenu) {
@@ -149,6 +161,9 @@ void draw() {
     }
     break;
 
+    //CHANGED!!!!!
+    // If our state is UNFAIR_OR_USELESS_PONG we do all the same things,
+    // but for the unfairOrUselessPong object instead
   case UNFAIR_OR_USELESS_PONG:
     unfairOrUselessPong.update();
     if (unfairOrUselessPong.returnToMenu) {
@@ -158,6 +173,9 @@ void draw() {
     }
     break;
 
+    //CHANGED!!!!!
+    // If our state is ITSY_BITSY_PONG we do all the same things,
+    // but for the itsyBitsyPong object instead
   case ITSY_BITSY_PONG:
     itsyBitsyPong.update();
     if (itsyBitsyPong.returnToMenu) {
@@ -167,6 +185,9 @@ void draw() {
     }
     break;
 
+    //CHANGED!!!!!
+    // If our state is SIZE_DOESNT_MATTER_IN_PONG we do all the same things,
+    // but for the sizeDoesntMatterInPong object instead
   case SIZE_DOESNT_MATTER_IN_PONG:
     sizeDoesntMatterInPong.update();
     if (sizeDoesntMatterInPong.returnToMenu) {
@@ -176,6 +197,9 @@ void draw() {
     }
     break;
 
+    //CHANGED!!!!!
+    // If our state is MONKEY_PONG we do all the same things,
+    // but for the monkeyPong object instead
   case MONKEY_PONG:
     monkeyPong.update();
     if (monkeyPong.returnToMenu) {
@@ -185,6 +209,9 @@ void draw() {
     }
     break;
 
+    //CHANGED!!!!!
+    // If our state is PATRIOTIC_PONG we do all the same things,
+    // but for the patrioticPong object instead
   case PATRIOTIC_PONG:
     patrioticPong.update();
     if (patrioticPong.returnToMenu) {
@@ -194,6 +221,9 @@ void draw() {
     }
     break;  
 
+    //CHANGED!!!!!
+    // If our state is UNFAIR_PONG_THE_SEQUEL we do all the same things,
+    // but for the unfairPongTheSequel object instead
   case UNFAIR_PONG_THE_SEQUEL:
     unfairPongTheSequel.update();
     if (unfairPongTheSequel.returnToMenu) {
@@ -203,6 +233,9 @@ void draw() {
     }
     break;  
 
+    //CHANGED!!!!!
+    // If our state is HOPE_YOU_LIKE_COLOURS_PONG we do all the same things,
+    // but for the hopeYouLikeColoursPong object instead
   case HOPE_YOU_LIKE_COLOURS_PONG:
     hopeYouLikeColoursPong.update();
     if (hopeYouLikeColoursPong.returnToMenu) {
@@ -241,6 +274,8 @@ void keyPressed() {
     bluePong.keyPressed();
     break;
 
+    //CHANGED!!!!
+    //added new pongs keypressed below
   case INVISIBLE_PONG:
     invisiblePong.keyPressed();
     break;
@@ -305,6 +340,8 @@ void keyReleased() {
     bluePong.keyReleased();
     break;
 
+    //CHANGED!!!!
+    //added new pongs keyreleased below
   case INVISIBLE_PONG:
     invisiblePong.keyReleased();
     break;
