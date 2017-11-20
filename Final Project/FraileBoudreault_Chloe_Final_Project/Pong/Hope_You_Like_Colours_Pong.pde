@@ -109,7 +109,8 @@ class HopeYouLikeColoursPong {
   }
 
   //CHANGED!!!!!
-  //added function which changes colour based on the x and y position 
+  //added function which changes the background colour 
+  //based on the x and y position 
   //of the balls on the screen
   void backgroundColorChange () {
     if (ball.x < (width/2+70) && ball.y < (height/2-150)) {

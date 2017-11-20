@@ -1,8 +1,21 @@
+//NEW!!!!
+// MichaelJacksonPong
+//
+// This is exactly the same as BasicPong except that the ball changes
+//colour based on its x and y position on the screen. At some points,
+//it will change from white to a shade close to blakc (not completely
+//black otherwise the players won't see it at all). The changes in
+//colour will act as if the ball is appearing and disappearing around 
+//the screen making it perhaps harder to the players to keep up with
+//it.
+
 class MichaelJacksonPong {
 
   Paddle leftPaddle;
   Paddle rightPaddle;
   Ball ball;
+  //CHANGED!!!!
+  //second ball
   Ball ball2;
 
   // The distance from the edge of the window a paddle should be
@@ -30,6 +43,8 @@ class MichaelJacksonPong {
 
     // Create the ball at the centre of the screen
     ball = new Ball(width/2, height/2);
+    //CHANGED!!!!
+    //created second ball
     ball2 = new Ball(width - (width/4), height - (height/4));
   }
 
@@ -41,17 +56,23 @@ class MichaelJacksonPong {
   void update() {
     // Fill the background each frame so we have animation
     background(backgroundColor);
+    //CHANGED!!!!
+    //calling function which changes the colour of the ball
     ballColorChange();
 
     // Update the paddles and ball by calling their update methods
     leftPaddle.update();
     rightPaddle.update();
     ball.update();
+    //CHANGED!!!
+    //second ball update
     ball2.update();
 
     // Check if the ball has collided with either paddle
     ball.collide(leftPaddle);
     ball.collide(rightPaddle);
+    //CHANGED!!!
+    //second ball collide with both paddles
     ball2.collide(leftPaddle);
     ball2.collide(rightPaddle);
 
@@ -61,6 +82,8 @@ class MichaelJacksonPong {
       ball.reset();
     }
 
+    //CHANGED!!!
+    //checks if the second ball has gone off the screen
     if (ball2.isOffScreen()) {
       // If it has, reset the ball
       ball2.reset();
@@ -70,10 +93,17 @@ class MichaelJacksonPong {
     leftPaddle.display();
     rightPaddle.display();
     ball.display();
+    //CHANGED!!!
+    //second ball display
     ball2.display();
+    //CHANGED!!!!!
+    //display the score on screen
     displayScore();
   }
 
+  //CHANGED!!!!!
+  //added displayScore function which willl show the score 
+  //of each player at the top of the screen
   void displayScore() {
     textSize (50);
     textAlign (CENTER);
@@ -83,6 +113,9 @@ class MichaelJacksonPong {
     text (rightPaddle.score, width - (width/4), 78);
   }
 
+  //CHANGED!!!!!
+  //added function which changes colour the colour of the ball
+  //based on its x and y position on the screen
   void ballColorChange () {
     if (ball.x < (width/2+70) && ball.y < (height/2-150)) {
       ball.ballColor = 14;
@@ -96,7 +129,7 @@ class MichaelJacksonPong {
     } else if (ball.x > (width/2-55) && ball.y < (height/2+349)) {
       ball.ballColor = 255;
       ball2.ballColor = 14;
-    }else if (ball.x < (width/2-200) && ball.y > (height/2-120)) { 
+    } else if (ball.x < (width/2-200) && ball.y > (height/2-120)) { 
       ball.ballColor = 14;
       ball2.ballColor = 255;
     } else if (ball.x < (width/2-168) && ball.y > (height/2-87)) {
@@ -118,6 +151,8 @@ class MichaelJacksonPong {
 
   void reset() {
     ball.reset();
+    //CHANGED!!!!
+    //second ball reset
     ball2.reset();
     leftPaddle.reset();
     rightPaddle.reset();
