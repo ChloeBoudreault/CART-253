@@ -11,13 +11,15 @@ class Paddle {
   int SPEED = 5;
   int HEIGHT = 70;
   int WIDTH = 16;
-  int score = 0;
 
   // The position and velocity of the paddle (note that vx isn't really used right now)
   int x;
   int y;
   int vx;
   int vy;
+  //CHANGED!!!!
+  //add the actual score variable to keep track
+  int score = 0;
 
   // The fill color of the paddle
   color paddleColor = color(255);
@@ -25,6 +27,7 @@ class Paddle {
   // The characters used to make the paddle move up and down, defined in constructor
   char upKey;
   char downKey;
+
 
   /////////////// Constructor ///////////////
 
@@ -57,58 +60,59 @@ class Paddle {
 
     // Constrain the paddle's y position to be in the window
     y = constrain(y, 0 + HEIGHT/2, height - HEIGHT/2);
-
   }
 
+  // display()
+  //
+  // Display the paddle at its location
 
-// display()
-//
-// Display the paddle at its location
+  void display() {
+    // Set display properties
+    noStroke();
+    fill(paddleColor);
+    rectMode(CENTER);
 
-void display() {
-  // Set display properties
-  fill(paddleColor);
-  rectMode(CENTER);
-
-  // Draw the paddle as a rectangle
-  rect(x, y, WIDTH, HEIGHT, 7);
-}
-
-void reset() {
-  vx = 0;
-  vy = 0;
-  y = height/2;
-}
-
-// keyPressed()
-//
-// Called when keyPressed is called in the main program
-
-void keyPressed() {
-  // Check if the key is our up key
-  if (key == upKey) {
-    // If so we want a negative y velocity
-    vy = -SPEED;
-  } // Otherwise check if the key is our down key 
-  else if (key == downKey) {
-    // If so we want a positive y velocity
-    vy = SPEED;
+    // Draw the paddle as a rectangle
+    //CHANGED!!!
+    //made the paddles more rounded
+    rect(x, y, WIDTH, HEIGHT, 7);
   }
-}
 
-// keyReleased()
-//
-// Called when keyReleased is called in the main program
-
-void keyReleased() {
-  // Check if the key is our up key and the paddle is moving up
-  if (key == upKey && vy < 0) {
-    // If so it should stop
+  void reset() {
+    vx = 0;
     vy = 0;
-  } // Otherwise check if the key is our down key and paddle is moving down 
-  else if (key == downKey && vy > 0) {
-    // If so it should stop
-    vy = 0;
+    y = height/2;
   }
-}
+
+  // keyPressed()
+  //
+  // Called when keyPressed is called in the main program
+
+  void keyPressed() {
+    // Check if the key is our up key
+    if (key == upKey) {
+      // If so we want a negative y velocity
+      vy = -SPEED;
+    } // Otherwise check if the key is our down key 
+    else if (key == downKey) {
+      // If so we want a positive y velocity
+      vy = SPEED;
+    }
+  }
+
+  // keyReleased()
+  //
+  // Called when keyReleased is called in the main program
+
+  void keyReleased() {
+    // Check if the key is our up key and the paddle is moving up
+    if (key == upKey && vy < 0) {
+      // If so it should stop
+      vy = 0;
+    } // Otherwise check if the key is our down key and paddle is moving down 
+    else if (key == downKey && vy > 0) {
+      // If so it should stop
+      vy = 0;
+    }
+  }
 }

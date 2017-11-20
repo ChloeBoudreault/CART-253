@@ -32,6 +32,8 @@ class Menu {
     textSize(25);
     text("1. PONG", width/2, 40);
     text("2. BLUE PONG", width/2, 80);
+    //CHANGED!!!!
+    //added the new pong options which will now be visible in the menu
     text("3. INVISIBLE PONG", width/2, 120);
     text("4. MICHAEL JACKSON PONG", width/2, 160);
     text("5. UNFAIR OR USELESS PONG", width/2, 200);
@@ -54,6 +56,8 @@ class Menu {
       selection = State.BASIC_PONG;
     } else if (key == '2') {
       selection = State.BLUE_PONG;
+      //CHANGED!!!!!
+      //new pong games added below, press key to select specific game
     } else if (key == '3') {
       selection = State.INVISIBLE_PONG;
     } else if (key == '4') {

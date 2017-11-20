@@ -21,9 +21,11 @@ class Ball {
 
   // The colour of the ball
   color ballColor = color(255);
-  
-  boolean trackScore = true;
 
+  //CHANGED!!!!!
+  //added a boolean to know wwhether the program should
+  //track the score or not.
+  boolean trackScore = true;
 
   /////////////// Constructor ///////////////
 
@@ -41,14 +43,20 @@ class Ball {
     y = _y;
     vx = SPEED;
     vy = SPEED;
+    //CHANGED!!!!
+    //added trackScore value
     trackScore = true;
   }
-  
-   Ball(int _x, int _y, boolean _trackScore) {
+
+  //CHANGED!!!!
+  //added boolean trackScore to the constructor
+  Ball(int _x, int _y, boolean _trackScore) {
     x = _x;
     y = _y;
     vx = SPEED;
     vy = SPEED;
+    //CHANGED!!!!
+    //added trackScore
     trackScore = _trackScore;
   }
 
@@ -72,18 +80,17 @@ class Ball {
       vy = -vy;
     }
   }
-  
+
   // reset()
   //
   // Resets the ball to the centre of the screen.
   // Note that it KEEPS its velocity
-  
+
   void reset() {
     x = width/2;
     y = height/2;
-    
   }
-  
+
   // isOffScreen()
   //
   // Returns true if the ball is off the left or right side of the window
@@ -91,7 +98,7 @@ class Ball {
   // (If we wanted to return WHICH side it had gone off, we'd have to return
   // something like an int (e.g. 0 = not off, 1 = off left, 2 = off right)
   // or a String (e.g. "ON SCREEN", "OFF LEFT", "OFF RIGHT")
-  
+
   boolean isOffScreen() {
     return (x + SIZE/2 < 0 || x - SIZE/2 > width);
   }
@@ -102,14 +109,15 @@ class Ball {
   // If it is, it makes the ball bounce away from the paddle by reversing its
   // x velocity
 
+  //CHANGED!!!!!
+  //change the void to boolean so that it actually works
   boolean collide(Paddle paddle) {
-    
     // Calculate possible overlaps with the paddle side by side
     boolean insideLeft = (x + SIZE/2 > paddle.x - paddle.WIDTH/2);
     boolean insideRight = (x - SIZE/2 < paddle.x + paddle.WIDTH/2);
     boolean insideTop = (y + SIZE/2 > paddle.y - paddle.HEIGHT/2);
     boolean insideBottom = (y - SIZE/2 < paddle.y + paddle.HEIGHT/2);
-    
+
     // Check if the ball overlaps with the paddle
     if (insideLeft && insideRight && insideTop && insideBottom) {
       // If it was moving to the left
@@ -121,14 +129,19 @@ class Ball {
         x = paddle.x - paddle.WIDTH/2 - SIZE/2;
       }
       // And make it bounce
-      
-     vx = -vx;
-     if (trackScore) {
-      paddle.score++;
+      vx = -vx;
+
+      //CHANGED!!!! again
+      //added the specific trackScore for Unfair Pong the Sequel
+      //as well as the return values below
+      if (trackScore) {
+        //CHANGED!!!!
+        //the score will go up each time the ball hits the paddle
+        paddle.score++;
+      }
+      return true;
     }
-    return true;
-  }
-  return false;
+    return false;
   }
 
   // display()
@@ -139,9 +152,11 @@ class Ball {
     // Set up the appearance of the ball (no stroke, a fill, and rectMode as CENTER)
     noStroke();
     fill(ballColor);
-    rectMode(ENTER);
+    rectMode(CENTER);
 
     // Draw the ball
+    //CHANGED!!!!
+    //instead of a square, it's actually a ball
     ellipse(x, y, SIZE, SIZE);
   }
 }
