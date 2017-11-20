@@ -1,11 +1,22 @@
+//NEW!!!!
+// MonkeyPong
+//
+// This is exactly the same as BasicPong except that it has a two
+// new paddles. They don't move or have any score but they allow
+//users to gain more or less points.
+
 class MonkeyPong {
 
   // Variables to store the main objects in the game (the paddles and ball)
   Paddle leftPaddle;
   Paddle rightPaddle;
+  //CHANGED!!!!
+  //new paddles
   Paddle topPaddle;
   Paddle bottomPaddle;
   Ball ball;
+  //CHANGED!!!!
+  //second ball
   Ball ball2;
 
   // The distance from the edge of the window a paddle should be
@@ -30,11 +41,15 @@ class MonkeyPong {
     // Create a paddle on either side of the screen
     leftPaddle = new Paddle(PADDLE_INSET, height/2, '2', 'q');
     rightPaddle = new Paddle(width - PADDLE_INSET, height/2, '0', 'p');
+    //CHANGED!!!!!
+    //create two new paddles on bottom and top of the screen
     bottomPaddle = new Paddle (width/2, height - 35, '6', 'y');
     topPaddle = new Paddle (width/2, height - 450, '5', 'b');
 
     // Create the ball at the centre of the screen
     ball = new Ball(width/2, height/2);
+    //CHANGED!!!!
+    //create second ball
     ball2 = new Ball(width - (width/4), height - (height/4));
   }
 
@@ -50,27 +65,46 @@ class MonkeyPong {
     // Update the paddles and ball by calling their update methods
     leftPaddle.update();
     rightPaddle.update();
+    //CHANGED!!!!
+    //two new paddle updates
     topPaddle.update();
     bottomPaddle.update();
     ball.update();
+    //CHANGED!!!!!
+    //ball 2 update
     ball2.update();
 
     // Check if the ball has collided with either paddle
     ball.collide(leftPaddle);
     ball.collide(rightPaddle);
 
+    //CHANGED!!!
+    //second ball collide with both paddles on 
+    //either side of the screen
     ball2.collide(leftPaddle);
     ball2.collide(rightPaddle);
 
+    //CHANGED!!!!
+    //first ball collide with the paddle
+    //at the bottom of the screen
     ball.collide(bottomPaddle);
     ball.collide(bottomPaddle);
 
+    //CHANGED!!!!
+    //second ball collide with the paddle
+    //at the bottom of the screen
     ball2.collide(bottomPaddle);
     ball2.collide(bottomPaddle);
 
+    //CHANGED!!!!
+    //first ball collide with the paddle
+    //at the top of the screen
     ball.collide(topPaddle);
     ball.collide(topPaddle);
 
+    //CHANGED!!!!
+    //second ball collide with the paddle
+    //at the top of the screen
     ball2.collide(topPaddle);
     ball2.collide(topPaddle);
 
@@ -80,6 +114,8 @@ class MonkeyPong {
       ball.reset();
     }
 
+    //CHANGED!!!
+    //checks if the second ball has gone off the screen
     if (ball2.isOffScreen()) {
       // If it has, reset the ball
       ball2.reset();
@@ -88,13 +124,22 @@ class MonkeyPong {
     // Display the paddles and the ball
     leftPaddle.display();
     rightPaddle.display();
+    //CHANGED!!!!
+    //top and bottom paddles display
     topPaddle.display();
     bottomPaddle.display();
     ball.display();
+    //CHANGED!!!!
+    //second ball display
     ball2.display();
+    //CHANGED!!!!!
+    //display the score on screen
     displayScore();
   }
 
+//CHANGED!!!!!
+//added displayScore function which willl show the score 
+//of each player at the top of the screen
   void displayScore() {
     textSize (50);
     textAlign (CENTER);
@@ -111,9 +156,13 @@ class MonkeyPong {
 
   void reset() {
     ball.reset();
+    //CHANGED!!!!
+    //second ball reset
     ball2.reset();
     leftPaddle.reset();
     rightPaddle.reset();
+    //CHANGED!!!!
+    //two new paddles reset
     topPaddle.reset();
     bottomPaddle.reset();
     returnToMenu = false;
