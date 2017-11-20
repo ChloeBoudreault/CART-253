@@ -22,6 +22,10 @@ class Ball {
   // The colour of the ball
   color ballColor = color(255);
 
+  //CHANGED!!!!!
+  //added a boolean to know wwhether the program should
+  //track the score or not.
+  boolean trackScore = true;
 
   /////////////// Constructor ///////////////
 
