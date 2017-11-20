@@ -17,6 +17,8 @@ class BasicPong {
   Paddle leftPaddle;
   Paddle rightPaddle;
   Ball ball;
+  //CHANGED!!!!
+  //added a second ball to all Pong games
   Ball ball2;
 
   // The distance from the edge of the window a paddle should be
@@ -44,6 +46,8 @@ class BasicPong {
 
     // Create the ball at the centre of the screen
     ball = new Ball(width/2, height/2);
+    //CHANGED!!!!
+    //created second ball
     ball2 = new Ball(width - (width/4), height - (height/4));
   }
 
@@ -60,11 +64,15 @@ class BasicPong {
     leftPaddle.update();
     rightPaddle.update();
     ball.update();
+    //CHANGED!!!
+    //second ball update
     ball2.update();
 
     // Check if the ball has collided with either paddle
     ball.collide(leftPaddle);
     ball.collide(rightPaddle);
+    //CHANGED!!!
+    //second ball collide with both paddles
     ball2.collide(leftPaddle);
     ball2.collide(rightPaddle);
 
@@ -74,6 +82,8 @@ class BasicPong {
       ball.reset();
     }
 
+    //CHANGED!!!
+    //checks if the second ball has gone off the screen
     if (ball2.isOffScreen()) {
       // If it has, reset the ball
       ball2.reset();
@@ -83,10 +93,17 @@ class BasicPong {
     leftPaddle.display();
     rightPaddle.display();
     ball.display();
+    //CHANGED!!!
+    //second ball display
     ball2.display();
+    //CHANGED!!!!!
+    //display the score on screen
     displayScore();
   }
 
+//CHANGED!!!!!
+//added displayScore function which willl show the score 
+//of each player at the top of the screen
   void displayScore() {
     textSize (50);
     textAlign (CENTER);
@@ -103,6 +120,8 @@ class BasicPong {
 
   void reset() {
     ball.reset();
+    //CHANGED!!!!
+    //second ball reset
     ball2.reset();
     leftPaddle.reset();
     rightPaddle.reset();
