@@ -1,9 +1,18 @@
+//NEW!!!!
+// ItsyBitsyPong
+//
+// This is exactly the same as BasicPong except that the two paddles
+//are ridiculously small thus making it perhaps harder for the users
+//to correctly hit the balls, gain points and play the game in general.
+
 class ItsyBitsyPong {
 
   // Variables to store the main objects in the game (the paddles and ball)
   Paddle leftPaddle;
   Paddle rightPaddle;
   Ball ball;
+  //CHANGED!!!!
+  //second ball
   Ball ball2;
 
   // The distance from the edge of the window a paddle should be
@@ -31,6 +40,8 @@ class ItsyBitsyPong {
 
     // Create the ball at the centre of the screen
     ball = new Ball(width/2, height/2);
+    //CHANGED!!!!
+    //create second ball
     ball2 = new Ball(width - (width/4), height - (height/4));
   }
 
@@ -42,6 +53,9 @@ class ItsyBitsyPong {
   void update() {
     // Fill the background each frame so we have animation
     background(backgroundColor);
+    //CHANGED!!!!!
+    //changed both paddles' height and width
+    //so that they are ridiculously small
     leftPaddle.HEIGHT = 12;
     rightPaddle.HEIGHT = 12;
     leftPaddle.WIDTH = 12;
@@ -51,11 +65,15 @@ class ItsyBitsyPong {
     leftPaddle.update();
     rightPaddle.update();
     ball.update();
+    //CHANGED!!!!!
+    //ball 2 update
     ball2.update();
 
     // Check if the ball has collided with either paddle
     ball.collide(leftPaddle);
     ball.collide(rightPaddle);
+    //CHANGED!!!!
+    //check if the second ball has collided with either paddle
     ball2.collide(leftPaddle);
     ball2.collide(rightPaddle);
 
@@ -65,6 +83,8 @@ class ItsyBitsyPong {
       ball.reset();
     }
 
+    //CHANGED!!!
+    //checks if the second ball has gone off the screen
     if (ball2.isOffScreen()) {
       // If it has, reset the ball
       ball2.reset();
@@ -74,10 +94,15 @@ class ItsyBitsyPong {
     leftPaddle.display();
     rightPaddle.display();
     ball.display();
+    //CHANGED!!!
+    //second ball display
     ball2.display();
     displayScore();
   }
 
+//CHANGED!!!!!
+//added displayScore function which willl show the score 
+//of each player at the top of the screen
   void displayScore() {
     textSize (50);
     textAlign (CENTER);
@@ -94,6 +119,8 @@ class ItsyBitsyPong {
 
   void reset() {
     ball.reset();
+    //CHANGED!!!!
+    //second ball reset
     ball2.reset();
     leftPaddle.reset();
     rightPaddle.reset();
