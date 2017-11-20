@@ -16,7 +16,8 @@ enum State {
     //CHANGED!!!
     //added pong options below
     UNFAIR_OR_USELESS_PONG, 
-    MONKEY_PONG
+    MONKEY_PONG, 
+    UNFAIR_PONG_THE_SEQUEL
 }
 // This is the variable that actually tracks the state in the game
 State state;
@@ -31,6 +32,7 @@ BluePong bluePong;
 //added pong variables below
 UnfairOrUselessPong unfairOrUselessPong;
 MonkeyPong monkeyPong;
+UnfairPongTheSequel unfairPongTheSequel;
 
 // setup()
 //
@@ -49,6 +51,7 @@ void setup() {
   //added pong states below
   unfairOrUselessPong = new UnfairOrUselessPong();
   monkeyPong = new MonkeyPong();
+  unfairPongTheSequel = new UnfairPongTheSequel();
 
   // We start our state in the title screen
   state = State.TITLE;
@@ -136,6 +139,17 @@ void draw() {
       monkeyPong.reset();
     }
     break;
+
+    // If our state is UNFAIR_PONG_THE_SEQUEL we do all the same things,
+    // but for the unfairPongTheSequel object instead
+  case UNFAIR_PONG_THE_SEQUEL:
+    unfairPongTheSequel.update();
+    if (unfairPongTheSequel.returnToMenu) {
+      state = State.MENU;
+      unfairPongTheSequel.returnToMenu = false;
+      unfairPongTheSequel.reset();
+    }
+    break;
   }
 }
 
@@ -173,6 +187,10 @@ void keyPressed() {
 
   case MONKEY_PONG:
     monkeyPong.keyPressed();
+    break;
+
+  case UNFAIR_PONG_THE_SEQUEL:
+    unfairPongTheSequel.keyPressed();
     break;
   }
 }
@@ -212,6 +230,10 @@ void keyReleased() {
 
   case MONKEY_PONG:
     monkeyPong.keyReleased();
+    break;
+
+  case UNFAIR_PONG_THE_SEQUEL:
+    unfairPongTheSequel.keyReleased();
     break;
   }
 }

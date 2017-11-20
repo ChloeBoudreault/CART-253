@@ -36,6 +36,7 @@ class Menu {
     //added the new pong options which will now be visible in the menu
     text("3. UNFAIR OR USELESS PONG", width/2, 120);
     text("4. MONKEY PONG", width/2, 160);
+    text("5. UNFAIR PONG THE SEQUEL", width/2, 200);
   }
 
   // keyPressed()
@@ -55,6 +56,8 @@ class Menu {
       selection = State.UNFAIR_OR_USELESS_PONG;
     } else if (key == '4') {
       selection = State.MONKEY_PONG;
+    } else if (key == '5') {
+      selection = State.UNFAIR_PONG_THE_SEQUEL;
     }
   }
 
