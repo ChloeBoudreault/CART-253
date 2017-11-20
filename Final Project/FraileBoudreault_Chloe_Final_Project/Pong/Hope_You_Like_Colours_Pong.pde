@@ -1,9 +1,19 @@
+// NEW!!!!!
+//HopeYouLikeColoursPong
+//
+// This is exactly the same as BasicPong except that it the background
+//colour changes depending on where the ball is, therefore creating
+//quite a colorful background when the users play around. This can
+//either distract or simply plainly annoy the players.
+
 class HopeYouLikeColoursPong {
 
   // Variables to store the main objects in the game (the paddles and ball)
   Paddle leftPaddle;
   Paddle rightPaddle;
   Ball ball;
+  //CHANGED!!!!
+  //added second ball
   Ball ball2;
 
   // The distance from the edge of the window a paddle should be
@@ -28,6 +38,8 @@ class HopeYouLikeColoursPong {
 
     // Create the ball at the centre of the screen
     ball = new Ball(width/2, height/2);
+    //CHANGED!!!!
+    //create second ball
     ball2 = new Ball(width - (width/4), height - (height/4));
   }
 
@@ -38,6 +50,8 @@ class HopeYouLikeColoursPong {
 
   void update() {
     // Fill the background each frame so we have animation
+    //CHANGED!!!!
+    //calling function which changes the background colour
     backgroundColorChange();
 
 
@@ -45,11 +59,15 @@ class HopeYouLikeColoursPong {
     leftPaddle.update();
     rightPaddle.update();
     ball.update();
+    //CHANGED!!!
+    //second ball update
     ball2.update();
 
     // Check if the ball has collided with either paddle
     ball.collide(leftPaddle);
     ball.collide(rightPaddle);
+    //CHANGED!!!
+    //second ball collide with both paddles
     ball2.collide(leftPaddle);
     ball2.collide(rightPaddle);
 
@@ -59,6 +77,8 @@ class HopeYouLikeColoursPong {
       ball.reset();
     }
 
+    //CHANGED!!!
+    //checks if the second ball has gone off the screen
     if (ball2.isOffScreen()) {
       // If it has, reset the ball
       ball2.reset();
@@ -68,10 +88,17 @@ class HopeYouLikeColoursPong {
     leftPaddle.display();
     rightPaddle.display();
     ball.display();
+    //CHANGED!!!
+    //second ball display
     ball2.display();
+    //CHANGED!!!!!
+    //display the score on screen
     displayScore();
   }
 
+  //CHANGED!!!!!
+  //added displayScore function which willl show the score 
+  //of each player at the top of the screen
   void displayScore() {
     textSize (50);
     textAlign (CENTER);
@@ -81,7 +108,9 @@ class HopeYouLikeColoursPong {
     text (rightPaddle.score, width - (width/4), 78);
   }
 
-
+  //CHANGED!!!!!
+  //added function which changes colour based on the x and y position 
+  //of the balls on the screen
   void backgroundColorChange () {
     if (ball.x < (width/2+70) && ball.y < (height/2-150)) {
       background(255);
@@ -101,7 +130,7 @@ class HopeYouLikeColoursPong {
       background(0);
     }
   }
-  
+
   // reset()
   //
   // Resets the game by resetting the ball and paddles and setting
@@ -109,6 +138,8 @@ class HopeYouLikeColoursPong {
 
   void reset() {
     ball.reset();
+    //CHANGED!!!!
+    //second ball reset
     ball2.reset();
     leftPaddle.reset();
     rightPaddle.reset();
