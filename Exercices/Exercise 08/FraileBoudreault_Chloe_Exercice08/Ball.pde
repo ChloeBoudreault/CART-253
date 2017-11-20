@@ -109,7 +109,9 @@ class Ball {
   // If it is, it makes the ball bounce away from the paddle by reversing its
   // x velocity
 
-  void collide(Paddle paddle) {
+  //CHANGED!!!!!
+  //change the void to boolean so that it actually works
+  boolean collide(Paddle paddle) {
     // Calculate possible overlaps with the paddle side by side
     boolean insideLeft = (x + SIZE/2 > paddle.x - paddle.WIDTH/2);
     boolean insideRight = (x - SIZE/2 < paddle.x + paddle.WIDTH/2);
