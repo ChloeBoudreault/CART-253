@@ -31,8 +31,6 @@ class UnfairPongTheSequel {
   int score1 = 0;
   int score2 = 0;
 
-  // BasicPong()
-  //
   // Creates the paddles and ball
 
   UnfairPongTheSequel() {
