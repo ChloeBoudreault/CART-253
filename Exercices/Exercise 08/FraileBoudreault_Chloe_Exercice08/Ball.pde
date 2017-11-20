@@ -43,6 +43,21 @@ class Ball {
     y = _y;
     vx = SPEED;
     vy = SPEED;
+    //CHANGED!!!!
+    //added trackScore value
+    trackScore = true;
+  }
+
+  //CHANGED!!!!
+  //added boolean trackScore to the constructor
+  Ball(int _x, int _y, boolean _trackScore) {
+    x = _x;
+    y = _y;
+    vx = SPEED;
+    vy = SPEED;
+    //CHANGED!!!!
+    //added trackScore
+    trackScore = _trackScore;
   }
 
 
@@ -113,10 +128,18 @@ class Ball {
       }
       // And make it bounce
       vx = -vx;
-      //CHANGED!!!!
-      //the score will go up each time the ball hits the paddle
-      paddle.score++;
+
+      //CHANGED!!!! again
+      //added the specific trackScore for Unfair Pong the Sequel
+      //as well as the return values below
+      if (trackScore) {
+        //CHANGED!!!!
+        //the score will go up each time the ball hits the paddle
+        paddle.score++;
+      }
+      return true;
     }
+    return false;
   }
 
   // display()
