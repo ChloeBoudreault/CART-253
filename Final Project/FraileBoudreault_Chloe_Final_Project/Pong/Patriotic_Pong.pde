@@ -37,8 +37,6 @@ class PatrioticPong {
   SoundFile[] tones = new SoundFile [1];
   int framesPerBeat = 15;
 
-  // BasicPong()
-  //
   // Creates the paddles and ball
 
   PatrioticPong(PApplet processing) {
@@ -67,7 +65,6 @@ class PatrioticPong {
       tones[i] = new SoundFile (processing, "tone0" + (i+1) + ".mp3");
     }
   }
-
 
   // update()
   //

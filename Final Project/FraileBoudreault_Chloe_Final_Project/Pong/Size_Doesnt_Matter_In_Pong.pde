@@ -1,3 +1,11 @@
+//NEW!!!!
+// SizeDoesntMatterInPong
+//
+// This is exactly the same as BasicPong except that hte sizes of the
+//paddles change depending on where the ball is on the screen. Thus making
+//it sort of tricky for the users to know if they are going to score or not 
+//as the paddles' sizes change and they can easily miss the ball. 
+
 class SizeDoesntMatterInPong {
 
   // Variables to store the main objects in the game (the paddles and ball)
@@ -19,8 +27,6 @@ class SizeDoesntMatterInPong {
   int score1 = 0;
   int score2 = 0;
 
-  // BasicPong()
-  //
   // Creates the paddles and ball
 
   SizeDoesntMatterInPong() {
@@ -40,6 +46,8 @@ class SizeDoesntMatterInPong {
   void update() {
     // Fill the background each frame so we have animation
     background(backgroundColor);
+    //CHANGED!!!!!
+    //calling function which changes the sizes of the paddles
     paddleSizeChange();
 
     // Update the paddles and ball by calling their update methods
@@ -61,9 +69,14 @@ class SizeDoesntMatterInPong {
     leftPaddle.display();
     rightPaddle.display();
     ball.display();
+    //CHANGED!!!!!
+    //display the score on screen
     displayScore();
   }
 
+//CHANGED!!!!!
+//added displayScore function which willl show the score 
+//of each player at the top of the screen
   void displayScore() {
     textSize (50);
     textAlign (CENTER);
@@ -73,6 +86,10 @@ class SizeDoesntMatterInPong {
     text (rightPaddle.score, width - (width/4), 78);
   }
 
+//CHANGED!!!!!
+//added paddleSizeChange function which will changes
+//the sizes of the paddles depending on the x and y
+//positions of the ball on the screen
   void paddleSizeChange() {
     if  (ball.x < (width/2) && ball.y < (height/2)) {
      leftPaddle.HEIGHT = 12;

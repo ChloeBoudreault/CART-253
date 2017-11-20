@@ -46,7 +46,6 @@ class Paddle {
     downKey = _downKey;
   }
 
-
   /////////////// Methods ///////////////
 
   // update()
