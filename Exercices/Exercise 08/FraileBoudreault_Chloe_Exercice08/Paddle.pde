@@ -17,6 +17,8 @@ class Paddle {
   int y;
   int vx;
   int vy;
+  //CHANGED!!!!
+  //add the actual score variable to keep track
   int score = 0;
   
   // The fill color of the paddle
@@ -71,6 +73,8 @@ class Paddle {
     rectMode(CENTER);
     
     // Draw the paddle as a rectangle
+    //CHANGED!!!
+    //made the paddles more rounded
     rect(x, y, WIDTH, HEIGHT, 7);
   }
   

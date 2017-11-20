@@ -126,6 +126,8 @@ class Ball {
     rectMode(CENTER);
 
     // Draw the ball
+    //CHANGED!!!!
+    //instead of a square, it's actually a ball
     ellipse(x, y, SIZE, SIZE);
   }
 }
