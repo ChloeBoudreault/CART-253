@@ -64,18 +64,21 @@ class UnfairPongTheSequel {
     //second ball update
     ball2.update();
 
-    // Check if the ball has collided with either paddle
+    //CHANGED!!!!!
+    //check if the ball has collided with either paddle
+    //if it collided with the left paddle, the right paddle score will go up
     if ( ball.collide(leftPaddle)) {
       rightPaddle.score++;
     }
+    //if it collided with the right paddle, the left paddle score will go up
     if (ball.collide(rightPaddle)) {
       leftPaddle.score++;
     }
-
+    //if it collided with the left paddle, the right paddle score will go up
     if (ball2.collide(leftPaddle)) {
       rightPaddle.score++;
     }
-
+    //if it collided with the right paddle, the left paddle score will go up
     if (ball2.collide(rightPaddle)) {
       leftPaddle.score++;
     }
@@ -105,9 +108,9 @@ class UnfairPongTheSequel {
     displayScore();
   }
 
-//CHANGED!!!!!
-//added displayScore function which willl show the score 
-//of each player at the top of the screen
+  //CHANGED!!!!!
+  //added displayScore function which willl show the score 
+  //of each player at the top of the screen
   void displayScore() {
     textSize (50);
     textAlign (CENTER);
