@@ -1,8 +1,20 @@
+//NEW!!!!
+// InvisiblePong
+//
+// This is exactly the same as BasicPong except that the ball is
+//almost invisible to the players. It is almost the same shade as
+//the background. However, I didn't want it to be completely black
+//otherwise the players would definitely not see it. Now the players
+//only have to squint really hard to see it or turn up the luminosity
+//extra high on their computer screen.
+
 class InvisiblePong {
-  
+
   Paddle leftPaddle;
   Paddle rightPaddle;
   Ball ball;
+  //CHANGED!!!!
+  //second ball
   Ball ball2;
 
   // The distance from the edge of the window a paddle should be
@@ -13,8 +25,8 @@ class InvisiblePong {
 
   // A boolean to track whether we should return to the menu
   boolean returnToMenu = false;
-  
-    //CHANGED!!!!!!!!
+
+  //CHANGED!!!!!!!!
   //added score for left and right players
   int score1 = 0;
   int score2 = 0;
@@ -23,13 +35,15 @@ class InvisiblePong {
   //
   // Creates the paddles and ball
 
-    InvisiblePong() {
-     // Create a paddle on either side of the screen
+  InvisiblePong() {
+    // Create a paddle on either side of the screen
     leftPaddle = new Paddle(PADDLE_INSET, height/2, '2', 'q');
     rightPaddle = new Paddle(width - PADDLE_INSET, height/2, '0', 'p');
 
     // Create the ball at the centre of the screen
     ball = new Ball(width/2, height/2);
+    //CHANGED!!!!
+    //create second ball
     ball2 = new Ball(width - (width/4), height - (height/4));
   }
 
@@ -41,6 +55,8 @@ class InvisiblePong {
   void update() {
     // Fill the background each frame so we have animation
     background(backgroundColor);
+    //CHANGED!!!!
+    //changed the ball colours to a shade close to black
     ball.ballColor = 14;
     ball2.ballColor = 14;
 
@@ -48,11 +64,15 @@ class InvisiblePong {
     leftPaddle.update();
     rightPaddle.update();
     ball.update();
+    //CHANGED!!!!!
+    //ball 2 update
     ball2.update();
 
     // Check if the ball has collided with either paddle
     ball.collide(leftPaddle);
     ball.collide(rightPaddle);
+    //CHANGED!!!!
+    //check if the second ball has collided with either paddle
     ball2.collide(leftPaddle);
     ball2.collide(rightPaddle);
 
@@ -62,35 +82,46 @@ class InvisiblePong {
       ball.reset();
     }
 
+    //CHANGED!!!
+    //checks if the second ball has gone off the screen
     if (ball2.isOffScreen()) {
       // If it has, reset the ball
       ball2.reset();
     }
-    
+
     // Display the paddles and the ball
     leftPaddle.display();
     rightPaddle.display();
     ball.display();
+    //CHANGED!!!!
+    //second ball display
     ball2.display();
+    //CHANGED!!!!!
+    //display the score on screen
     displayScore();
   }
-  
+
+//CHANGED!!!!!
+//added displayScore function which willl show the score 
+//of each player at the top of the screen
   void displayScore() {
-  textSize (50);
-  textAlign (CENTER);
-  fill(255);
-  //works with the paddle and ball
-  text (leftPaddle.score, width/4, 78);
-  text (rightPaddle.score, width - (width/4), 78);
+    textSize (50);
+    textAlign (CENTER);
+    fill(255);
+    //works with the paddle and ball
+    text (leftPaddle.score, width/4, 78);
+    text (rightPaddle.score, width - (width/4), 78);
   }
-  
+
   // reset()
   //
   // Resets the game by resetting the ball and paddles and setting
   // returnToMenu to false
-  
+
   void reset() {
     ball.reset();
+    //CHANGED!!!!
+    //second ball reset
     ball2.reset();
     leftPaddle.reset();
     rightPaddle.reset();
@@ -107,10 +138,10 @@ class InvisiblePong {
     // Just call both paddles' own keyPressed methods
     leftPaddle.keyPressed();
     rightPaddle.keyPressed();
-    
+
     // Check if we should return to the menu
     if (key == 'm' || key == 'M') {
-     returnToMenu = true; 
+      returnToMenu = true;
     }
   }
 
