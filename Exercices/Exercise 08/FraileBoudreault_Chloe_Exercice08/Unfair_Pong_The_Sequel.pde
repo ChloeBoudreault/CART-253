@@ -1,9 +1,20 @@
+// NEW!!!!!
+//UnfairPongTheSequel
+//
+// This is exactly the same as BasicPong except that it when
+//one of the balls collides with the right paddle, the left player
+//gains a point and when one of the balls collides with the left
+//paddle, the right players gains a point.
+
+
 class UnfairPongTheSequel {
 
   // Variables to store the main objects in the game (the paddles and ball)
   Paddle leftPaddle;
   Paddle rightPaddle;
   Ball ball;
+  //CHANGED!!!!
+  //added second ball
   Ball ball2;
 
   // The distance from the edge of the window a paddle should be
@@ -31,6 +42,8 @@ class UnfairPongTheSequel {
 
     // Create the ball at the centre of the screen
     ball = new Ball(width/2, height/2, false);
+    //CHANGED!!!!
+    //create second ball
     ball2 = new Ball(width - (width/4), height - (height/4), false);
   }
 
@@ -47,20 +60,22 @@ class UnfairPongTheSequel {
     leftPaddle.update();
     rightPaddle.update();
     ball.update();
+    //CHANGED!!!
+    //second ball update
     ball2.update();
 
     // Check if the ball has collided with either paddle
-   if ( ball.collide(leftPaddle)) {
-     rightPaddle.score++;
-   }
-   if (ball.collide(rightPaddle)) {
-     leftPaddle.score++;
-   }
-   
+    if ( ball.collide(leftPaddle)) {
+      rightPaddle.score++;
+    }
+    if (ball.collide(rightPaddle)) {
+      leftPaddle.score++;
+    }
+
     if (ball2.collide(leftPaddle)) {
       rightPaddle.score++;
     }
-    
+
     if (ball2.collide(rightPaddle)) {
       leftPaddle.score++;
     }
@@ -71,6 +86,8 @@ class UnfairPongTheSequel {
       ball.reset();
     }
 
+    //CHANGED!!!
+    //checks if the second ball has gone off the screen
     if (ball2.isOffScreen()) {
       // If it has, reset the ball
       ball2.reset();
@@ -80,10 +97,17 @@ class UnfairPongTheSequel {
     leftPaddle.display();
     rightPaddle.display();
     ball.display();
+    //CHANGED!!!
+    //second ball display
     ball2.display();
+    //CHANGED!!!!!
+    //display the score on screen
     displayScore();
   }
 
+//CHANGED!!!!!
+//added displayScore function which willl show the score 
+//of each player at the top of the screen
   void displayScore() {
     textSize (50);
     textAlign (CENTER);
@@ -100,6 +124,8 @@ class UnfairPongTheSequel {
 
   void reset() {
     ball.reset();
+    //CHANGED!!!!
+    //second ball reset
     ball2.reset();
     leftPaddle.reset();
     rightPaddle.reset();
