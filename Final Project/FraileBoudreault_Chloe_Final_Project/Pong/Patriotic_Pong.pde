@@ -1,16 +1,26 @@
+//NEW!!!! (in progress though)
+// PatrioticPong
+//
+// This is exactly the same as BasicPong except that the background is
+//the flag of Canada and every time the balls hit the paddles, someone's voice
+//saying "I'm Sorry" plays. Honestly I have no idea what this Pong game is
+//besides being ridiculous and basically a stereotype of Canada perhaps.
+
 class PatrioticPong {
 
   // Variables to store the main objects in the game (the paddles and ball)
   Paddle leftPaddle;
   Paddle rightPaddle;
   Ball ball;
+  //CHANGED!!!!
+  //second ball
   Ball ball2;
 
   // The distance from the edge of the window a paddle should be
   int PADDLE_INSET = 8;
 
-  // The background colour during play (black)
-  //color backgroundColor = color(0);
+  //CHANGED!!!!
+  //creating PImage to make the backgound a specific image
   PImage bg;
 
   // A boolean to track whether we should return to the menu
@@ -20,7 +30,10 @@ class PatrioticPong {
   //added score for left and right players
   int score1 = 0;
   int score2 = 0;
-  
+
+  //CHANGED!!!!
+  //added soundFile array to store the sound file
+  //so far only one
   SoundFile[] tones = new SoundFile [1];
   int framesPerBeat = 15;
 
@@ -35,17 +48,24 @@ class PatrioticPong {
 
     // Create the ball at the centre of the screen
     ball = new Ball(width/2, height/2);
+    //CHANGED!!!!
+    //created second ball
     ball2 = new Ball(width - (width/4), height - (height/4));
-    
+
+    //CHANGED!!!!
+    //loading the Canada flag image into the game
+    //resizing it so it fits the screen
     bg = loadImage("CanadaFlag.png");
-    bg.resize(640,480);
-    
-   for (int i = 0; i < tones.length; i++) {
-    //Use the i variable to work out which filename to use
-    //So far there's only one sound file, adding more if need be
-   tones[i] = new SoundFile (processing, "tone0" + (i+1) + ".mp3");
-  }
-    
+    bg.resize(640, 480);
+
+    // CHANGED!!!!
+    // added for-loop to go through the lenght of the array
+    //in order to add new objects to it
+    for (int i = 0; i < tones.length; i++) {
+      //Use the i variable to work out which filename to use
+      //So far there's only one sound file, adding more if need be
+      tones[i] = new SoundFile (processing, "tone0" + (i+1) + ".mp3");
+    }
   }
 
 
@@ -56,8 +76,12 @@ class PatrioticPong {
 
   void update() {
     // Fill the background each frame so we have animation
+    //CHANGED!!!!
+    //background in now the flag of Canada
     background(bg);
-    
+
+    //CHANGED!!!!!
+    //play the sound file
     if (frameCount % framesPerBeat == 0) {
       int randomIndex = floor (random (0, tones.length));
       tones [randomIndex].play();
@@ -67,11 +91,15 @@ class PatrioticPong {
     leftPaddle.update();
     rightPaddle.update();
     ball.update();
+    //CHANGED!!!
+    //second ball update
     ball2.update();
 
     // Check if the ball has collided with either paddle
     ball.collide(leftPaddle);
     ball.collide(rightPaddle);
+    //CHANGED!!!
+    //second ball collide with both paddles
     ball2.collide(leftPaddle);
     ball2.collide(rightPaddle);
 
@@ -81,6 +109,8 @@ class PatrioticPong {
       ball.reset();
     }
 
+    //CHANGED!!!
+    //checks if the second ball has gone off the screen
     if (ball2.isOffScreen()) {
       // If it has, reset the ball
       ball2.reset();
@@ -90,10 +120,17 @@ class PatrioticPong {
     leftPaddle.display();
     rightPaddle.display();
     ball.display();
+    //CHANGED!!!
+    //second ball display
     ball2.display();
+    //CHANGED!!!!!
+    //display the score on screen
     displayScore();
   }
 
+//CHANGED!!!!!
+//added displayScore function which willl show the score 
+//of each player at the top of the screen
   void displayScore() {
     textSize (50);
     textAlign (CENTER);
@@ -110,6 +147,8 @@ class PatrioticPong {
 
   void reset() {
     ball.reset();
+    //CHANGED!!!!
+    //second ball reset
     ball2.reset();
     leftPaddle.reset();
     rightPaddle.reset();
