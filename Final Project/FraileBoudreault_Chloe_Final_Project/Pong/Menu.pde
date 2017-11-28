@@ -80,6 +80,11 @@ class Menu {
       selection = State.HOPE_YOU_LIKE_COLOURS_PONG;
     } else if (key == 'c' || key == 'C') {
       selection = State.WHITNEY_HOUSTON_PONG;
+      //CHANGED!!!!
+      //calling the startGame function
+      //so the program knows this is when
+      //to play the song
+      whitneyHoustonPong.startGame () ;
     }
   }
 

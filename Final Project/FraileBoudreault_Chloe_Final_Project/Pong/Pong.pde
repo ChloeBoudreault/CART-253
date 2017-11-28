@@ -74,7 +74,7 @@ void setup() {
   patrioticPong = new PatrioticPong(this);
   unfairPongTheSequel = new UnfairPongTheSequel();
   hopeYouLikeColoursPong = new HopeYouLikeColoursPong();
-  whitneyHoustonPong = new WhitneyHoustonPong();
+  whitneyHoustonPong = new WhitneyHoustonPong(this);
 
   // We start our state in the title screen
   state = State.TITLE;

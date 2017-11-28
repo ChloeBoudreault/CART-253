@@ -29,11 +29,15 @@ class WhitneyHoustonPong {
   int score1 = 0;
   int score2 = 0;
 
+  //CHANGED!!!!
+  //added SoundFile class for the song
+  SoundFile tone;
+
   // BasicPong()
   //
   // Creates the paddles and ball
 
-  WhitneyHoustonPong() {
+  WhitneyHoustonPong(PApplet processing) {
     // Create a paddle on either side of the screen
     leftPaddle = new Paddle(PADDLE_INSET, height/2, '2', 'q');
     rightPaddle = new Paddle(width - PADDLE_INSET, height/2, '0', 'p');
@@ -43,6 +47,20 @@ class WhitneyHoustonPong {
     //CHANGED!!!!
     //created second ball
     ball2 = new Ball(width - (width/4), height - (height/4));
+
+    //CHANGED!!!!!
+    //loading the song by creating a new SoundFile 
+    //and giving it the path to the file
+    tone = new SoundFile (processing, "tone02.mp3");
+  }
+
+  //CHANGED!!!!!
+  //added startGame function
+  //in order to know when the program should run the song
+  //which is when the user chooses the Whitney Houston Pong game
+  //in the menu
+  void startGame () {
+    tone.play();
   }
 
   // update()
@@ -95,9 +113,9 @@ class WhitneyHoustonPong {
     displayScore();
   }
 
-//CHANGED!!!!!
-//added displayScore function which willl show the score 
-//of each player at the top of the screen
+  //CHANGED!!!!!
+  //added displayScore function which willl show the score 
+  //of each player at the top of the screen
   void displayScore() {
     textSize (50);
     textAlign (CENTER);
@@ -136,6 +154,11 @@ class WhitneyHoustonPong {
     // Check if we should return to the menu
     if (key == 'm' || key == 'M') {
       returnToMenu = true;
+      //CHANGED!!!!!!
+      //added this so the program knows when to stop playing 
+      //the song, which is when the user presses 'm' or 'M' to
+      //go back to the menu
+      tone.stop();
     }
   }
 
