@@ -29,9 +29,12 @@ class WhitneyHoustonPong {
   int score1 = 0;
   int score2 = 0;
 
-  //CHANGED!!!!
-  //added SoundFile class for the song
-  SoundFile tone;
+  //CHANGED!!!!  
+  // creating Minim class to handle sound tasks
+  Minim minim;
+  //and another class for the sound file
+  AudioPlayer tone;
+
 
   // BasicPong()
   //
@@ -51,7 +54,10 @@ class WhitneyHoustonPong {
     //CHANGED!!!!!
     //loading the song by creating a new SoundFile 
     //and giving it the path to the file
-    tone = new SoundFile (processing, "tone02.mp3");
+    //we make the Minim manager class into an object
+    minim = new Minim (processing);
+    //load the song
+    tone = minim.loadFile ("tone02.mp3");
   }
 
   //CHANGED!!!!!
@@ -60,7 +66,9 @@ class WhitneyHoustonPong {
   //which is when the user chooses the Whitney Houston Pong game
   //in the menu
   void startGame () {
-    tone.play();
+    //loop the song as long as the
+    //player is on the game
+    tone.loop();
   }
 
   // update()
@@ -158,7 +166,7 @@ class WhitneyHoustonPong {
       //added this so the program knows when to stop playing 
       //the song, which is when the user presses 'm' or 'M' to
       //go back to the menu
-      tone.stop();
+      tone.pause();
     }
   }
 
