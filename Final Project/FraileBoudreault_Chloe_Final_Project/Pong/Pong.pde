@@ -25,7 +25,8 @@ enum State {
     MONKEY_PONG, 
     PATRIOTIC_PONG, 
     UNFAIR_PONG_THE_SEQUEL, 
-    HOPE_YOU_LIKE_COLOURS_PONG
+    HOPE_YOU_LIKE_COLOURS_PONG, 
+    WHITNEY_HOUSTON_PONG
 }
 // This is the variable that actually tracks the state in the game
 State state;
@@ -47,6 +48,7 @@ MonkeyPong monkeyPong;
 PatrioticPong patrioticPong;
 UnfairPongTheSequel unfairPongTheSequel;
 HopeYouLikeColoursPong hopeYouLikeColoursPong;
+WhitneyHoustonPong whitneyHoustonPong;
 
 // setup()
 //
@@ -72,6 +74,7 @@ void setup() {
   patrioticPong = new PatrioticPong(this);
   unfairPongTheSequel = new UnfairPongTheSequel();
   hopeYouLikeColoursPong = new HopeYouLikeColoursPong();
+  whitneyHoustonPong = new WhitneyHoustonPong();
 
   // We start our state in the title screen
   state = State.TITLE;
@@ -244,6 +247,18 @@ void draw() {
       hopeYouLikeColoursPong.reset();
     }
     break;
+
+    //CHANGED!!!!!
+    // If our state is WHITNEY_HOUSTON_PONG we do all the same things,
+    // but for the  whitneyHoustonPong object instead
+  case WHITNEY_HOUSTON_PONG:
+    whitneyHoustonPong.update();
+    if ( whitneyHoustonPong.returnToMenu) {
+      state = State.MENU;
+      whitneyHoustonPong.returnToMenu = false;
+      whitneyHoustonPong.reset();
+    }
+    break;
   }
 }
 
@@ -311,6 +326,10 @@ void keyPressed() {
   case HOPE_YOU_LIKE_COLOURS_PONG:
     hopeYouLikeColoursPong.keyPressed();
     break;
+    
+  case WHITNEY_HOUSTON_PONG:
+   whitneyHoustonPong.keyPressed();
+   break;
   }
 }
 
@@ -377,5 +396,9 @@ void keyReleased() {
   case HOPE_YOU_LIKE_COLOURS_PONG:
     hopeYouLikeColoursPong.keyReleased();
     break;
+    
+  case WHITNEY_HOUSTON_PONG:
+   whitneyHoustonPong.keyReleased();
+   break;
   }
 }

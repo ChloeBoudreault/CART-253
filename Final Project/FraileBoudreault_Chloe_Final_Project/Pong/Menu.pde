@@ -31,19 +31,20 @@ class Menu {
     background(0);
     textAlign(CENTER, CENTER);
     textSize(25);
-    text("1  PONG", width/2, 40);
-    text("2  BLUE   PONG", width/2, 80);
+    text("1  PONG", width/2, 20);
+    text("2  BLUE   PONG", width/2, 50);
     //CHANGED!!!!
     //added the new pong options which will now be visible in the menu
-    text("3  INVISIBLE   PONG", width/2, 120);
-    text("4  MICHAEL   JACKSON   PONG", width/2, 160);
-    text("5  UNFAIR   OR   USELESS   PONG", width/2, 200);
-    text("6  ITSY   BITSY   PONG", width/2, 240);
-    text("7  SIZE   DOESNT   MATTER   IN   PONG", width/2, 280);
-    text("8  MONKEY   PONG", width/2, 320);
-    text("9  PATRIOTIC   PONG", width/2, 360);
-    text("A  UNFAIR   PONG   THE   SEQUEL", width/2, 400);
-    text("B  HOPE   YOU   LIKE   COLOURS   PONG", width/2, 440);
+    text("3  INVISIBLE   PONG", width/2, 80);
+    text("4  MICHAEL   JACKSON   PONG", width/2, 110);
+    text("5  UNFAIR   OR   USELESS   PONG", width/2, 140);
+    text("6  ITSY   BITSY   PONG", width/2, 170);
+    text("7  SIZE   DOESNT   MATTER   IN   PONG", width/2, 200);
+    text("8  MONKEY   PONG", width/2, 230);
+    text("9  PATRIOTIC   PONG", width/2, 260);
+    text("A  UNFAIR   PONG   THE   SEQUEL", width/2, 290);
+    text("B  HOPE   YOU   LIKE   COLOURS   PONG", width/2, 320);
+    text("C  WHITNEY  HOUSTON  PONG", width/2, 350);
   }
 
   // keyPressed()
@@ -77,6 +78,8 @@ class Menu {
       selection = State.UNFAIR_PONG_THE_SEQUEL;
     } else if (key == 'b' || key == 'B') {
       selection = State.HOPE_YOU_LIKE_COLOURS_PONG;
+    } else if (key == 'c' || key == 'C') {
+      selection = State.WHITNEY_HOUSTON_PONG;
     }
   }
 
