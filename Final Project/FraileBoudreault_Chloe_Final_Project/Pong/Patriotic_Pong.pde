@@ -76,13 +76,17 @@ class PatrioticPong {
     //CHANGED!!!!
     //background in now the flag of Canada
     background(bg);
+    
+    //CHANGED!!!!
+    //colour change so we can see the balls
+    ball.ballColor = 0;
+    ball2.ballColor = 0;
 
     //CHANGED!!!!!
     //play the sound file
-    if (frameCount % framesPerBeat == 0) {
-      int randomIndex = floor (random (0, tones.length));
-      tones [randomIndex].play();
-    }
+    //if (frameCount % framesPerBeat == 0) {
+
+    //}
 
     // Update the paddles and ball by calling their update methods
     leftPaddle.update();
@@ -92,13 +96,29 @@ class PatrioticPong {
     //second ball update
     ball2.update();
 
+     //CHANGED!!!!!
+     //added the sound here so that when the balls 
+     //collide with either the left or right paddles,
+     //the sound starts playing
     // Check if the ball has collided with either paddle
-    ball.collide(leftPaddle);
-    ball.collide(rightPaddle);
+    if (ball.collide(leftPaddle)) {
+      int randomIndex = floor (random (0, tones.length));
+      tones [randomIndex].play();
+    }
+    if (ball.collide(rightPaddle)) {
+      int randomIndex = floor (random (0, tones.length));
+      tones [randomIndex].play();
+    }
     //CHANGED!!!
     //second ball collide with both paddles
-    ball2.collide(leftPaddle);
-    ball2.collide(rightPaddle);
+    if (ball2.collide(leftPaddle)) {
+      int randomIndex = floor (random (0, tones.length));
+      tones [randomIndex].play();
+    }
+    if (ball2.collide(rightPaddle)) {
+      int randomIndex = floor (random (0, tones.length));
+      tones [randomIndex].play();
+    }
 
     // Check if the ball has gone off the screen
     if (ball.isOffScreen()) {
@@ -125,9 +145,9 @@ class PatrioticPong {
     displayScore();
   }
 
-//CHANGED!!!!!
-//added displayScore function which willl show the score 
-//of each player at the top of the screen
+  //CHANGED!!!!!
+  //added displayScore function which willl show the score 
+  //of each player at the top of the screen
   void displayScore() {
     textSize (50);
     textAlign (CENTER);
