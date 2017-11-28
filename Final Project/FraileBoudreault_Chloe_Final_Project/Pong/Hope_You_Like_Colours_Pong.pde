@@ -112,21 +112,23 @@ class HopeYouLikeColoursPong {
   //of the balls on the screen
   void backgroundColorChange () {
     if (ball.x < (width/2+70) && ball.y < (height/2-150)) {
-      background(255);
+      background(20,122,254);
     } else if (ball.x < (width/2+190) && ball.y < (height/2-143)) {
-      background(0);
+      background(12,34,203);
     } else if (ball.x > (width/2-10) && ball.y < (height/2+30)) { 
-      background(0);
+      background(102,49,221);
     } else if (ball.x > (width/2-55) && ball.y < (height/2+349)) {
-      background(255);
+      background(250,20,123);
     } else if (ball.x < (width/2-200) && ball.y > (height/2-120)) { 
-      background (0);
+      background (58,232,12);
     } else if (ball.x < (width/2-168) && ball.y > (height/2-87)) {
-      background(255 );
+      background(21,2,45);
     } else if (ball.x > (width/2+64) && ball.y > (height/2+55)) { 
-      background (255);
+      background (19,200,130);
     } else if (ball.x > (width/2+217) && ball.y > (height/2+184)) {
-      background(0);
+      background(129,24,21);
+    } else {
+      background (255,0,0);
     }
   }
 

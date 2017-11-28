@@ -31,12 +31,18 @@ class Title {
     textAlign(CENTER, CENTER);
     textSize(64);
     fill(255);
-    text("Pongs!", width/2, height/2);
+    text("Pongs !", width/2, height/2);
 
     textSize(32);
-    text("Press any key to continue", width/2, 3*height/4);
+    text("Press   any   key   to   continue", width/2, 3*height/4);
+    //CHANGED!!!!!
+    //added a new font
+    //more arcade-ish, pixel video game-ish
+    PFont myFont;
+    myFont = createFont ("ARCADECLASSIC.TTF", 64);
+    textFont (myFont);
   }
-  
+
   // keyPressed()
   //
   // Called by the main program when the title is active.
@@ -49,7 +55,7 @@ class Title {
   // keyReleased()
   //
   // Does nothing.
-  
+
   void keyReleased() {
   }
 }
