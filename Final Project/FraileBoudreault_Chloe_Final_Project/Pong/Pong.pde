@@ -5,8 +5,6 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
-import ddf.minim.*;
-
 import processing.sound.*;
 
 // Pong(s)
@@ -35,7 +33,8 @@ enum State {
     PATRIOTIC_PONG, 
     UNFAIR_PONG_THE_SEQUEL, 
     HOPE_YOU_LIKE_COLOURS_PONG, 
-    WHITNEY_HOUSTON_PONG
+    WHITNEY_HOUSTON_PONG, 
+    MORE_BALLS_THE_MERRIER_PONG
 }
 // This is the variable that actually tracks the state in the game
 State state;
@@ -58,6 +57,7 @@ PatrioticPong patrioticPong;
 UnfairPongTheSequel unfairPongTheSequel;
 HopeYouLikeColoursPong hopeYouLikeColoursPong;
 WhitneyHoustonPong whitneyHoustonPong;
+MoreBallsTheMerrierPong moreBallsTheMerrierPong;
 
 // setup()
 //
@@ -84,6 +84,7 @@ void setup() {
   unfairPongTheSequel = new UnfairPongTheSequel();
   hopeYouLikeColoursPong = new HopeYouLikeColoursPong();
   whitneyHoustonPong = new WhitneyHoustonPong(this);
+  moreBallsTheMerrierPong = new MoreBallsTheMerrierPong();
 
   // We start our state in the title screen
   state = State.TITLE;
@@ -262,10 +263,22 @@ void draw() {
     // but for the  whitneyHoustonPong object instead
   case WHITNEY_HOUSTON_PONG:
     whitneyHoustonPong.update();
-    if ( whitneyHoustonPong.returnToMenu) {
+    if (whitneyHoustonPong.returnToMenu) {
       state = State.MENU;
       whitneyHoustonPong.returnToMenu = false;
       whitneyHoustonPong.reset();
+    }
+    break;
+
+    //CHANGED!!!!!
+    // If our state is MORE_BALLS_THE_MERRIER_PONG we do all the same things,
+    // but for the  moreBallsTheMerrierPong object instead
+  case MORE_BALLS_THE_MERRIER_PONG:
+    moreBallsTheMerrierPong.update();
+    if (moreBallsTheMerrierPong.returnToMenu) {
+      state = State.MENU;
+      moreBallsTheMerrierPong.returnToMenu = false;
+      moreBallsTheMerrierPong.reset();
     }
     break;
   }
@@ -335,10 +348,14 @@ void keyPressed() {
   case HOPE_YOU_LIKE_COLOURS_PONG:
     hopeYouLikeColoursPong.keyPressed();
     break;
-    
+
   case WHITNEY_HOUSTON_PONG:
-   whitneyHoustonPong.keyPressed();
-   break;
+    whitneyHoustonPong.keyPressed();
+    break;
+    
+  case MORE_BALLS_THE_MERRIER_PONG:
+  moreBallsTheMerrierPong.keyPressed();
+  break;
   }
 }
 
@@ -405,9 +422,13 @@ void keyReleased() {
   case HOPE_YOU_LIKE_COLOURS_PONG:
     hopeYouLikeColoursPong.keyReleased();
     break;
-    
+
   case WHITNEY_HOUSTON_PONG:
-   whitneyHoustonPong.keyReleased();
-   break;
+    whitneyHoustonPong.keyReleased();
+    break;
+    
+  case MORE_BALLS_THE_MERRIER_PONG:
+  moreBallsTheMerrierPong.keyReleased();
+  break;
   }
 }
