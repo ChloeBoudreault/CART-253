@@ -35,8 +35,8 @@ class MoreBallsTheMerrierPong {
   int score1 = 0;
   int score2 = 0;
 
-  // BasicPong()
-  //
+  Ball [] balls = new Ball[100];
+  
   // Creates the paddles and ball
 
   MoreBallsTheMerrierPong() {
@@ -49,6 +49,10 @@ class MoreBallsTheMerrierPong {
     //CHANGED!!!!
     //created second ball
     ball2 = new Ball(width - (width/4), height - (height/4));
+    
+    for (int i = 0; i < balls.length ; i++) {
+    balls[i] = new Ball (floor(random(0,width)), floor(random (0,height)));
+ }
   }
 
   // update()
@@ -59,6 +63,17 @@ class MoreBallsTheMerrierPong {
   void update() {
     // Fill the background each frame so we have animation
     background(backgroundColor);
+    
+    for (int i = 0; i<balls.length; i++) {
+    balls[i].update();
+    balls[i].display();
+    balls[i].collide(leftPaddle);
+    balls[i].collide(rightPaddle);
+    if (balls[i].isOffScreen()){
+    balls[i].reset();
+    }
+    }
+  
 
     // Update the paddles and ball by calling their update methods
     leftPaddle.update();
