@@ -35,6 +35,8 @@ class MoreBallsTheMerrierPong {
   int score1 = 0;
   int score2 = 0;
 
+  //CHANGED!!!!
+  //created an array of 100 balls
   Ball [] balls = new Ball[100];
 
   // Creates the paddles and ball
@@ -50,6 +52,9 @@ class MoreBallsTheMerrierPong {
     //created second ball
     ball2 = new Ball(width - (width/4), height - (height/4));
 
+    //CHANGED!!!!!
+    //creating the 100 balls
+    //random positions on the screen
     for (int i = 0; i < balls.length; i++) {
       balls[i] = new Ball (floor(random(0, width)), floor(random (0, height)));
     }
@@ -64,7 +69,10 @@ class MoreBallsTheMerrierPong {
     // Fill the background each frame so we have animation
     background(backgroundColor);
 
-    for (int i = 0; i<balls.length; i++) {
+    //CHANGED!!!!!
+    //repeating the update, display, collide, offscreen, reset
+    //for the array of balls again
+    for (int i = 0; i< balls.length; i++) {
       balls[i].update();
       balls[i].display();
       balls[i].collide(leftPaddle);
