@@ -85,7 +85,7 @@ class Menu {
       //calling the startGame function
       //so the program knows this is when
       //to play the song
-      whitneyHoustonPong.startGame () ;
+      whitneyHoustonPong.startGame();
     } else if (key == 'd' || key == 'D') {
       selection = State.MORE_BALLS_THE_MERRIER_PONG;
     }

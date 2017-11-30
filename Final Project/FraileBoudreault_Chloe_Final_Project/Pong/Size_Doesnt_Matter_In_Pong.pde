@@ -74,9 +74,9 @@ class SizeDoesntMatterInPong {
     displayScore();
   }
 
-//CHANGED!!!!!
-//added displayScore function which willl show the score 
-//of each player at the top of the screen
+  //CHANGED!!!!!
+  //added displayScore function which willl show the score 
+  //of each player at the top of the screen
   void displayScore() {
     textSize (50);
     textAlign (CENTER);
@@ -86,23 +86,23 @@ class SizeDoesntMatterInPong {
     text (rightPaddle.score, width - (width/4), 78);
   }
 
-//CHANGED!!!!!
-//added paddleSizeChange function which will changes
-//the sizes of the paddles depending on the x and y
-//positions of the ball on the screen
+  //CHANGED!!!!!
+  //added paddleSizeChange function which will changes
+  //the sizes of the paddles depending on the x and y
+  //positions of the ball on the screen
   void paddleSizeChange() {
     if  (ball.x < (width/2) && ball.y < (height/2)) {
-     leftPaddle.HEIGHT = 12;
-     rightPaddle.HEIGHT = 255;
+      leftPaddle.HEIGHT = 12;
+      rightPaddle.HEIGHT = 255;
     } else if (ball.x > (width/2) && ball.y < (height/2)) { 
-     leftPaddle.HEIGHT = 170;
-     rightPaddle.HEIGHT = 48;
+      leftPaddle.HEIGHT = 170;
+      rightPaddle.HEIGHT = 48;
     } else if (ball.x < (width/2) && ball.y > (height/2)) { 
-     leftPaddle.HEIGHT = 288;
-     rightPaddle.HEIGHT = 341;
+      leftPaddle.HEIGHT = 288;
+      rightPaddle.HEIGHT = 341;
     } else if (ball.x > (width/2) && ball.y > (height/2)) { 
-     leftPaddle.HEIGHT = 94;
-     rightPaddle.HEIGHT = 22;
+      leftPaddle.HEIGHT = 94;
+      rightPaddle.HEIGHT = 22;
     }
   }
 
@@ -132,6 +132,13 @@ class SizeDoesntMatterInPong {
     // Check if we should return to the menu
     if (key == 'm' || key == 'M') {
       returnToMenu = true;
+      //CHANGED!!!!
+      //added these because the scores
+      //remained the same everytime I would return to menu and come back
+      //this is so every time the users play a game and decide
+      //to return to it later on, the score will go back to 0 every time
+      leftPaddle.score = 0;
+      rightPaddle.score = 0;
     }
   }
 

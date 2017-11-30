@@ -79,6 +79,7 @@ class WhitneyHoustonPong {
       //player is on the game
       iWillAlwaysLoveYou.loop();
     }
+    
 
     // update()
     //
@@ -180,7 +181,14 @@ class WhitneyHoustonPong {
         //added this so the program knows when to stop playing 
         //the song, which is when the user presses 'm' or 'M' to
         //go back to the menu
-        iWillAlwaysLoveYou.pause();
+       iWillAlwaysLoveYou.pause();
+       //CHANGED!!!!
+       //added these because the scores
+       //remained the same everytime I would return to menu and come back
+       //this is so every time the users play a game and decide
+       //to return to it later on, the score will go back to 0 every time
+       leftPaddle.score = 0;
+       rightPaddle.score = 0;
       }
     }
 

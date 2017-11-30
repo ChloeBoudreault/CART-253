@@ -76,7 +76,7 @@ class PatrioticPong {
     //CHANGED!!!!
     //background in now the flag of Canada
     background(bg);
-    
+
     //CHANGED!!!!
     //colour change so we can see the balls
     ball.ballColor = 0;
@@ -96,10 +96,10 @@ class PatrioticPong {
     //second ball update
     ball2.update();
 
-     //CHANGED!!!!!
-     //added the sound here so that when the balls 
-     //collide with either the left or right paddles,
-     //the sound starts playing
+    //CHANGED!!!!!
+    //added the sound here so that when the balls 
+    //collide with either the left or right paddles,
+    //the sound starts playing
     // Check if the ball has collided with either paddle
     if (ball.collide(leftPaddle)) {
       int randomIndex = floor (random (0, tones.length));
@@ -186,6 +186,13 @@ class PatrioticPong {
     // Check if we should return to the menu
     if (key == 'm' || key == 'M') {
       returnToMenu = true;
+      //CHANGED!!!!
+      //added these because the scores
+      //remained the same everytime I would return to menu and come back
+      //this is so every time the users play a game and decide
+      //to return to it later on, the score will go back to 0 every time
+      leftPaddle.score = 0;
+      rightPaddle.score = 0;
     }
   }
 

@@ -103,9 +103,9 @@ class UnfairOrUselessPong {
     displayScore();
   }
 
-//CHANGED!!!!!
-//added displayScore function which willl show the score 
-//of each player at the top of the screen
+  //CHANGED!!!!!
+  //added displayScore function which willl show the score 
+  //of each player at the top of the screen
   void displayScore() {
     textSize (50);
     textAlign (CENTER);
@@ -144,6 +144,13 @@ class UnfairOrUselessPong {
     // Check if we should return to the menu
     if (key == 'm' || key == 'M') {
       returnToMenu = true;
+      //CHANGED!!!!
+      //added these because the scores
+      //remained the same everytime I would return to menu and come back
+      //this is so every time the users play a game and decide
+      //to return to it later on, the score will go back to 0 every time
+      leftPaddle.score = 0;
+      rightPaddle.score = 0;
     }
   }
 

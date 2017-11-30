@@ -36,7 +36,7 @@ class MoreBallsTheMerrierPong {
   int score2 = 0;
 
   Ball [] balls = new Ball[100];
-  
+
   // Creates the paddles and ball
 
   MoreBallsTheMerrierPong() {
@@ -49,10 +49,10 @@ class MoreBallsTheMerrierPong {
     //CHANGED!!!!
     //created second ball
     ball2 = new Ball(width - (width/4), height - (height/4));
-    
-    for (int i = 0; i < balls.length ; i++) {
-    balls[i] = new Ball (floor(random(0,width)), floor(random (0,height)));
- }
+
+    for (int i = 0; i < balls.length; i++) {
+      balls[i] = new Ball (floor(random(0, width)), floor(random (0, height)));
+    }
   }
 
   // update()
@@ -63,17 +63,17 @@ class MoreBallsTheMerrierPong {
   void update() {
     // Fill the background each frame so we have animation
     background(backgroundColor);
-    
+
     for (int i = 0; i<balls.length; i++) {
-    balls[i].update();
-    balls[i].display();
-    balls[i].collide(leftPaddle);
-    balls[i].collide(rightPaddle);
-    if (balls[i].isOffScreen()){
-    balls[i].reset();
+      balls[i].update();
+      balls[i].display();
+      balls[i].collide(leftPaddle);
+      balls[i].collide(rightPaddle);
+      if (balls[i].isOffScreen()) {
+        balls[i].reset();
+      }
     }
-    }
-  
+
 
     // Update the paddles and ball by calling their update methods
     leftPaddle.update();
@@ -116,9 +116,9 @@ class MoreBallsTheMerrierPong {
     displayScore();
   }
 
-//CHANGED!!!!!
-//added displayScore function which willl show the score 
-//of each player at the top of the screen
+  //CHANGED!!!!!
+  //added displayScore function which willl show the score 
+  //of each player at the top of the screen
   void displayScore() {
     textSize (50);
     textAlign (CENTER);
@@ -157,6 +157,13 @@ class MoreBallsTheMerrierPong {
     // Check if we should return to the menu
     if (key == 'm' || key == 'M') {
       returnToMenu = true;
+      //CHANGED!!!!
+      //added these because the scores
+      //remained the same everytime I would return to menu and come back
+      //this is so every time the users play a game and decide
+      //to return to it later on, the score will go back to 0 every time
+      leftPaddle.score = 0;
+      rightPaddle.score = 0;
     }
   }
 
