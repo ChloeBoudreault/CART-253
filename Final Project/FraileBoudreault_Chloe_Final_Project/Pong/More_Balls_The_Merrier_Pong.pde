@@ -1,15 +1,11 @@
-// BasicPong
+//NEW!!!!
+// MoreBallsTheMerrierPong
 //
-// This is basically exactly the same implementation of Pong we've already
-// seen for the midterm, except that it is defined as a CLASS which can
-// be instantiated into an object to run the game.
-//
-// We now use the constructor BasicPong() to set up the game, instead of
-// setup(), and we use update() to update the game, instead of draw().
-//
-// A new addition is tracking whether the player presses a key ('m') to
-// return to the menu. If so, the game remembers they did and the main
-// program handles actually changing back to the menu itself.
+// This is exactly the same as BasicPong except that instead of
+//having one ball or two balls, there are a 100 balls. The
+//users gain points quite rapidly but the game in itself is
+//simply quite chaotic and very busy.
+
 
 class MoreBallsTheMerrierPong {
 
