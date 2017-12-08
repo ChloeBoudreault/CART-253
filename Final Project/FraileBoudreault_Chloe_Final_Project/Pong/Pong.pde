@@ -1,3 +1,25 @@
+//Artist's Statement
+//For my final project I decided to create a series of mini Pong games based
+//on the original Pong code. Each of the games are different yet similar in the way
+//that they are all quite ridiculous and strange, perhaps even useless. I came up with 
+//these ideas off the top of my head, generating the most ridiculous Pong games I could 
+//come up with. I didn’t want to do anything too difficult due to my low level of programming 
+//knowledge but I did manage to incorporate many aspects and coding techniques that we saw in 
+//class such as arrays, functions, sound and minim libraries etc. The main reason behind these 
+//ridiculous Pong games is that I wanted to make people laugh, to allow people to take a break 
+//and have fun in the most useless and simple way. My favourite out of all these games in the 
+//Whitney Houston Pong game because it’s completely ridiculous and makes no sense. Working with 
+//arrays was probably the most annoying part and in the end I came up with a result which is quite 
+//chaotic however has quite an nice pattern (More Balls the Merrier), the main reason why I decided 
+//to leave it that way. One of my favourite part of the game is also the titles. They might not be 
+//catchy but that’s the whole point, they’re long and ridiculous. When someone plays Michael Jackson Pong, 
+//the first thing they’re going to think about is a Michael Jackson song playing or iconic Michael Jackson 
+//sound effects, however, it’s something completely different, it’s simply a ball going black and white 
+//and white and black etc. The titles are also quite charming in their own way, they’re annoying to say and 
+//I found it quite entertaining to imagine someone asking a friend “Hey wanna play Size Doesn’t Matter in Pong?”. 
+//All in all, I just wanted to make strange Pong games in order to make people laugh, might not work as well I as hope
+//but it did work on me at least.
+
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
